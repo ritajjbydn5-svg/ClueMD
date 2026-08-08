@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case 001 | MEDMYSTERY</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      color: #17202a;
+    }
+    header {
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .back {
+      text-decoration: none;
+      color: #17202a;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 900px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+    .case-label {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+    .description {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .patient {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    .patient h2 {
+      margin-bottom: 8px;
+    }
+    .patient p {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    .chat {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .chat-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #e5e7eb;
+      font-weight: 800;
+    }
+    .messages {
+      min-height: 300px;
+      padding: 20px;
+    }
+    .message {
+      max-width: 80%;
+      padding: 13px 16px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .patient-message {
+      background: #f0f3f5;
+      margin-right: auto;
+    }
+    .student-message {
+      background: #17202a;
+      color: white;
+      margin-left: auto;
+    }
+    .input-area {
+      display: flex;
+      gap: 10px;
+      padding: 15px;
+      border-top: 1px solid #e5e7eb;
+    }
+    input {
+      flex: 1;
+      padding: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    button {
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      background: #17202a;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .diagnosis {
+      margin-top: 25px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 25px;
+    }
+    .diagnosis h2 {
+      margin-bottom: 10px;
+    }
+    .diagnosis p {
+      color: #6b7280;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .diagnosis input {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .notice {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 34px;
+      }
+      .input-area {
+        flex-direction: column;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">MEDMYSTERY</div>
+  <a class="back" href="cases.html">
+    ← Cases
+  </a>
+</header>
+<div class="container">
+  <div class="case-label">CASE 001</div>
+  <h1>The Sudden Stomachache</h1>
+  <p class="description">
+    A fictional student has suddenly developed abdominal
+    discomfort. Interview the character and collect as many
+    useful clues as you can.
+  </p>
+  <div class="patient">
+<h2>👤 Sara, 17</h2>
+<p>
+  Sara has agreed to answer your questions.
+  Ask her anything you think might help you solve
+  the mystery.
+</p>
+  </div>
+  <div class="chat">
+<div class="chat-header">
+  💬 Interview Sara
+</div>
+<div class="messages" id="messages">
+  <div class="message patient-message">
+    Hi... I haven't been feeling well today.
+    You can ask me questions.
+  </div>
+</div>
+<div class="input-area">
+  <input
+    id="question"
+    type="text"
+    placeholder="Ask Sara a question..."
+  >
+  <button onclick="askQuestion()">
+    Ask
+  </button>
+</div>
+  </div>
+  <div class="diagnosis">
+<h2>🔎 Your Solution</h2>
+<p>
+  When you think you've collected enough clues,
+  enter what you think is happening.
+</p>
+<input
+  id="diagnosisInput"
+  type="text"
+  placeholder="What is your answer?"
+>
+<button onclick="submitDiagnosis()">
+  Submit Answer
+</button>
+<p id="result"></p>
+  </div>
+  <div class="notice">
+    MEDMYSTERY is a fictional educational science experience.
+    It is not intended to provide medical advice or diagnose
+    real people.
+  </div>
+</div>
+<script>
+function askQuestion() {
+  const input = document.getElementById("question");
+  const messages = document.getElementById("messages");
+  const question = input.value.trim();
+  if (question === "") {
+    return;
+  }
+  const studentMessage = document.createElement("div");
+  studentMessage.className = "message student-message";
+  studentMessage.textContent = question;
+  messages.appendChild(studentMessage);
+  input.value = "";
+  const response = document.createElement("div");
+  response.className = "message patient-message";
+  response.textContent =
+    "I'm not sure how to answer that yet. Try asking me about my symptoms, when they started, or how I'm feeling.";
+  messages.appendChild(response);
+  messages.scrollTop = messages.scrollHeight;
+}
+function submitDiagnosis() {
+  const diagnosis =
+    document.getElementById("diagnosisInput").value.trim();
+  const result =
+    document.getElementById("result");
+  if (diagnosis === "") {
+    result.textContent = "Please enter an answer first.";
+    return;
+  }
+  result.textContent =
+    "Your answer has been recorded. The full solution system will be added soon.";
+}
+</script>
+</body>
+</html>
