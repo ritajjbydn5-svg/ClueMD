@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sara - ClueMD</title>
+<title>Sara | ClueMD</title>
 <style>
 * {
     box-sizing: border-box;
 }
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -18,9 +17,6 @@ body {
     font-family: Arial, sans-serif;
     background: #eef2f4;
 }
-/* =========================
-   HEADER
-========================= */
 header {
     height: 58px;
     background: white;
@@ -28,7 +24,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 18px;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #ddd;
     position: relative;
     z-index: 100;
 }
@@ -41,9 +37,6 @@ header {
     text-decoration: none;
     font-weight: bold;
 }
-/* =========================
-   ROOM
-========================= */
 .room {
     position: relative;
     width: 100%;
@@ -51,9 +44,6 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
-/* =========================
-   PATIENT LABEL
-========================= */
 .patient {
     position: absolute;
     top: 15px;
@@ -61,7 +51,7 @@ header {
     background: white;
     padding: 10px 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 15px rgba(0,0,0,.12);
     z-index: 20;
 }
 .patient strong {
@@ -69,11 +59,9 @@ header {
     font-size: 17px;
 }
 .patient small {
-    color: #777777;
+    color: #777;
 }
-/* =========================
-   SARA
-========================= */
+/* SARA */
 .sara {
     position: absolute;
     width: 270px;
@@ -83,7 +71,6 @@ header {
     transform: translateX(-50%);
     z-index: 5;
 }
-/* Hair */
 .hair {
     position: absolute;
     top: 0;
@@ -93,7 +80,6 @@ header {
     background: #493028;
     border-radius: 50%;
 }
-/* Ears */
 .ear {
     position: absolute;
     top: 105px;
@@ -108,7 +94,6 @@ header {
 .ear.right {
     right: 49px;
 }
-/* Face */
 .face {
     position: absolute;
     top: 38px;
@@ -119,7 +104,6 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
-/* Worried eyebrows */
 .brow {
     position: absolute;
     top: 57px;
@@ -136,7 +120,6 @@ header {
     right: 28px;
     transform: rotate(-14deg);
 }
-/* Eyes */
 .eye {
     position: absolute;
     top: 73px;
@@ -151,7 +134,6 @@ header {
 .eye.right {
     right: 35px;
 }
-/* Sad mouth */
 .mouth {
     position: absolute;
     top: 132px;
@@ -162,7 +144,6 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
-/* Neck */
 .neck {
     position: absolute;
     top: 210px;
@@ -171,7 +152,6 @@ header {
     height: 55px;
     background: #efbd99;
 }
-/* Body */
 .body {
     position: absolute;
     top: 250px;
@@ -181,9 +161,7 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* =========================
-   SPEECH CLOUD
-========================= */
+/* SPEECH */
 .speech {
     position: absolute;
     top: 85px;
@@ -194,23 +172,21 @@ header {
     background: white;
     padding: 18px;
     border-radius: 22px;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 22px rgba(0,0,0,.15);
     z-index: 30;
 }
 .speech-name {
     display: block;
     font-size: 12px;
     font-weight: bold;
-    color: #777777;
+    color: #777;
     margin-bottom: 7px;
 }
 #speechText {
     font-size: 16px;
     line-height: 1.45;
 }
-/* =========================
-   DESK
-========================= */
+/* DESK */
 .desk {
     position: absolute;
     left: 0;
@@ -220,9 +196,7 @@ header {
     background: #8b6a50;
     z-index: 40;
 }
-/* =========================
-   POPUPS
-========================= */
+/* POPUPS */
 .popup {
     position: fixed;
     display: none;
@@ -234,22 +208,15 @@ header {
     background: white;
     padding: 18px;
     border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
     z-index: 99999;
 }
-/*
-   The keyboard and diagnosis boxes
-   open using the URL hash.
-*/
 #keyboard:target {
     display: block;
 }
 #diagnosis:target {
     display: block;
 }
-/* =========================
-   POPUP CONTENT
-========================= */
 .popup-title {
     font-size: 17px;
     font-weight: bold;
@@ -264,7 +231,7 @@ header {
     flex: 1;
     min-width: 0;
     padding: 13px;
-    border: 1px solid #bbbbbb;
+    border: 1px solid #bbb;
     border-radius: 9px;
     font-size: 16px;
     outline: none;
@@ -279,30 +246,24 @@ header {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
 }
 .send-button:active {
-    transform: scale(0.95);
+    transform: scale(.95);
 }
-/* Close */
 .close {
     display: inline-block;
     margin-top: 12px;
-    color: #555555;
+    color: #555;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
 }
-/* Diagnosis result */
 #diagnosisResult {
     margin-top: 12px;
     font-weight: bold;
     line-height: 1.4;
 }
-/* =========================
-   BOTTOM BUTTONS
-========================= */
+/* BUTTONS */
 .controls {
     position: fixed;
     left: 50%;
@@ -324,18 +285,14 @@ header {
     color: black;
     text-decoration: none;
     font-size: 25px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.3);
-    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 5px 18px rgba(0,0,0,.3);
 }
 .control:active {
-    transform: scale(0.92);
+    transform: scale(.92);
 }
-/* =========================
-   IPAD / PHONE
-========================= */
 @media (max-width: 700px) {
     .sara {
-        transform: translateX(-50%) scale(0.72);
+        transform: translateX(-50%) scale(.72);
         transform-origin: bottom center;
     }
     .control {
@@ -346,36 +303,22 @@ header {
 </style>
 </head>
 <body>
-<!-- =========================
-     HEADER
-========================= -->
 <header>
 <div class="logo">
     ClueMD
 </div>
-<a
-    href="case001.html"
-    class="back"
->
+<a href="case001.html" class="back">
     ← Case 001
 </a>
 </header>
-<!-- =========================
-     ROOM
-========================= -->
 <div class="room">
-<!-- PATIENT LABEL -->
 <div class="patient">
-    <strong>
-        Sara
-    </strong>
+    <strong>Sara</strong>
     <small>
         17 years old · Case 001
     </small>
 </div>
-<!-- =========================
-     SARA
-========================= -->
+<!-- SARA -->
 <div class="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
@@ -390,9 +333,7 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- =========================
-     SARA'S SPEECH
-========================= -->
+<!-- SPEECH CLOUD -->
 <div class="speech">
     <span class="speech-name">
         SARA
@@ -401,87 +342,69 @@ header {
         I'm really worried... I don't feel well.
     </span>
 </div>
-<!-- DESK -->
 <div class="desk"></div>
 </div>
-<!-- ==================================================
-     KEYBOARD / ASK SARA
-================================================== -->
-<div
-    id="keyboard"
-    class="popup"
->
+<!-- =================================================
+     ASK SARA
+================================================= -->
+<div id="keyboard" class="popup">
 <div class="popup-title">
     Ask Sara a question
 </div>
-<div class="input-row">
-    <input
-        id="questionInput"
-        type="text"
-        autocomplete="off"
-        placeholder="Type your question..."
-    >
-    <!--
-         IMPORTANT:
-         Send directly calls askSara().
-         No event listener is needed.
-    -->
-    <button
-        type="button"
-        class="send-button"
-        onclick="askSara()"
-    >
-        Send
-    </button>
-</div>
-<a
-    href="#"
-    class="close"
->
+<!-- REAL FORM -->
+<form onsubmit="askSara(); return false;">
+    <div class="input-row">
+        <input
+            id="questionInput"
+            type="text"
+            autocomplete="off"
+            placeholder="Type your question..."
+        >
+        <button
+            type="submit"
+            class="send-button"
+        >
+            Send
+        </button>
+    </div>
+</form>
+<a href="#" class="close">
     Close
 </a>
 </div>
-<!-- ==================================================
+<!-- =================================================
      DIAGNOSIS
-================================================== -->
-<div
-    id="diagnosis"
-    class="popup"
->
+================================================= -->
+<div id="diagnosis" class="popup">
 <div class="popup-title">
     What do you think Sara has?
 </div>
-<div class="input-row">
-    <input
-        id="diagnosisInput"
-        type="text"
-        autocomplete="off"
-        placeholder="Enter your diagnosis..."
-    >
-    <button
-        type="button"
-        class="send-button"
-        onclick="submitDiagnosis()"
-    >
-        Submit
-    </button>
-</div>
+<form onsubmit="submitDiagnosis(); return false;">
+    <div class="input-row">
+        <input
+            id="diagnosisInput"
+            type="text"
+            autocomplete="off"
+            placeholder="Enter your diagnosis..."
+        >
+        <button
+            type="submit"
+            class="send-button"
+        >
+            Submit
+        </button>
+    </div>
+</form>
 <div id="diagnosisResult"></div>
-<a
-    href="#"
-    class="close"
->
+<a href="#" class="close">
     Close
 </a>
 </div>
-<!-- ==================================================
+<!-- =================================================
      BOTTOM BUTTONS
-================================================== -->
+================================================= -->
 <div class="controls">
-<!--
-     NORMAL HTML LINK.
-     THIS DOES NOT DEPEND ON JAVASCRIPT.
--->
+<!-- KEYBOARD -->
 <a
     href="#keyboard"
     class="control"
@@ -489,10 +412,7 @@ header {
 >
     ⌨️
 </a>
-<!--
-     NORMAL HTML LINK.
-     THIS DOES NOT DEPEND ON JAVASCRIPT.
--->
+<!-- MAGNIFIER -->
 <a
     href="#diagnosis"
     class="control"
@@ -502,9 +422,9 @@ header {
 </a>
 </div>
 <script>
-/* ==================================================
-   ASK SARA
-================================================== */
+/* =================================================
+   SARA'S ANSWERS
+================================================= */
 function askSara() {
     var input =
         document.getElementById("questionInput");
@@ -514,13 +434,59 @@ function askSara() {
         input.value.toLowerCase().trim();
     if (question === "") {
         input.focus();
-        return;
+        return false;
     }
     var answer =
         "I'm not sure how to answer that. You can ask me about my pain or other symptoms.";
-    /* WHERE */
     if (
         question.indexOf("where") !== -1 ||
         question.indexOf("location") !== -1 ||
         question.indexOf("side") !== -1
-    )
+    ) {
+        answer =
+            "It hurts mostly on the lower right side of my stomach.";
+    }
+    else if (
+        question.indexOf("when") !== -1 ||
+        question.indexOf("started") !== -1 ||
+        question.indexOf("began") !== -1
+    ) {
+        answer =
+            "It started yesterday. It has been getting worse.";
+    }
+    else if (
+        question.indexOf("pain") !== -1 ||
+        question.indexOf("hurt") !== -1 ||
+        question.indexOf("painful") !== -1 ||
+        question.indexOf("severity") !== -1 ||
+        question.indexOf("scale") !== -1
+    ) {
+        answer =
+            "It's pretty painful... maybe a 7 out of 10.";
+    }
+    else if (
+        question.indexOf("nausea") !== -1 ||
+        question.indexOf("nauseous") !== -1
+    ) {
+        answer =
+            "Yes... I've been feeling really nauseous.";
+    }
+    else if (
+        question.indexOf("vomit") !== -1 ||
+        question.indexOf("vomiting") !== -1
+    ) {
+        answer =
+            "No, I haven't vomited.";
+    }
+    else if (
+        question.indexOf("fever") !== -1 ||
+        question.indexOf("temperature") !== -1 ||
+        question.indexOf("hot") !== -1
+    ) {
+        answer =
+            "I felt hot last night, but I didn't check my temperature.";
+    }
+    else if (
+        question.indexOf("appetite") !== -1 ||
+        question.indexOf("hungry") !== -1 ||
+        question.indexO
