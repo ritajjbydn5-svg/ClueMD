@@ -8,8 +8,7 @@
 * {
     box-sizing: border-box;
 }
-html,
-body {
+html, body {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -17,9 +16,6 @@ body {
     background: #eef2f4;
     overflow: hidden;
 }
-/* =========================
-   HEADER
-========================= */
 header {
     height: 58px;
     background: white;
@@ -40,9 +36,6 @@ header {
     text-decoration: none;
     font-weight: bold;
 }
-/* =========================
-   ROOM
-========================= */
 .room {
     position: relative;
     width: 100%;
@@ -50,9 +43,6 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
-/* =========================
-   PATIENT LABEL
-========================= */
 .patient {
     position: absolute;
     top: 15px;
@@ -70,9 +60,7 @@ header {
 .patient small {
     color: #777;
 }
-/* =========================
-   SARA
-========================= */
+/* SARA */
 .sara {
     position: absolute;
     width: 270px;
@@ -82,7 +70,6 @@ header {
     transform: translateX(-50%);
     z-index: 5;
 }
-/* HAIR */
 .hair {
     position: absolute;
     top: 0;
@@ -92,7 +79,6 @@ header {
     background: #493028;
     border-radius: 50%;
 }
-/* EARS */
 .ear {
     position: absolute;
     top: 105px;
@@ -107,7 +93,6 @@ header {
 .ear.right {
     right: 49px;
 }
-/* FACE */
 .face {
     position: absolute;
     top: 38px;
@@ -118,7 +103,6 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
-/* WORRIED EYEBROWS */
 .brow {
     position: absolute;
     top: 57px;
@@ -135,7 +119,6 @@ header {
     right: 28px;
     transform: rotate(-14deg);
 }
-/* EYES */
 .eye {
     position: absolute;
     top: 73px;
@@ -150,7 +133,6 @@ header {
 .eye.right {
     right: 35px;
 }
-/* SAD MOUTH */
 .mouth {
     position: absolute;
     top: 132px;
@@ -161,7 +143,6 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
-/* NECK */
 .neck {
     position: absolute;
     top: 210px;
@@ -170,7 +151,6 @@ header {
     height: 55px;
     background: #efbd99;
 }
-/* BODY */
 .body {
     position: absolute;
     top: 250px;
@@ -180,9 +160,7 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* =========================
-   SPEECH CLOUD
-========================= */
+/* SPEECH */
 .speech {
     position: absolute;
     top: 85px;
@@ -203,9 +181,11 @@ header {
     color: #777;
     margin-bottom: 7px;
 }
-/* =========================
-   DESK
-========================= */
+#speechText {
+    font-size: 16px;
+    line-height: 1.45;
+}
+/* DESK */
 .desk {
     position: absolute;
     left: 0;
@@ -215,9 +195,7 @@ header {
     background: #8b6a50;
     z-index: 40;
 }
-/* =========================
-   PANELS
-========================= */
+/* PANELS */
 .panel {
     position: fixed;
     display: none;
@@ -232,36 +210,39 @@ header {
     box-shadow: 0 8px 30px rgba(0,0,0,.35);
     z-index: 9999;
 }
-/*
-   THIS IS THE IMPORTANT PART.
-   Clicking the normal HTML link
-   changes the URL to #keyboard.
-   CSS then displays the panel.
-*/
 #keyboard:target {
     display: block;
 }
 #diagnosis:target {
     display: block;
 }
-/* =========================
-   INPUT
-========================= */
+/* INPUT */
 .panel-title {
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 12px;
 }
-input {
-    width: 100%;
+.input-row {
+    display: flex;
+    gap: 8px;
+}
+.input-row input {
+    flex: 1;
+    min-width: 0;
     padding: 13px;
     border: 1px solid #bbb;
     border-radius: 9px;
     font-size: 16px;
+    outline: none;
 }
-/* =========================
-   CLOSE
-========================= */
+.submit {
+    border: none;
+    background: #18232d;
+    color: white;
+    border-radius: 9px;
+    padding: 0 16px;
+    font-weight: bold;
+}
 .close {
     display: inline-block;
     margin-top: 12px;
@@ -269,9 +250,11 @@ input {
     color: #555;
     font-weight: bold;
 }
-/* =========================
-   BUTTONS
-========================= */
+#diagnosisResult {
+    margin-top: 12px;
+    font-weight: bold;
+}
+/* CONTROLS */
 .controls {
     position: fixed;
     left: 50%;
@@ -295,17 +278,10 @@ input {
     color: black;
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
 }
-.control:active {
-    transform: scale(.9);
-}
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 @media(max-width:700px) {
     .sara {
-        transform:
-            translateX(-50%)
-            scale(.72);
+        transform: translateX(-50%) scale(.72);
         transform-origin: bottom center;
     }
     .control {
@@ -328,11 +304,8 @@ input {
 </a>
 </header>
 <div class="room">
-<!-- PATIENT NAME -->
 <div class="patient">
-    <strong>
-        Sara
-    </strong>
+    <strong>Sara</strong>
     <small>
         17 years old · Case 001
     </small>
@@ -352,12 +325,14 @@ input {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SARA SPEECH -->
+<!-- SPEECH -->
 <div class="speech">
     <span class="speech-name">
         SARA
     </span>
-    I'm really worried... I don't feel well.
+    <span id="speechText">
+        I'm really worried... I don't feel well.
+    </span>
 </div>
 <div class="desk"></div>
 </div>
@@ -371,10 +346,20 @@ input {
 <div class="panel-title">
     Ask Sara a question
 </div>
-<input
-    type="text"
-    placeholder="Type your question..."
->
+<div class="input-row">
+    <input
+        id="questionInput"
+        type="text"
+        placeholder="Type your question..."
+    >
+    <button
+        class="submit"
+        type="button"
+        onclick="askSara()"
+    >
+        Send
+    </button>
+</div>
 <a
     href="#"
     class="close"
@@ -392,10 +377,21 @@ input {
 <div class="panel-title">
     What do you think Sara has?
 </div>
-<input
-    type="text"
-    placeholder="Enter your diagnosis..."
->
+<div class="input-row">
+    <input
+        id="diagnosisInput"
+        type="text"
+        placeholder="Enter your diagnosis..."
+    >
+    <button
+        class="submit"
+        type="button"
+        onclick="submitDiagnosis()"
+    >
+        Submit
+    </button>
+</div>
+<div id="diagnosisResult"></div>
 <a
     href="#"
     class="close"
@@ -403,26 +399,127 @@ input {
     Close
 </a>
 </div>
-<!-- =========================
-     TWO BUTTONS
-========================= -->
+<!-- CONTROLS -->
 <div class="controls">
-<!-- KEYBOARD -->
 <a
     href="#keyboard"
     class="control"
-    aria-label="Ask Sara"
 >
     ⌨️
 </a>
-<!-- MAGNIFIER -->
 <a
     href="#diagnosis"
     class="control"
-    aria-label="Submit diagnosis"
 >
     🔎
 </a>
 </div>
-</body>
-</html>
+<script>
+/* =========================
+   SARA ANSWERS
+========================= */
+function askSara() {
+    var input =
+        document.getElementById("questionInput");
+    var question =
+        input.value.toLowerCase().trim();
+    var speech =
+        document.getElementById("speechText");
+    if (question === "") {
+        return;
+    }
+    var answer;
+    if (
+        question.includes("where") ||
+        question.includes("location") ||
+        question.includes("side")
+    ) {
+        answer =
+        "It hurts mostly on the lower right side of my stomach.";
+    }
+    else if (
+        question.includes("when") ||
+        question.includes("started") ||
+        question.includes("began")
+    ) {
+        answer =
+        "It started yesterday. It has been getting worse.";
+    }
+    else if (
+        question.includes("pain") ||
+        question.includes("hurt") ||
+        question.includes("bad") ||
+        question.includes("severity")
+    ) {
+        answer =
+        "It's pretty painful... maybe a 7 out of 10.";
+    }
+    else if (
+        question.includes("nausea") ||
+        question.includes("nauseous")
+    ) {
+        answer =
+        "Yes... I've been feeling really nauseous.";
+    }
+    else if (
+        question.includes("vomit") ||
+        question.includes("vomiting")
+    ) {
+        answer =
+        "No, I haven't vomited.";
+    }
+    else if (
+        question.includes("fever") ||
+        question.includes("temperature") ||
+        question.includes("hot")
+    ) {
+        answer =
+        "I felt hot last night, but I didn't check my temperature.";
+    }
+    else if (
+        question.includes("appetite") ||
+        question.includes("hungry") ||
+        question.includes("eat")
+    ) {
+        answer =
+        "I don't really feel like eating.";
+    }
+    else if (
+        question.includes("move") ||
+        question.includes("walking") ||
+        question.includes("walk")
+    ) {
+        answer =
+        "Moving around makes the pain worse.";
+    }
+    else if (
+        question.includes("bowel") ||
+        question.includes("stool") ||
+        question.includes("poop")
+    ) {
+        answer =
+        "I haven't noticed anything unusual with my bowel movements.";
+    }
+    else if (
+        question.includes("urine") ||
+        question.includes("pee") ||
+        question.includes("urinate")
+    ) {
+        answer =
+        "No, I don't have any problems when I pee.";
+    }
+    else if (
+        question.includes("period") ||
+        question.includes("menstrual")
+    ) {
+        answer =
+        "My last period was about two weeks ago.";
+    }
+    else if (
+        question.includes("surgery") ||
+        question.includes("operation")
+    ) {
+        answer =
+        "I've never had surgery before.";
+    }
+ 
