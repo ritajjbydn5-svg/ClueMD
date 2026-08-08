@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Library | MEDMYSTERY</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      color: #17202a;
+    }
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .back {
+      text-decoration: none;
+      color: #17202a;
+      font-weight: 600;
+    }
+    .hero {
+      text-align: center;
+      padding: 70px 20px 45px;
+    }
+    .tag {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: clamp(40px, 9vw, 65px);
+      margin-bottom: 18px;
+    }
+    .intro {
+      max-width: 650px;
+      margin: auto;
+      color: #6b7280;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .cases {
+      max-width: 1000px;
+      margin: 20px auto 80px;
+      padding: 0 7%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .case {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 28px;
+      transition: transform 0.2s;
+    }
+    .case:hover {
+      transform: translateY(-4px);
+    }
+    .number {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .case h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .case p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+    .difficulty {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 13px 20px;
+      background: #17202a;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    footer {
+      padding: 30px;
+      text-align: center;
+      background: #17202a;
+      color: white;
+      font-size: 13px;
+    }
+    @media (max-width: 800px) {
+      .cases {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">MEDMYSTERY</div>
+
+← Home
+
+</header>
+<section class="hero">
+  <div class="tag">Case Library</div>
+  <h1>Choose your mystery.</h1>
+  <p class="intro">
+    Every case contains a fictional character, hidden clues,
+    and a scientific mystery. Ask questions, investigate,
+    and see if you can solve it.
+  </p>
+</section>
+<section class="cases">
+  <div class="case">
+<div class="number">CASE 001</div>
+<h2>The Sudden Stomachache</h2>
+<p>
+  A teenager suddenly develops abdominal pain and doesn't
+  feel like eating. Something isn't quite right.
+</p>
+<div class="difficulty">
+  Difficulty: ⭐
+</div>
+<a class="button" href="case001.html">
+  Investigate →
+</a>
+  </div>
+  <div class="case">
+<div class="number">CASE 002</div>
+<h2>The Exhausted Student</h2>
+<p>
+  A student has been unusually tired and struggling to
+  concentrate. Can you figure out what is happening?
+</p>
+<div class="difficulty">
+  Difficulty: ⭐⭐
+</div>
+<a class="button" href="#">
+  Coming Soon
+</a>
+  </div>
+  <div class="case">
+<div class="number">CASE 003</div>
+<h2>The Mysterious Cough</h2>
+<p>
+  A student develops persistent breathing symptoms.
+  Ask the right questions to uncover the mystery.
+</p>
+<div class="difficulty">
+  Difficulty: ⭐⭐⭐
+</div>
+<a class="button" href="#">
+  Coming Soon
+</a>
+  </div>
+</section>
+<footer>
+  MEDMYSTERY · Fictional educational science experience
+</footer>
+</body>
+</html>
