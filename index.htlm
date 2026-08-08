@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDMYSTERY</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      color: #17202a;
+    }
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #17202a;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .hero-content {
+      max-width: 750px;
+    }
+    .tag {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(45px, 10vw, 80px);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      color: #4b5563;
+    }
+    .button {
+      display: inline-block;
+      padding: 16px 30px;
+      border-radius: 12px;
+      background: #17202a;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .button:hover {
+      opacity: 0.85;
+    }
+    .section {
+      padding: 70px 7%;
+      background: white;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+    .section-intro {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 45px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .step {
+      padding: 30px;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      background: #fafafa;
+    }
+    .step-number {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    .step h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+    .step p {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    footer {
+      padding: 30px 7%;
+      text-align: center;
+      background: #17202a;
+      color: white;
+      font-size: 13px;
+    }
+    @media (max-width: 700px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">MEDMYSTERY</div>
+  <nav>
+    <a href="#how">How It Works</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-content">
+<div class="tag">Interactive Science Learning</div>
+<h1>Can you solve the mystery?</h1>
+<p>
+  Investigate fictional cases, ask questions, collect clues,
+  and use your biology knowledge to uncover the answer.
+</p>
+<a href="#how" class="button">Start a Mystery</a>
+  </div>
+</section>
+<section class="section" id="how">
+  <h2>How It Works</h2>
+  <p class="section-intro">
+    MEDMYSTERY transforms biology from something students memorize
+    into something they investigate.
+  </p>
+  <div class="steps">
+<div class="step">
+  <div class="step-number">01</div>
+  <h3>Investigate</h3>
+  <p>
+    Meet a fictional character and ask questions to uncover
+    important clues.
+  </p>
+</div>
+<div class="step">
+  <div class="step-number">02</div>
+  <h3>Think</h3>
+  <p>
+    Connect the information you discover and use scientific
+    reasoning to form a hypothesis.
+  </p>
+</div>
+<div class="step">
+  <div class="step-number">03</div>
+  <h3>Solve</h3>
+  <p>
+    Submit your answer and discover the science behind the mystery.
+  </p>
+</div>
+  </div>
+</section>
+<section class="section" id="about">
+  <h2>Why MEDMYSTERY?</h2>
+  <p class="section-intro">
+    Students often learn biology by memorizing information.
+    MEDMYSTERY gives them a place to actually use what they know,
+    ask their own questions, and develop scientific reasoning
+    through fictional interactive cases.
+  </p>
+</section>
+<footer>
+  MEDMYSTERY · A fictional educational science experience
+</footer>
+</body>
+</html>
