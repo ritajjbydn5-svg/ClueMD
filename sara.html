@@ -8,8 +8,7 @@
 * {
     box-sizing: border-box;
 }
-html,
-body {
+html, body {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -18,9 +17,7 @@ body {
     background: #f5f7f8;
     color: #18232d;
 }
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -44,9 +41,7 @@ header {
     text-decoration: none;
     font-weight: bold;
 }
-/* =========================
-   CLINIC
-========================= */
+/* CLINIC */
 .clinic {
     position: fixed;
     top: 58px;
@@ -56,9 +51,7 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
-/* =========================
-   PATIENT LABEL
-========================= */
+/* PATIENT */
 .patient {
     position: absolute;
     top: 15px;
@@ -89,7 +82,6 @@ header {
     transform: translateX(-50%);
     z-index: 10;
 }
-/* HAIR */
 .hair {
     position: absolute;
     top: 5px;
@@ -99,7 +91,6 @@ header {
     background: #493028;
     border-radius: 50%;
 }
-/* EARS */
 .ear {
     position: absolute;
     top: 108px;
@@ -115,7 +106,6 @@ header {
 .ear.right {
     right: 55px;
 }
-/* FACE */
 .face {
     position: absolute;
     top: 42px;
@@ -126,7 +116,6 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
-/* SAD EYEBROWS */
 .eyebrow {
     position: absolute;
     top: 59px;
@@ -143,7 +132,6 @@ header {
     right: 30px;
     transform: rotate(-14deg);
 }
-/* EYES */
 .eye {
     position: absolute;
     top: 75px;
@@ -158,7 +146,6 @@ header {
 .eye.right {
     right: 37px;
 }
-/* SAD MOUTH */
 .mouth {
     position: absolute;
     top: 133px;
@@ -169,7 +156,6 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
-/* NECK */
 .neck {
     position: absolute;
     top: 220px;
@@ -178,7 +164,6 @@ header {
     height: 55px;
     background: #efbd99;
 }
-/* BODY */
 .body {
     position: absolute;
     top: 255px;
@@ -189,7 +174,7 @@ header {
     border-radius: 90px 90px 25px 25px;
 }
 /* =========================
-   SPEECH BUBBLE
+   SPEECH
 ========================= */
 .speech {
     position: absolute;
@@ -220,9 +205,7 @@ header {
     color: #777;
     margin-bottom: 7px;
 }
-/* =========================
-   DESK
-========================= */
+/* DESK */
 .desk {
     position: absolute;
     left: 0;
@@ -233,25 +216,25 @@ header {
     z-index: 50;
 }
 /* =========================
-   QUESTION BOX
+   QUESTION
 ========================= */
 .question-area {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 82px;
+    bottom: 90px;
     transform: translateX(-50%);
     width: min(650px, 88%);
     background: white;
     padding: 9px;
     border-radius: 14px;
     box-shadow: 0 7px 25px rgba(0,0,0,.25);
-    z-index: 600;
+    z-index: 900;
 }
 .question-area.open {
     display: block;
 }
-.question-area input {
+.question-input {
     width: 100%;
     border: none;
     outline: none;
@@ -259,49 +242,50 @@ header {
     font-size: 16px;
 }
 /* =========================
-   IMPORTANT:
-   FIXED BUTTONS
+   BUTTONS
 ========================= */
 .controls {
     position: fixed;
     left: 50%;
-    bottom: 20px;
+    bottom: 18px;
     transform: translateX(-50%);
     display: flex;
-    gap: 14px;
-    z-index: 1000;
+    gap: 12px;
+    z-index: 2000;
 }
 .control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 60px;
     height: 55px;
-    border: none;
+    padding: 0;
+    border: 2px solid #18232d;
     border-radius: 15px;
     background: white;
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.30);
+    box-shadow: 0 5px 20px rgba(0,0,0,.30);
     font-size: 24px;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    touch-action: manipulation;
+    position: relative;
 }
 .control:active {
     transform: scale(.92);
 }
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 @media(max-width:700px) {
     .sara {
         width: 270px;
         height: 440px;
-        bottom: 120px;
+        bottom: 125px;
         transform:
             translateX(-50%)
-            scale(.72);
-        transform-origin:
-            bottom center;
+            scale(.70);
+        transform-origin: bottom center;
     }
     .speech {
-        top: 105px;
+        top: 100px;
         left: 50%;
         transform: translateX(-50%);
         width: 84%;
@@ -310,23 +294,12 @@ header {
     .speech::before {
         display: none;
     }
-    .patient {
-        top: 12px;
-        left: 12px;
-    }
-    .controls {
-        bottom: 18px;
-        gap: 12px;
-    }
     .control {
         width: 58px;
         height: 52px;
-        font-size: 22px;
     }
 }
-/* =========================
-   BLINK
-========================= */
+/* BLINK */
 .sara.blink .eye {
     height: 2px;
 }
@@ -337,15 +310,11 @@ header {
 <div class="logo">
     ClueMD
 </div>
-<a
-    href="case001.html"
-    class="back"
->
+<a href="case001.html" class="back">
     ← Case 001
 </a>
 </header>
 <div class="clinic">
-<!-- PATIENT -->
 <div class="patient">
     <strong>Sara</strong>
     <span>
@@ -353,10 +322,7 @@ header {
     </span>
 </div>
 <!-- SARA -->
-<div
-    class="sara"
-    id="sara"
->
+<div class="sara" id="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
     <div class="ear right"></div>
@@ -370,61 +336,61 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SARA SPEAKING -->
-<div
-    class="speech"
-    id="speech"
->
+<!-- SPEECH -->
+<div class="speech" id="speech">
     <span class="speech-name">
         SARA
     </span>
     Hi... I'm Sara. I've been having this really bad pain since yesterday. It has been getting worse, and I'm starting to feel scared.
 </div>
 <!-- QUESTION -->
-<div
-    class="question-area"
-    id="questionArea"
->
+<div class="question-area" id="questionArea">
     <input
+        class="question-input"
         id="questionInput"
         type="text"
         placeholder="Ask Sara a question..."
         autocomplete="off"
     >
 </div>
-<!-- DESK -->
 <div class="desk"></div>
 </div>
 <!-- =========================
-     FIXED CONTROLS
+     BUTTONS
 ========================= -->
 <div class="controls">
 <button
+    id="keyboardButton"
     class="control"
     type="button"
-    onclick="openKeyboard()"
-    aria-label="Keyboard"
 >
     ⌨️
 </button>
 <button
+    id="microphoneButton"
     class="control"
     type="button"
-    onclick="startMicrophone()"
-    aria-label="Microphone"
 >
     🎙️
 </button>
 <button
+    id="searchButton"
     class="control"
     type="button"
-    onclick="askSara()"
-    aria-label="Ask Sara"
 >
     🔎
 </button>
 </div>
 <script>
+/* =========================
+   GET ELEMENTS
+========================= */
+const keyboardButton =
+    document.getElementById("keyboardButton");
+const microphoneButton =
+    document.getElementById("microphoneButton");
+const searchButton =
+    document.getElementById("searchButton");
 const questionArea =
     document.getElementById("questionArea");
 const questionInput =
@@ -432,12 +398,29 @@ const questionInput =
 const speech =
     document.getElementById("speech");
 /* =========================
-   KEYBOARD
+   KEYBOARD BUTTON
 ========================= */
-function openKeyboard() {
-    questionArea.classList.add("open");
-    questionInput.focus();
-}
+keyboardButton.addEventListener(
+    "click",
+    function() {
+        questionArea.classList.add("open");
+        setTimeout(
+            function() {
+                questionInput.focus();
+            },
+            50
+        );
+    }
+);
+/* =========================
+   SEARCH BUTTON
+========================= */
+searchButton.addEventListener(
+    "click",
+    function() {
+        askSara();
+    }
+);
 /* =========================
    ASK SARA
 ========================= */
@@ -446,8 +429,9 @@ function askSara() {
         questionInput.value
         .trim()
         .toLowerCase();
-    if (!q) {
-        openKeyboard();
+    if (q === "") {
+        questionArea.classList.add("open");
+        questionInput.focus();
         return;
     }
     let answer;
@@ -512,5 +496,4 @@ function askSara() {
         q.includes("eat") ||
         q.includes("appetite") ||
         q.includes("hungry")
-    ) {
-        
+    
