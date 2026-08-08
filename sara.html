@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sara | ClueMD</title>
+<title>Sara - ClueMD</title>
 <style>
 * {
     box-sizing: border-box;
 }
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
     background: #eef2f4;
-    overflow: hidden;
 }
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header {
     height: 58px;
     background: white;
@@ -25,7 +28,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 18px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd;
     position: relative;
     z-index: 100;
 }
@@ -38,7 +41,9 @@ header {
     text-decoration: none;
     font-weight: bold;
 }
-/* ROOM */
+/* =========================
+   ROOM
+========================= */
 .room {
     position: relative;
     width: 100%;
@@ -46,7 +51,9 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
-/* PATIENT LABEL */
+/* =========================
+   PATIENT LABEL
+========================= */
 .patient {
     position: absolute;
     top: 15px;
@@ -54,7 +61,7 @@ header {
     background: white;
     padding: 10px 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.12);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
     z-index: 20;
 }
 .patient strong {
@@ -62,9 +69,11 @@ header {
     font-size: 17px;
 }
 .patient small {
-    color: #777;
+    color: #777777;
 }
-/* SARA */
+/* =========================
+   SARA
+========================= */
 .sara {
     position: absolute;
     width: 270px;
@@ -74,6 +83,7 @@ header {
     transform: translateX(-50%);
     z-index: 5;
 }
+/* Hair */
 .hair {
     position: absolute;
     top: 0;
@@ -83,6 +93,7 @@ header {
     background: #493028;
     border-radius: 50%;
 }
+/* Ears */
 .ear {
     position: absolute;
     top: 105px;
@@ -97,6 +108,7 @@ header {
 .ear.right {
     right: 49px;
 }
+/* Face */
 .face {
     position: absolute;
     top: 38px;
@@ -107,6 +119,7 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
+/* Worried eyebrows */
 .brow {
     position: absolute;
     top: 57px;
@@ -123,6 +136,7 @@ header {
     right: 28px;
     transform: rotate(-14deg);
 }
+/* Eyes */
 .eye {
     position: absolute;
     top: 73px;
@@ -137,6 +151,7 @@ header {
 .eye.right {
     right: 35px;
 }
+/* Sad mouth */
 .mouth {
     position: absolute;
     top: 132px;
@@ -147,6 +162,7 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
+/* Neck */
 .neck {
     position: absolute;
     top: 210px;
@@ -155,6 +171,7 @@ header {
     height: 55px;
     background: #efbd99;
 }
+/* Body */
 .body {
     position: absolute;
     top: 250px;
@@ -164,7 +181,9 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* SPEECH CLOUD */
+/* =========================
+   SPEECH CLOUD
+========================= */
 .speech {
     position: absolute;
     top: 85px;
@@ -175,21 +194,23 @@ header {
     background: white;
     padding: 18px;
     border-radius: 22px;
-    box-shadow: 0 6px 22px rgba(0,0,0,.15);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.15);
     z-index: 30;
 }
 .speech-name {
     display: block;
     font-size: 12px;
     font-weight: bold;
-    color: #777;
+    color: #777777;
     margin-bottom: 7px;
 }
 #speechText {
     font-size: 16px;
     line-height: 1.45;
 }
-/* DESK */
+/* =========================
+   DESK
+========================= */
 .desk {
     position: absolute;
     left: 0;
@@ -204,6 +225,7 @@ header {
 ========================= */
 .popup {
     position: fixed;
+    display: none;
     left: 50%;
     bottom: 85px;
     transform: translateX(-50%);
@@ -212,14 +234,12 @@ header {
     background: white;
     padding: 18px;
     border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.35);
-    z-index: 9999;
-    display: none;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    z-index: 99999;
 }
 /*
-   IMPORTANT:
-   The keyboard opens with #keyboard.
-   This is CSS only.
+   The keyboard and diagnosis boxes
+   open using the URL hash.
 */
 #keyboard:target {
     display: block;
@@ -227,6 +247,9 @@ header {
 #diagnosis:target {
     display: block;
 }
+/* =========================
+   POPUP CONTENT
+========================= */
 .popup-title {
     font-size: 17px;
     font-weight: bold;
@@ -241,7 +264,7 @@ header {
     flex: 1;
     min-width: 0;
     padding: 13px;
-    border: 1px solid #bbb;
+    border: 1px solid #bbbbbb;
     border-radius: 9px;
     font-size: 16px;
     outline: none;
@@ -256,25 +279,29 @@ header {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
 }
 .send-button:active {
-    transform: scale(.95);
+    transform: scale(0.95);
 }
+/* Close */
 .close {
     display: inline-block;
     margin-top: 12px;
-    color: #555;
+    color: #555555;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
 }
+/* Diagnosis result */
 #diagnosisResult {
     margin-top: 12px;
     font-weight: bold;
     line-height: 1.4;
 }
 /* =========================
-   CONTROL BUTTONS
+   BOTTOM BUTTONS
 ========================= */
 .controls {
     position: fixed;
@@ -283,7 +310,7 @@ header {
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    z-index: 10000;
+    z-index: 100000;
 }
 .control {
     width: 62px;
@@ -297,16 +324,18 @@ header {
     color: black;
     text-decoration: none;
     font-size: 25px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.3);
-    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.3);
+    -webkit-tap-highlight-color: transparent;
 }
 .control:active {
-    transform: scale(.92);
+    transform: scale(0.92);
 }
-/* IPAD / MOBILE */
+/* =========================
+   IPAD / PHONE
+========================= */
 @media (max-width: 700px) {
     .sara {
-        transform: translateX(-50%) scale(.72);
+        transform: translateX(-50%) scale(0.72);
         transform-origin: bottom center;
     }
     .control {
@@ -317,24 +346,36 @@ header {
 </style>
 </head>
 <body>
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 <header>
 <div class="logo">
     ClueMD
 </div>
-<a href="case001.html" class="back">
+<a
+    href="case001.html"
+    class="back"
+>
     ← Case 001
 </a>
 </header>
-<!-- ROOM -->
+<!-- =========================
+     ROOM
+========================= -->
 <div class="room">
+<!-- PATIENT LABEL -->
 <div class="patient">
-    <strong>Sara</strong>
+    <strong>
+        Sara
+    </strong>
     <small>
         17 years old · Case 001
     </small>
 </div>
-<!-- SARA -->
+<!-- =========================
+     SARA
+========================= -->
 <div class="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
@@ -349,7 +390,9 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SARA SPEAKING -->
+<!-- =========================
+     SARA'S SPEECH
+========================= -->
 <div class="speech">
     <span class="speech-name">
         SARA
@@ -358,12 +401,16 @@ header {
         I'm really worried... I don't feel well.
     </span>
 </div>
+<!-- DESK -->
 <div class="desk"></div>
 </div>
-<!-- =========================
-     KEYBOARD / QUESTION BOX
-========================= -->
-<div id="keyboard" class="popup">
+<!-- ==================================================
+     KEYBOARD / ASK SARA
+================================================== -->
+<div
+    id="keyboard"
+    class="popup"
+>
 <div class="popup-title">
     Ask Sara a question
 </div>
@@ -374,22 +421,33 @@ header {
         autocomplete="off"
         placeholder="Type your question..."
     >
+    <!--
+         IMPORTANT:
+         Send directly calls askSara().
+         No event listener is needed.
+    -->
     <button
-        id="sendButton"
-        class="send-button"
         type="button"
+        class="send-button"
+        onclick="askSara()"
     >
         Send
     </button>
 </div>
-<a href="#" class="close">
+<a
+    href="#"
+    class="close"
+>
     Close
 </a>
 </div>
-<!-- =========================
-     DIAGNOSIS BOX
-========================= -->
-<div id="diagnosis" class="popup">
+<!-- ==================================================
+     DIAGNOSIS
+================================================== -->
+<div
+    id="diagnosis"
+    class="popup"
+>
 <div class="popup-title">
     What do you think Sara has?
 </div>
@@ -401,24 +459,29 @@ header {
         placeholder="Enter your diagnosis..."
     >
     <button
-        id="diagnosisButton"
-        class="send-button"
         type="button"
+        class="send-button"
+        onclick="submitDiagnosis()"
     >
         Submit
     </button>
 </div>
 <div id="diagnosisResult"></div>
-<a href="#" class="close">
+<a
+    href="#"
+    class="close"
+>
     Close
 </a>
 </div>
-<!-- =========================
-     BOTTOM CONTROLS
-========================= -->
+<!-- ==================================================
+     BOTTOM BUTTONS
+================================================== -->
 <div class="controls">
-<!-- THIS IS A NORMAL HTML LINK.
-     JAVASCRIPT IS NOT NEEDED TO OPEN IT. -->
+<!--
+     NORMAL HTML LINK.
+     THIS DOES NOT DEPEND ON JAVASCRIPT.
+-->
 <a
     href="#keyboard"
     class="control"
@@ -426,85 +489,38 @@ header {
 >
     ⌨️
 </a>
-<!-- ALSO A NORMAL HTML LINK -->
+<!--
+     NORMAL HTML LINK.
+     THIS DOES NOT DEPEND ON JAVASCRIPT.
+-->
 <a
     href="#diagnosis"
     class="control"
-    aria-label="Submit diagnosis"
+    aria-label="Diagnosis"
 >
     🔎
 </a>
 </div>
 <script>
-/*
-====================================================
-SARA INTERVIEW
-====================================================
-IMPORTANT:
-The ⌨️ button above does NOT use this script.
-The keyboard opens through:
-<a href="#keyboard">
-So even if JavaScript has an error,
-the keyboard can still open.
-This script is ONLY for:
-1. Send
-2. Sara's answers
-3. Diagnosis
-====================================================
-*/
-const sendButton =
-    document.getElementById("sendButton");
-const questionInput =
-    document.getElementById("questionInput");
-const speechText =
-    document.getElementById("speechText");
-const diagnosisButton =
-    document.getElementById("diagnosisButton");
-const diagnosisInput =
-    document.getElementById("diagnosisInput");
-const diagnosisResult =
-    document.getElementById("diagnosisResult");
-/* =========================
+/* ==================================================
    ASK SARA
-========================= */
+================================================== */
 function askSara() {
-    const question =
-        questionInput.value.trim().toLowerCase();
+    var input =
+        document.getElementById("questionInput");
+    var speech =
+        document.getElementById("speechText");
+    var question =
+        input.value.toLowerCase().trim();
     if (question === "") {
-        questionInput.focus();
+        input.focus();
         return;
     }
-    let answer;
-    /* WHERE DOES IT HURT? */
+    var answer =
+        "I'm not sure how to answer that. You can ask me about my pain or other symptoms.";
+    /* WHERE */
     if (
-        question.includes("where") ||
-        question.includes("location") ||
-        question.includes("side")
-    ) {
-        answer =
-            "It hurts mostly on the lower right side of my stomach.";
-    }
-    /* WHEN DID IT START? */
-    else if (
-        question.includes("when") ||
-        question.includes("started") ||
-        question.includes("began")
-    ) {
-        answer =
-            "It started yesterday. It has been getting worse.";
-    }
-    /* PAIN */
-    else if (
-        question.includes("pain") ||
-        question.includes("hurt") ||
-        question.includes("painful") ||
-        question.includes("severity") ||
-        question.includes("scale")
-    ) {
-        answer =
-            "It's pretty painful... maybe a 7 out of 10.";
-    }
-    /* NAUSEA */
-    else if (
-        question.includes("nausea") ||
-        question.incl
+        question.indexOf("where") !== -1 ||
+        question.indexOf("location") !== -1 ||
+        question.indexOf("side") !== -1
+    )
