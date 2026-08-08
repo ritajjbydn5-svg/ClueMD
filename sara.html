@@ -15,7 +15,6 @@ html, body {
     overflow: hidden;
     font-family: Arial, sans-serif;
     background: #eef2f4;
-    color: #18232d;
 }
 /* HEADER */
 header {
@@ -30,19 +29,19 @@ header {
     justify-content: space-between;
     padding: 0 18px;
     border-bottom: 1px solid #ddd;
-    z-index: 1000;
+    z-index: 100;
 }
 .logo {
     font-size: 23px;
-    font-weight: 800;
-}
-.back {
-    text-decoration: none;
-    color: #18232d;
     font-weight: bold;
 }
-/* MAIN ROOM */
-.clinic {
+.back {
+    color: #18232d;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* ROOM */
+.room {
     position: fixed;
     top: 58px;
     left: 0;
@@ -54,13 +53,13 @@ header {
 /* PATIENT LABEL */
 .patient {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 15px;
+    left: 15px;
     background: white;
-    padding: 10px 14px;
+    padding: 10px 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
-    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+    z-index: 20;
 }
 .patient strong {
     display: block;
@@ -78,10 +77,11 @@ header {
     width: 290px;
     height: 480px;
     left: 50%;
-    bottom: 135px;
+    bottom: 125px;
     transform: translateX(-50%);
-    z-index: 20;
+    z-index: 10;
 }
+/* HAIR */
 .hair {
     position: absolute;
     top: 5px;
@@ -91,6 +91,7 @@ header {
     background: #493028;
     border-radius: 50%;
 }
+/* EARS */
 .ear {
     position: absolute;
     top: 108px;
@@ -98,7 +99,6 @@ header {
     height: 42px;
     background: #efbd99;
     border-radius: 50%;
-    z-index: 1;
 }
 .ear.left {
     left: 55px;
@@ -106,6 +106,7 @@ header {
 .ear.right {
     right: 55px;
 }
+/* FACE */
 .face {
     position: absolute;
     top: 42px;
@@ -133,6 +134,7 @@ header {
     right: 30px;
     transform: rotate(-14deg);
 }
+/* EYES */
 .eye {
     position: absolute;
     top: 75px;
@@ -147,7 +149,7 @@ header {
 .eye.right {
     right: 37px;
 }
-/* SAD/WORRIED MOUTH */
+/* SAD MOUTH */
 .mouth {
     position: absolute;
     top: 133px;
@@ -158,6 +160,7 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
+/* NECK */
 .neck {
     position: absolute;
     top: 220px;
@@ -166,6 +169,7 @@ header {
     height: 55px;
     background: #efbd99;
 }
+/* BODY */
 .body {
     position: absolute;
     top: 255px;
@@ -176,33 +180,25 @@ header {
     border-radius: 90px 90px 25px 25px;
 }
 /* =========================
-   SPEECH BUBBLE
+   SPEECH
 ========================= */
 .speech {
-    position: absolute;
     display: none;
-    z-index: 300;
-    left: calc(50% + 105px);
-    top: 125px;
-    width: 330px;
+    position: fixed;
+    left: 50%;
+    top: 105px;
+    transform: translateX(-50%);
+    width: min(430px, 86%);
     background: white;
     padding: 18px;
-    border-radius: 22px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.12);
-    font-size: 16px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,.15);
+    font-size: 15px;
     line-height: 1.45;
+    z-index: 200;
 }
-.speech.show {
+.speech.visible {
     display: block;
-}
-.speech::before {
-    content: "";
-    position: absolute;
-    left: -18px;
-    bottom: 30px;
-    border-top: 14px solid transparent;
-    border-bottom: 14px solid transparent;
-    border-right: 20px solid white;
 }
 .speech-name {
     display: block;
@@ -211,115 +207,106 @@ header {
     color: #777;
     margin-bottom: 7px;
 }
-/* =========================
-   DESK
-========================= */
+/* DESK */
 .desk {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 105px;
+    height: 100px;
     background: #8b6a50;
-    z-index: 50;
+    z-index: 30;
 }
 /* =========================
-   QUESTION PANEL
+   INPUT PANEL
 ========================= */
-.panel {
+#inputPanel {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 92px;
+    bottom: 88px;
     transform: translateX(-50%);
-    width: min(650px, 90%);
+    width: 90%;
+    max-width: 600px;
     background: white;
     padding: 14px;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.25);
-    z-index: 2000;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    z-index: 1000;
 }
-.panel.show {
+#inputPanel.visible {
     display: block;
 }
-.panel-title {
-    font-size: 15px;
+#panelTitle {
     font-weight: bold;
     margin-bottom: 9px;
+    font-size: 15px;
 }
-.panel-row {
+.inputRow {
     display: flex;
     gap: 8px;
 }
-.panel input {
+#answerInput {
     flex: 1;
     min-width: 0;
     border: 1px solid #ccd3d8;
-    border-radius: 10px;
+    border-radius: 9px;
     padding: 12px;
-    outline: none;
     font-size: 16px;
+    outline: none;
 }
-.panel button {
+#sendButton {
     border: none;
-    border-radius: 10px;
-    padding: 0 16px;
     background: #18232d;
     color: white;
+    border-radius: 9px;
+    padding: 0 16px;
     font-weight: bold;
-    cursor: pointer;
 }
 /* =========================
-   FIXED ICONS
+   BOTTOM ICONS
 ========================= */
-.controls {
+#buttons {
     position: fixed;
     left: 50%;
     bottom: 18px;
     transform: translateX(-50%);
     display: flex;
-    gap: 12px;
-    z-index: 3000;
+    gap: 14px;
+    z-index: 5000;
 }
-.control {
+.iconButton {
     width: 60px;
     height: 55px;
-    padding: 0;
     border: 2px solid #18232d;
     border-radius: 15px;
     background: white;
-    box-shadow: 0 5px 20px rgba(0,0,0,.30);
     font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    pointer-events: auto;
+    box-shadow: 0 5px 18px rgba(0,0,0,.3);
+    -webkit-appearance: none;
+    appearance: none;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
 }
-.control:active {
-    transform: scale(.92);
+.iconButton:active {
+    transform: scale(.9);
 }
 /* MOBILE */
-@media (max-width: 700px) {
+@media(max-width:700px) {
     .sara {
-        width: 270px;
-        height: 440px;
-        bottom: 120px;
         transform:
             translateX(-50%)
             scale(.70);
         transform-origin: bottom center;
+        bottom: 110px;
     }
-    .speech {
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 84%;
-        font-size: 14px;
+    #buttons {
+        bottom: 15px;
     }
-    .speech::before {
-        display: none;
-    }
-    .control {
+    .iconButton {
         width: 58px;
         height: 52px;
     }
@@ -331,19 +318,32 @@ header {
 </style>
 </head>
 <body>
+<!-- HEADER -->
 <header>
-<div class="logo">ClueMD</div>
-<a href="case001.html" class="back">
+<div class="logo">
+    ClueMD
+</div>
+<a
+    class="back"
+    href="case001.html"
+>
     ← Case 001
 </a>
 </header>
-<div class="clinic">
+<!-- ROOM -->
+<div class="room">
+<!-- PATIENT -->
 <div class="patient">
     <strong>Sara</strong>
-    <span>17 years old · Case 001</span>
+    <span>
+        17 years old · Case 001
+    </span>
 </div>
 <!-- SARA -->
-<div class="sara" id="sara">
+<div
+    class="sara"
+    id="sara"
+>
     <div class="hair"></div>
     <div class="ear left"></div>
     <div class="ear right"></div>
@@ -357,145 +357,172 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!--
-    IMPORTANT:
-    NO CHATBOX IS SHOWN HERE.
-    Sara only speaks after you ask her something.
--->
-<div class="speech" id="speech">
-    <span class="speech-name">SARA</span>
+<!-- SPEECH -->
+<div
+    id="speech"
+    class="speech"
+>
+    <span class="speech-name">
+        SARA
+    </span>
     <span id="speechText"></span>
 </div>
 <div class="desk"></div>
 </div>
 <!-- =========================
-     QUESTION / DIAGNOSIS PANEL
+     INPUT PANEL
 ========================= -->
-<div class="panel" id="questionPanel">
-<div class="panel-title" id="panelTitle">
+<div id="inputPanel">
+<div id="panelTitle">
     Ask Sara a question
 </div>
-<div class="panel-row">
+<div class="inputRow">
     <input
-        id="panelInput"
+        id="answerInput"
         type="text"
-        autocomplete="off"
         placeholder="Type your question..."
+        autocomplete="off"
     >
     <button
+        id="sendButton"
         type="button"
-        onclick="submitQuestion()"
+        onclick="sendInput()"
     >
         Send
     </button>
 </div>
 </div>
 <!-- =========================
-     THREE ICONS
+     THREE BUTTONS
 ========================= -->
-<div class="controls">
-<!-- KEYBOARD -->
+<div id="buttons">
 <button
+    class="iconButton"
     type="button"
-    class="control"
-    id="keyboardButton"
-    onclick="openKeyboard()"
-    aria-label="Ask Sara with keyboard"
+    onclick="keyboard()"
 >
     ⌨️
 </button>
-<!-- MICROPHONE -->
 <button
+    class="iconButton"
     type="button"
-    class="control"
-    id="microphoneButton"
-    onclick="startMicrophone()"
-    aria-label="Ask Sara with microphone"
+    onclick="microphone()"
 >
     🎙️
 </button>
-<!-- MAGNIFIER = DIAGNOSIS -->
 <button
+    class="iconButton"
     type="button"
-    class="control"
-    id="diagnosisButton"
-    onclick="openDiagnosis()"
-    aria-label="Submit diagnosis"
+    onclick="diagnosis()"
 >
     🔎
 </button>
 </div>
 <script>
 /* =========================
-   ELEMENTS
+   VARIABLES
 ========================= */
-const panel =
-    document.getElementById("questionPanel");
-const panelTitle =
+var mode = "question";
+var panel =
+    document.getElementById("inputPanel");
+var title =
     document.getElementById("panelTitle");
-const panelInput =
-    document.getElementById("panelInput");
-const speech =
+var input =
+    document.getElementById("answerInput");
+var speech =
     document.getElementById("speech");
-const speechText =
+var speechText =
     document.getElementById("speechText");
 /* =========================
-   MODE
+   KEYBOARD BUTTON
 ========================= */
-let currentMode = "question";
-/* =========================
-   KEYBOARD
-========================= */
-function openKeyboard() {
-    currentMode = "question";
-    panelTitle.textContent =
+function keyboard() {
+    mode = "question";
+    title.innerHTML =
         "Ask Sara a question";
-    panelInput.placeholder =
+    input.placeholder =
         "Type your question...";
-    panelInput.value = "";
-    panel.classList.add("show");
+    input.value = "";
+    panel.classList.add("visible");
     setTimeout(function() {
-        panelInput.focus();
+        input.focus();
     }, 100);
 }
 /* =========================
-   SUBMIT QUESTION
+   MICROPHONE
 ========================= */
-function submitQuestion() {
-    if (currentMode !== "question") {
-        submitDiagnosis();
+function microphone() {
+    var Recognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+    if (!Recognition) {
+        keyboard();
+        speechText.innerHTML =
+            "I can't use the microphone here. You can type your question instead.";
+        speech.classList.add("visible");
         return;
     }
-    const question =
-        panelInput.value.trim().toLowerCase();
-    if (!question) {
+    var recognition =
+        new Recognition();
+    recognition.lang =
+        "en-US";
+    recognition.interimResults =
+        false;
+    recognition.onresult =
+        function(event) {
+            input.value =
+                event.results[0][0].transcript;
+            mode = "question";
+            sendInput();
+        };
+    recognition.onerror =
+        function() {
+            keyboard();
+        };
+    recognition.start();
+}
+/* =========================
+   MAGNIFIER
+========================= */
+function diagnosis() {
+    mode = "diagnosis";
+    title.innerHTML =
+        "What do you think Sara has?";
+    input.placeholder =
+        "Enter your diagnosis...";
+    input.value = "";
+    panel.classList.add("visible");
+    setTimeout(function() {
+        input.focus();
+    }, 100);
+}
+/* =========================
+   SEND
+========================= */
+function sendInput() {
+    var text =
+        input.value.trim();
+    if (text === "") {
+        input.focus();
         return;
     }
-    let answer;
-    /* WHY / REASON */
+    /* DIAGNOSIS */
+    if (mode === "diagnosis") {
+        speechText.innerHTML =
+            "Your diagnosis: <strong>"
+            +
+            escapeHTML(text)
+            +
+            "</strong>";
+        speech.classList.add("visible");
+        panel.classList.remove("visible");
+        input.value = "";
+        return;
+    }
+    /* QUESTION */
+    var q =
+        text.toLowerCase();
+    var answer;
     if (
-        question.includes("why") ||
-        question.includes("brought") ||
-        question.includes("reason") ||
-        question.includes("here")
-    ) {
-        answer =
-            "I've been having this pain since yesterday. It started getting worse, so I decided to come here.";
-    }
-    /* LOCATION */
-    else if (
-        question.includes("where") ||
-        question.includes("location") ||
-        question.includes("side")
-    ) {
-        answer =
-            "It's mostly on the lower right side of my abdomen.";
-    }
-    /* ONSET */
-    else if (
-        question.includes("when") ||
-        question.includes("started") ||
-        question.includes("began") ||
-        question.includes("long")
-    ) {
-      
+        q.includes("where") ||
+   
