@@ -5,346 +5,300 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sara - ClueMD</title>
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:#eef2f4;
 }
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background: #eef2f4;
+header{
+    height:58px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    border-bottom:1px solid #ddd;
+    position:relative;
+    z-index:100;
 }
-/* HEADER */
-header {
-    height: 58px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 18px;
-    border-bottom: 1px solid #ddd;
-    position: relative;
-    z-index: 100;
+.logo{
+    font-size:23px;
+    font-weight:bold;
 }
-.logo {
-    font-size: 23px;
-    font-weight: bold;
+.back{
+    color:#18232d;
+    text-decoration:none;
+    font-weight:bold;
 }
-.back {
-    color: #18232d;
-    text-decoration: none;
-    font-weight: bold;
+.room{
+    position:relative;
+    width:100%;
+    height:calc(100vh - 58px);
+    overflow:hidden;
+    background:#f7f9fa;
 }
-/* ROOM */
-.room {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 58px);
-    overflow: hidden;
-    background: #f7f9fa;
+.patient{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:white;
+    padding:10px 15px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
+    z-index:20;
 }
-/* PATIENT LABEL */
-.patient {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: white;
-    padding: 10px 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.12);
-    z-index: 20;
+.patient strong{
+    display:block;
+    font-size:17px;
 }
-.patient strong {
-    display: block;
-    font-size: 17px;
-}
-.patient small {
-    color: #777;
+.patient small{
+    color:#777;
 }
 /* SARA */
-.sara {
-    position: absolute;
-    width: 270px;
-    height: 430px;
-    left: 50%;
-    bottom: 105px;
-    transform: translateX(-50%);
-    z-index: 5;
+.sara{
+    position:absolute;
+    width:270px;
+    height:430px;
+    left:50%;
+    bottom:105px;
+    transform:translateX(-50%);
+    z-index:5;
 }
-/* HAIR */
-.hair {
-    position: absolute;
-    top: 0;
-    left: 38px;
-    width: 195px;
-    height: 205px;
-    background: #493028;
-    border-radius: 50%;
+.hair{
+    position:absolute;
+    top:0;
+    left:38px;
+    width:195px;
+    height:205px;
+    background:#493028;
+    border-radius:50%;
 }
-/* EARS */
-.ear {
-    position: absolute;
-    top: 105px;
-    width: 22px;
-    height: 40px;
-    background: #efbd99;
-    border-radius: 50%;
+.ear{
+    position:absolute;
+    top:105px;
+    width:22px;
+    height:40px;
+    background:#efbd99;
+    border-radius:50%;
 }
-.ear.left {
-    left: 49px;
+.ear.left{left:49px}
+.ear.right{right:49px}
+.face{
+    position:absolute;
+    top:38px;
+    left:57px;
+    width:157px;
+    height:180px;
+    background:#f2c7a5;
+    border-radius:48%;
+    z-index:2;
 }
-.ear.right {
-    right: 49px;
+.brow{
+    position:absolute;
+    top:57px;
+    width:30px;
+    height:4px;
+    background:#57382e;
+    border-radius:5px;
 }
-/* FACE */
-.face {
-    position: absolute;
-    top: 38px;
-    left: 57px;
-    width: 157px;
-    height: 180px;
-    background: #f2c7a5;
-    border-radius: 48%;
-    z-index: 2;
+.brow.left{
+    left:28px;
+    transform:rotate(14deg);
 }
-/* WORRIED EYEBROWS */
-.brow {
-    position: absolute;
-    top: 57px;
-    width: 30px;
-    height: 4px;
-    background: #57382e;
-    border-radius: 5px;
+.brow.right{
+    right:28px;
+    transform:rotate(-14deg);
 }
-.brow.left {
-    left: 28px;
-    transform: rotate(14deg);
+.eye{
+    position:absolute;
+    top:73px;
+    width:17px;
+    height:11px;
+    background:#30241f;
+    border-radius:50%;
 }
-.brow.right {
-    right: 28px;
-    transform: rotate(-14deg);
+.eye.left{left:35px}
+.eye.right{right:35px}
+.mouth{
+    position:absolute;
+    top:132px;
+    left:50%;
+    width:40px;
+    height:18px;
+    border-top:4px solid #813f46;
+    border-radius:50% 50% 0 0;
+    transform:translateX(-50%);
 }
-/* EYES */
-.eye {
-    position: absolute;
-    top: 73px;
-    width: 17px;
-    height: 11px;
-    background: #30241f;
-    border-radius: 50%;
+.neck{
+    position:absolute;
+    top:210px;
+    left:109px;
+    width:52px;
+    height:55px;
+    background:#efbd99;
 }
-.eye.left {
-    left: 35px;
+.body{
+    position:absolute;
+    top:250px;
+    left:13px;
+    width:245px;
+    height:220px;
+    background:#8da6b5;
+    border-radius:90px 90px 20px 20px;
 }
-.eye.right {
-    right: 35px;
+/* SPEECH */
+.speech{
+    position:absolute;
+    top:85px;
+    left:50%;
+    transform:translateX(-50%);
+    width:85%;
+    max-width:430px;
+    background:white;
+    padding:18px;
+    border-radius:22px;
+    box-shadow:0 6px 22px rgba(0,0,0,.15);
+    z-index:30;
 }
-/* SAD MOUTH */
-.mouth {
-    position: absolute;
-    top: 132px;
-    left: 50%;
-    width: 40px;
-    height: 18px;
-    border-top: 4px solid #813f46;
-    border-radius: 50% 50% 0 0;
-    transform: translateX(-50%);
+.speech-name{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    color:#777;
+    margin-bottom:7px;
 }
-/* NECK */
-.neck {
-    position: absolute;
-    top: 210px;
-    left: 109px;
-    width: 52px;
-    height: 55px;
-    background: #efbd99;
-}
-/* BODY */
-.body {
-    position: absolute;
-    top: 250px;
-    left: 13px;
-    width: 245px;
-    height: 220px;
-    background: #8da6b5;
-    border-radius: 90px 90px 20px 20px;
-}
-/* SPEECH CLOUD */
-.speech {
-    position: absolute;
-    top: 85px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    max-width: 430px;
-    background: white;
-    padding: 18px;
-    border-radius: 22px;
-    box-shadow: 0 6px 22px rgba(0,0,0,.15);
-    z-index: 30;
-}
-.speech-name {
-    display: block;
-    font-size: 12px;
-    font-weight: bold;
-    color: #777;
-    margin-bottom: 7px;
-}
-#speechText {
-    font-size: 16px;
-    line-height: 1.45;
+#speechText{
+    font-size:16px;
+    line-height:1.45;
 }
 /* DESK */
-.desk {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 95px;
-    background: #8b6a50;
-    z-index: 40;
+.desk{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:95px;
+    background:#8b6a50;
+    z-index:40;
 }
 /* POPUPS */
-.popup {
-    position: fixed;
-    display: none;
-    left: 50%;
-    bottom: 85px;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 600px;
-    background: white;
-    padding: 18px;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.35);
-    z-index: 99999;
+.popup{
+    position:fixed;
+    display:none;
+    left:50%;
+    bottom:85px;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:600px;
+    background:white;
+    padding:18px;
+    border-radius:16px;
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+    z-index:99999;
 }
-/* OPEN QUESTION BOX */
-#keyboard:target {
-    display: block;
+#keyboard:target{display:block}
+#diagnosis:target{display:block}
+.popup-title{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:12px;
 }
-/* OPEN DIAGNOSIS BOX */
-#diagnosis:target {
-    display: block;
+.input-row{
+    display:flex;
+    gap:8px;
+    width:100%;
 }
-/* POPUP TITLE */
-.popup-title {
-    font-size: 17px;
-    font-weight: bold;
-    margin-bottom: 12px;
+.input-row input{
+    flex:1;
+    min-width:0;
+    padding:13px;
+    border:1px solid #bbb;
+    border-radius:9px;
+    font-size:16px;
+    outline:none;
 }
-/* INPUT */
-.input-row {
-    display: flex;
-    gap: 8px;
-    width: 100%;
+.send-button{
+    flex-shrink:0;
+    border:none;
+    background:#18232d;
+    color:white;
+    border-radius:9px;
+    padding:0 17px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    -webkit-appearance:none;
+    appearance:none;
 }
-.input-row input {
-    flex: 1;
-    min-width: 0;
-    padding: 13px;
-    border: 1px solid #bbb;
-    border-radius: 9px;
-    font-size: 16px;
-    outline: none;
+.close{
+    display:inline-block;
+    margin-top:12px;
+    color:#555;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
 }
-/* SEND */
-.send-button {
-    flex-shrink: 0;
-    border: none;
-    background: #18232d;
-    color: white;
-    border-radius: 9px;
-    padding: 0 17px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
+#diagnosisResult{
+    margin-top:12px;
+    font-weight:bold;
+    line-height:1.4;
 }
-/* CLOSE */
-.close {
-    display: inline-block;
-    margin-top: 12px;
-    color: #555;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
+/* BUTTONS */
+.controls{
+    position:fixed;
+    left:50%;
+    bottom:14px;
+    transform:translateX(-50%);
+    display:flex;
+    gap:14px;
+    z-index:100000;
 }
-/* DIAGNOSIS RESULT */
-#diagnosisResult {
-    margin-top: 12px;
-    font-weight: bold;
-    line-height: 1.4;
+.control{
+    width:62px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #18232d;
+    border-radius:15px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    font-size:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.3);
+    -webkit-tap-highlight-color:transparent;
 }
-/* BOTTOM BUTTONS */
-.controls {
-    position: fixed;
-    left: 50%;
-    bottom: 14px;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 14px;
-    z-index: 100000;
+.control:active{
+    transform:scale(.92);
 }
-.control {
-    width: 62px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #18232d;
-    border-radius: 15px;
-    background: white;
-    color: black;
-    text-decoration: none;
-    font-size: 25px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.3);
-    -webkit-tap-highlight-color: transparent;
-}
-.control:active {
-    transform: scale(.92);
-}
-/* IPAD / PHONE */
-@media (max-width: 700px) {
-    .sara {
-        transform: translateX(-50%) scale(.72);
-        transform-origin: bottom center;
+@media(max-width:700px){
+    .sara{
+        transform:translateX(-50%) scale(.72);
+        transform-origin:bottom center;
     }
-    .control {
-        width: 58px;
-        height: 52px;
+    .control{
+        width:58px;
+        height:52px;
     }
 }
 </style>
 </head>
 <body>
-<!-- HEADER -->
 <header>
-<div class="logo">
-    ClueMD
-</div>
-<a
-    href="case001.html"
-    class="back"
->
+    <div class="logo">ClueMD</div>
+<a href="case001.html" class="back">
     ← Case 001
 </a>
 </header>
-<!-- ROOM -->
 <div class="room">
-<!-- PATIENT -->
 <div class="patient">
-    <strong>
-        Sara
-    </strong>
-    <small>
-        17 years old · Case 001
-    </small>
+    <strong>Sara</strong>
+    <small>17 years old · Case 001</small>
 </div>
 <!-- SARA -->
 <div class="sara">
@@ -370,22 +324,14 @@ header {
         I'm really worried... I don't feel well.
     </span>
 </div>
-<!-- DESK -->
 <div class="desk"></div>
 </div>
-<!-- ==================================================
-     ASK SARA
-================================================== -->
-<div
-    id="keyboard"
-    class="popup"
->
+<!-- ASK SARA -->
+<div id="keyboard" class="popup">
 <div class="popup-title">
     Ask Sara a question
 </div>
-<form
-    id="questionForm"
->
+<form id="questionForm">
     <div class="input-row">
         <input
             id="questionInput"
@@ -401,26 +347,16 @@ header {
         </button>
     </div>
 </form>
-<a
-    href="#"
-    class="close"
->
+<a href="#" class="close">
     Close
 </a>
 </div>
-<!-- ==================================================
-     DIAGNOSIS
-================================================== -->
-<div
-    id="diagnosis"
-    class="popup"
->
+<!-- DIAGNOSIS -->
+<div id="diagnosis" class="popup">
 <div class="popup-title">
     What do you think Sara has?
 </div>
-<form
-    id="diagnosisForm"
->
+<form id="diagnosisForm">
     <div class="input-row">
         <input
             id="diagnosisInput"
@@ -437,18 +373,12 @@ header {
     </div>
 </form>
 <div id="diagnosisResult"></div>
-<a
-    href="#"
-    class="close"
->
+<a href="#" class="close">
     Close
 </a>
 </div>
-<!-- ==================================================
-     BUTTONS
-================================================== -->
+<!-- BUTTONS -->
 <div class="controls">
-<!-- KEYBOARD -->
 <a
     href="#keyboard"
     class="control"
@@ -456,7 +386,6 @@ header {
 >
     ⌨️
 </a>
-<!-- MAGNIFIER -->
 <a
     href="#diagnosis"
     class="control"
@@ -466,63 +395,79 @@ header {
 </a>
 </div>
 <script>
-/*
-======================================================
-TEMPORARY TEST CONNECTION
-This is ONLY a front-end test.
-Later we will replace this function with the
-AI connection to your backend.
-======================================================
-*/
-document
-.getElementById("questionForm")
-.addEventListener("submit", function(event) {
-    event.preventDefault();
-    var input =
-        document.getElementById("questionInput");
-    var speech =
-        document.getElementById("speechText");
-    var question =
-        input.value.trim();
-    if (question === "") {
-        input.focus();
-        return;
-    }
-    speech.textContent =
-        "I heard you ask: " + question;
-    input.value = "";
-    window.location.hash = "";
-});
-/*
-======================================================
-DIAGNOSIS TEST
-======================================================
-*/
-document
-.getElementById("diagnosisForm")
-.addEventListener("submit", function(event) {
-    event.preventDefault();
-    var input =
-        document.getElementById("diagnosisInput");
-    var result =
-        document.getElementById("diagnosisResult");
-    var diagnosis =
-        input.value.trim().toLowerCase();
-    if (diagnosis === "") {
-        input.focus();
-        return;
-    }
-    if (
-        diagnosis.includes("appendicitis") ||
-        diagnosis.includes("appendix")
-    ) {
-        result.textContent =
-            "Correct! Your diagnosis is appendicitis.";
-    } else {
-        result.textContent =
-            "Not quite. Review Sara's symptoms and investigate further.";
-    }
-});
-</script>
-</body>
-</html>
+/* =====================================================
+   SARA CASE DATABASE
+   ===================================================== */
+const saraAnswers = [
+/* CHIEF COMPLAINT */
+{
+keys:["why are you here","why did you come","what brought you","what brings you","reason for coming","chief complaint"],
+answer:"The pain kept getting worse, so I decided I needed to get checked."
+},
+{
+keys:["what is wrong","what happened","how do you feel","how are you feeling"],
+answer:"I don't feel well. My stomach really hurts and I'm worried."
+},
+/* PAIN LOCATION */
+{
+keys:["where does it hurt","where is the pain","where does the pain","location of the pain","which side","what side","where exactly","point to the pain","where is it painful"],
+answer:"It's mostly on the lower right side of my stomach."
+},
+/* ONSET */
+{
+keys:["when did it start","when did this start","when did the pain start","when did it begin","how long","duration","how long has it","started when","begin when"],
+answer:"It started yesterday. It wasn't this bad at first, but it has been getting worse."
+},
+/* PROGRESSION */
+{
+keys:["getting worse","getting better","changing","progressing","worse or better","has it changed"],
+answer:"It's definitely getting worse. It hurts more than it did yesterday."
+},
+/* SEVERITY */
+{
+keys:["how bad","how severe","severity","pain score","pain scale","out of ten","one to ten","10","rate the pain"],
+answer:"I'd say it's about a 7 out of 10 right now."
+},
+/* CHARACTER */
+{
+keys:["what does it feel like","describe the pain","type of pain","kind of pain","sharp","dull","burning","cramping","stabbing"],
+answer:"It's mostly a sharp pain, especially when I move."
+},
+/* RADIATION */
+{
+keys:["does it spread","does it radiate","radiation","spread anywhere","move anywhere","go anywhere else"],
+answer:"No, it mostly stays on the lower right side."
+},
+/* MOVEMENT */
+{
+keys:["movement","moving","walking","walk","does movement","worse when moving","worse with movement"],
+answer:"Yes. Walking around or moving makes it hurt more."
+},
+/* BETTER */
+{
+keys:["what makes it better","anything make it better","relieve","relieves","better when","rest"],
+answer:"Lying still seems to help a little."
+},
+/* NAUSEA */
+{
+keys:["nausea","nauseous","feel sick","sick to your stomach"],
+answer:"Yes... I've been feeling pretty nauseous."
+},
+/* VOMITING */
+{
+keys:["vomit","vomiting","throw up","threw up","been vomiting"],
+answer:"No, I haven't vomited."
+},
+/* FEVER */
+{
+keys:["fever","temperature","high temperature","hot","feverish"],
+answer:"I felt hot last night, but I didn't actually measure my temperature."
+},
+/* CHILLS */
+{
+keys:["chills","shivering","shiver"],
+answer:"I don't think I've had chills."
+},
+/* APPETITE */
+{
+keys:["appetite","hungry","eating","eat","f
