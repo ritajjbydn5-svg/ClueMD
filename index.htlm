@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLUEMD</title>
+  <title>ClueMD | Interactive Science Mysteries</title>
   <style>
     * {
       box-sizing: border-box;
@@ -29,104 +29,117 @@
       letter-spacing: 1px;
     }
     nav a {
-      text-decoration: none;
-      color: #17202a;
       margin-left: 20px;
+      color: #17202a;
+      text-decoration: none;
       font-weight: 600;
     }
     .hero {
-      min-height: 80vh;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 60px 20px;
+      padding: 70px 20px;
     }
     .hero-content {
-      max-width: 750px;
+      max-width: 800px;
     }
     .tag {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      margin-bottom: 20px;
     }
     h1 {
-      font-size: clamp(45px, 10vw, 80px);
-      line-height: 1;
-      margin-bottom: 20px;
+      font-size: clamp(48px, 10vw, 82px);
+      line-height: 0.95;
+      margin-bottom: 25px;
     }
-    .hero p {
-      font-size: 20px;
+    .hero-text {
+      max-width: 650px;
+      margin: 0 auto 35px;
+      color: #6b7280;
+      font-size: 19px;
       line-height: 1.6;
-      margin-bottom: 35px;
-      color: #4b5563;
     }
     .button {
       display: inline-block;
-      padding: 16px 30px;
-      border-radius: 12px;
+      padding: 16px 25px;
       background: #17202a;
       color: white;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 17px;
+      border-radius: 12px;
+      font-weight: 800;
     }
     .button:hover {
       opacity: 0.85;
     }
-    .section {
-      padding: 70px 7%;
+    .features {
       background: white;
+      padding: 75px 7%;
     }
-    .section h2 {
+    .features-title {
       text-align: center;
+      margin-bottom: 45px;
+    }
+    .features-title h2 {
       font-size: 35px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
-    .section-intro {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto 45px;
+    .features-title p {
       color: #6b7280;
-      line-height: 1.6;
     }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    .feature-grid {
       max-width: 1000px;
       margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
-    .step {
-      padding: 30px;
+    .feature {
+      padding: 28px;
       border: 1px solid #e5e7eb;
       border-radius: 18px;
-      background: #fafafa;
     }
-    .step-number {
-      font-size: 14px;
-      font-weight: 800;
+    .icon {
+      font-size: 32px;
       margin-bottom: 15px;
     }
-    .step h3 {
+    .feature h3 {
       margin-bottom: 10px;
-      font-size: 21px;
     }
-    .step p {
+    .feature p {
       color: #6b7280;
       line-height: 1.6;
     }
+    .mission {
+      padding: 75px 7%;
+      text-align: center;
+    }
+    .mission-content {
+      max-width: 750px;
+      margin: auto;
+    }
+    .mission h2 {
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+    .mission p {
+      color: #6b7280;
+      font-size: 18px;
+      line-height: 1.7;
+    }
     footer {
-      padding: 30px 7%;
+      padding: 30px;
       text-align: center;
       background: #17202a;
       color: white;
       font-size: 13px;
     }
-    @media (max-width: 700px) {
-      .steps {
+    @media (max-width: 800px) {
+      .feature-grid {
         grid-template-columns: 1fr;
       }
       nav {
@@ -137,66 +150,96 @@
 </head>
 <body>
 <header>
-  <div class="logo">MEDMYSTERY</div>
+  <div class="logo">
+    ClueMD
+  </div>
   <nav>
-    <a href="#how">How It Works</a>
-    <a href="#about">About</a>
+    <a href="index.html">Home</a>
+    <a href="cases.html">Cases</a>
   </nav>
 </header>
 <section class="hero">
   <div class="hero-content">
-<div class="tag">Interactive Science Learning</div>
-<h1>Can you solve the mystery?</h1>
-<p>
-  Investigate fictional cases, ask questions, collect clues,
-  and use your biology knowledge to uncover the answer.
+<div class="tag">
+  Interactive Science Investigation
+</div>
+<h1>
+  Don't memorize.<br>
+  Investigate.
+</h1>
+<p class="hero-text">
+  ClueMD turns biology into a mystery.
+  Interview fictional patients, uncover hidden clues,
+  connect scientific evidence, and solve the case.
 </p>
-<a href="#how" class="button">Start a Mystery</a>
+<a class="button" href="cases.html">
+  Enter the Case Library →
+</a>
   </div>
 </section>
-<section class="section" id="how">
-  <h2>How It Works</h2>
-  <p class="section-intro">
-    MEDMYSTERY transforms biology from something students memorize
-    into something they investigate.
-  </p>
-  <div class="steps">
-<div class="step">
-  <div class="step-number">01</div>
-  <h3>Investigate</h3>
+<section class="features">
+  <div class="features-title">
+<h2>
+  How ClueMD works
+</h2>
+<p>
+  Think like a scientist, not a memorization machine.
+</p>
+  </div>
+  <div class="feature-grid">
+<div class="feature">
+  <div class="icon">
+    🧑
+  </div>
+  <h3>
+    Meet the Patient
+  </h3>
   <p>
-    Meet a fictional character and ask questions to uncover
-    important clues.
+    Enter a fictional clinical scenario and interact
+    with a virtual patient.
   </p>
 </div>
-<div class="step">
-  <div class="step-number">02</div>
-  <h3>Think</h3>
+<div class="feature">
+  <div class="icon">
+    🔎
+  </div>
+  <h3>
+    Find the Clues
+  </h3>
   <p>
-    Connect the information you discover and use scientific
-    reasoning to form a hypothesis.
+    Ask questions, investigate symptoms, and decide
+    which information actually matters.
   </p>
 </div>
-<div class="step">
-  <div class="step-number">03</div>
-  <h3>Solve</h3>
+<div class="feature">
+  <div class="icon">
+    🧠
+  </div>
+  <h3>
+    Solve the Mystery
+  </h3>
   <p>
-    Submit your answer and discover the science behind the mystery.
+    Connect the evidence, form a hypothesis,
+    and see whether your reasoning solves the case.
   </p>
 </div>
   </div>
 </section>
-<section class="section" id="about">
-  <h2>Why MEDMYSTERY?</h2>
-  <p class="section-intro">
-    Students often learn biology by memorizing information.
-    MEDMYSTERY gives them a place to actually use what they know,
-    ask their own questions, and develop scientific reasoning
-    through fictional interactive cases.
-  </p>
+<section class="mission">
+  <div class="mission-content">
+<h2>
+  Why ClueMD?
+</h2>
+<p>
+  Science shouldn't only be something you memorize
+  for an exam. ClueMD gives students a chance to
+  investigate, ask questions, make connections,
+  and learn through curiosity.
+</p>
+  </div>
 </section>
 <footer>
-  MEDMYSTERY · A fictional educational science experience
+  ClueMD · Fictional educational science experience
 </footer>
 </body>
 </html>
