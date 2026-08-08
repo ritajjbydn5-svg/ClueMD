@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sara | ClueMD</title>
 <style>
-/* =========================
-   BASIC PAGE
-========================= */
 * {
     box-sizing: border-box;
 }
@@ -18,117 +15,106 @@ body {
     color: #18232d;
     overflow: hidden;
 }
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 header {
-    height: 64px;
+    height: 60px;
     background: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 25px;
+    padding: 0 22px;
     border-bottom: 1px solid #ddd;
     position: relative;
     z-index: 100;
 }
 .logo {
-    font-size: 24px;
+    font-size: 23px;
     font-weight: 800;
 }
 .back {
-    text-decoration: none;
     color: #18232d;
+    text-decoration: none;
     font-weight: bold;
 }
-/* =========================
-   CLINIC
-========================= */
+/* CLINIC */
 .clinic {
     position: relative;
-    height: calc(100vh - 64px);
-    background: #f7f9fa;
+    height: calc(100vh - 60px);
     overflow: hidden;
+    background: #f7f9fa;
 }
-/* =========================
-   PATIENT LABEL
-========================= */
+/* PATIENT LABEL */
 .patient {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 18px;
+    left: 18px;
     background: white;
-    padding: 12px 17px;
+    padding: 11px 16px;
     border-radius: 12px;
-    box-shadow:
-        0 4px 15px rgba(0,0,0,.08);
-    z-index: 30;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    z-index: 40;
 }
 .patient strong {
     display: block;
-    font-size: 18px;
-    margin-bottom: 3px;
+    font-size: 17px;
 }
 .patient span {
-    font-size: 12px;
     color: #777;
+    font-size: 12px;
 }
 /* =========================
    SARA
 ========================= */
 .sara {
     position: absolute;
-    width: 310px;
-    height: 530px;
+    width: 300px;
+    height: 500px;
     left: 50%;
-    bottom: 70px;
+    bottom: 130px;
     transform: translateX(-50%);
     z-index: 5;
 }
 /* HAIR */
 .hair {
     position: absolute;
-    top: 15px;
-    left: 52px;
+    top: 10px;
+    left: 48px;
     width: 205px;
-    height: 230px;
+    height: 225px;
     background: #493028;
     border-radius: 50%;
 }
 /* EARS */
 .ear {
     position: absolute;
-    top: 115px;
-    width: 25px;
-    height: 45px;
+    top: 110px;
+    width: 24px;
+    height: 43px;
     background: #efbd99;
     border-radius: 50%;
     z-index: 1;
 }
 .ear.left {
-    left: 64px;
+    left: 60px;
 }
 .ear.right {
-    right: 64px;
+    right: 60px;
 }
 /* FACE */
 .face {
     position: absolute;
-    top: 48px;
-    left: 72px;
+    top: 45px;
+    left: 68px;
     width: 165px;
     height: 190px;
     background: #f2c7a5;
     border-radius: 48%;
     z-index: 2;
 }
-/* =========================
-   SAD FACE
-========================= */
-/* EYEBROWS */
+/* SAD EYEBROWS */
 .eyebrow {
     position: absolute;
-    top: 61px;
+    top: 60px;
     width: 31px;
     height: 4px;
     background: #5b3930;
@@ -150,7 +136,6 @@ header {
     height: 11px;
     background: #30241f;
     border-radius: 50%;
-    transition: .15s;
 }
 .eye.left {
     left: 37px;
@@ -161,7 +146,7 @@ header {
 /* SAD MOUTH */
 .mouth {
     position: absolute;
-    top: 133px;
+    top: 134px;
     left: 50%;
     width: 42px;
     height: 20px;
@@ -169,54 +154,41 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
-/* =========================
-   BLINK
-========================= */
-.sara.blink .eye {
-    height: 2px;
-}
-/* =========================
-   NECK
-========================= */
+/* NECK */
 .neck {
     position: absolute;
     top: 225px;
-    left: 128px;
+    left: 123px;
     width: 55px;
     height: 55px;
     background: #efbd99;
 }
-/* =========================
-   BODY
-========================= */
+/* BODY */
 .body {
     position: absolute;
     top: 260px;
-    left: 32px;
+    left: 27px;
     width: 245px;
-    height: 270px;
+    height: 250px;
     background: #8da6b5;
     border-radius: 90px 90px 25px 25px;
 }
 /* =========================
-   SPEECH BUBBLE
+   SPEECH
 ========================= */
 .speech {
     position: absolute;
-    z-index: 40;
-    left: calc(50% + 120px);
+    z-index: 50;
+    left: calc(50% + 115px);
     bottom: 350px;
-    width: 350px;
+    width: 340px;
     background: white;
-    padding: 20px;
+    padding: 19px;
     border-radius: 22px;
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.12);
-    font-size: 17px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    font-size: 16px;
     line-height: 1.45;
-    transition: .25s;
 }
-/* SPEECH TAIL */
 .speech::before {
     content: "";
     position: absolute;
@@ -226,28 +198,25 @@ header {
     border-bottom: 14px solid transparent;
     border-right: 20px solid white;
 }
-/* NAME */
 .speech-name {
     display: block;
     font-size: 12px;
     font-weight: bold;
     color: #777;
     margin-bottom: 7px;
-    letter-spacing: .7px;
 }
 /* =========================
    DESK
 ========================= */
 .desk {
     position: absolute;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
-    height: 105px;
+    height: 150px;
     background: #8b6a50;
     z-index: 10;
-    box-shadow:
-        0 -5px 15px rgba(0,0,0,.10);
+    box-shadow: 0 -5px 15px rgba(0,0,0,.12);
 }
 /* =========================
    CONTROLS
@@ -255,48 +224,43 @@ header {
 .controls {
     position: absolute;
     z-index: 100;
-    bottom: 125px;
+    bottom: 55px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 14px;
-    align-items: center;
+    gap: 15px;
 }
 .control {
-    width: 60px;
-    height: 55px;
+    width: 62px;
+    height: 56px;
     border: none;
     border-radius: 15px;
     background: white;
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.20);
+    box-shadow: 0 5px 18px rgba(0,0,0,.25);
     font-size: 24px;
     cursor: pointer;
-    transition: .2s;
 }
-.control:hover {
-    transform: translateY(-3px);
+.control:active {
+    transform: scale(.94);
 }
 /* =========================
-   QUESTION AREA
+   QUESTION BOX
 ========================= */
 .question-area {
     display: none;
     position: absolute;
     z-index: 200;
-    bottom: 190px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
-    width: min(700px, 90%);
+    width: min(650px, 90%);
     background: white;
     padding: 10px;
-    border-radius: 15px;
-    box-shadow:
-        0 7px 25px rgba(0,0,0,.18);
+    border-radius: 14px;
+    box-shadow: 0 7px 25px rgba(0,0,0,.2);
 }
 .question-area.open {
     display: flex;
-    gap: 8px;
 }
 .question-area input {
     flex: 1;
@@ -305,21 +269,19 @@ header {
     font-size: 16px;
     padding: 12px;
 }
-.question-area button {
-    border: none;
-    border-radius: 10px;
-    background: #18232d;
-    color: white;
-    padding: 0 16px;
-    font-weight: bold;
-}
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 @media(max-width:700px) {
+    .sara {
+        transform:
+            translateX(-50%)
+            scale(.68);
+        transform-origin:
+            bottom center;
+        bottom: 125px;
+    }
     .speech {
         left: 50%;
-        bottom: 370px;
+        bottom: 365px;
         transform: translateX(-50%);
         width: 82%;
         font-size: 15px;
@@ -327,47 +289,17 @@ header {
     .speech::before {
         display: none;
     }
-    .sara {
-        transform:
-            translateX(-50%)
-            scale(.70);
-        transform-origin:
-            bottom center;
-    }
     .controls {
-        bottom: 120px;
+        bottom: 55px;
     }
 }
-/* =========================
-   TALKING
-========================= */
-@keyframes talking {
-    0% {
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-    50% {
-        transform:
-            translateX(-50%)
-            translateY(-3px);
-    }
-    100% {
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-}
-.sara.talking {
-    animation:
-        talking .45s ease-in-out;
+/* BLINK */
+.sara.blink .eye {
+    height: 2px;
 }
 </style>
 </head>
 <body>
-<!-- =========================
-     HEADER
-========================= -->
 <header>
 <div class="logo">
     ClueMD
@@ -379,22 +311,15 @@ header {
     ← Case 001
 </a>
 </header>
-<!-- =========================
-     CLINIC
-========================= -->
 <div class="clinic">
-<!-- PATIENT LABEL -->
+<!-- PATIENT -->
 <div class="patient">
-    <strong>
-        Sara
-    </strong>
+    <strong>Sara</strong>
     <span>
         17 years old · Case 001
     </span>
 </div>
-<!-- =====================
-     SARA
-====================== -->
+<!-- SARA -->
 <div
     class="sara"
     id="sara"
@@ -412,9 +337,7 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- =====================
-     SARA SPEECH
-====================== -->
+<!-- SARA SPEAKING -->
 <div
     class="speech"
     id="speech"
@@ -424,9 +347,7 @@ header {
     </span>
     Hi... I'm Sara. I've been having this really bad pain since yesterday. It has been getting worse, and I'm starting to feel scared.
 </div>
-<!-- =====================
-     QUESTION AREA
-====================== -->
+<!-- QUESTION -->
 <div
     class="question-area"
     id="questionArea"
@@ -438,65 +359,43 @@ header {
         autocomplete="off"
     >
 </div>
-<!-- =====================
-     DESK
-====================== -->
+<!-- DESK -->
 <div class="desk"></div>
-<!-- =====================
-     THREE CONTROLS
-====================== -->
+<!-- CONTROLS -->
 <div class="controls">
-    <!-- KEYBOARD -->
     <button
-        type="button"
         class="control"
         onclick="openKeyboard()"
-        aria-label="Keyboard"
     >
         ⌨️
     </button>
-    <!-- MICROPHONE -->
     <button
-        type="button"
         class="control"
         onclick="startMicrophone()"
-        aria-label="Microphone"
     >
         🎙️
     </button>
-    <!-- INVESTIGATE / ASK -->
     <button
-        type="button"
         class="control"
         onclick="askSara()"
-        aria-label="Ask Sara"
     >
         🔎
     </button>
 </div>
 </div>
 <script>
-/* =========================
-   ELEMENTS
-========================= */
-const sara =
-    document.getElementById("sara");
-const speech =
-    document.getElementById("speech");
 const questionArea =
     document.getElementById("questionArea");
 const questionInput =
     document.getElementById("questionInput");
-/* =========================
-   OPEN KEYBOARD
-========================= */
+const speech =
+    document.getElementById("speech");
+/* KEYBOARD */
 function openKeyboard() {
     questionArea.classList.add("open");
     questionInput.focus();
 }
-/* =========================
-   ASK SARA
-========================= */
+/* ASK SARA */
 function askSara() {
     const q =
         questionInput.value
@@ -506,13 +405,104 @@ function askSara() {
         openKeyboard();
         return;
     }
-    let answer = "";
-    /* REASON FOR VISIT */
+    let answer;
     if (
         q.includes("why") ||
         q.includes("brought") ||
-        q.includes("reason") ||
-        q.includes("here")
+        q.includes("reason")
     ) {
         answer =
-            "I've been having this pain since yesterday. It started getting worse, so I
+            "I've been having this pain since yesterday. It started getting worse, so I decided to come here.";
+    }
+    else if (
+        q.includes("where") ||
+        q.includes("location") ||
+        q.includes("side")
+    ) {
+        answer =
+            "It's mostly on the lower right side of my abdomen.";
+    }
+    else if (
+        q.includes("when") ||
+        q.includes("started") ||
+        q.includes("began") ||
+        q.includes("long")
+    ) {
+        answer =
+            "It started yesterday. It wasn't too bad at first, but it has gotten worse.";
+    }
+    else if (
+        q.includes("pain") ||
+        q.includes("hurt") ||
+        q.includes("hurts")
+    ) {
+        answer =
+            "It's a pretty strong pain. I'd say it's about 7 out of 10.";
+    }
+    else if (
+        q.includes("nausea") ||
+        q.includes("nauseous")
+    ) {
+        answer =
+            "Yes... I've been feeling really nauseous.";
+    }
+    else if (
+        q.includes("vomit") ||
+        q.includes("vomiting")
+    ) {
+        answer =
+            "No, I haven't vomited.";
+    }
+    else if (
+        q.includes("fever") ||
+        q.includes("temperature") ||
+        q.includes("chills")
+    ) {
+        answer =
+            "I felt really hot last night, but I didn't check my temperature.";
+    }
+    else if (
+        q.includes("eat") ||
+        q.includes("appetite") ||
+        q.includes("hungry")
+    ) {
+        answer =
+            "I haven't really wanted to eat today.";
+    }
+    else if (
+        q.includes("move") ||
+        q.includes("walking") ||
+        q.includes("movement")
+    ) {
+        answer =
+            "Moving around seems to make the pain worse.";
+    }
+    else if (
+        q.includes("bowel") ||
+        q.includes("stool") ||
+        q.includes("poop")
+    ) {
+        answer =
+            "I haven't noticed anything unusual with my bowel movements.";
+    }
+    else if (
+        q.includes("urine") ||
+        q.includes("pee") ||
+        q.includes("urinate")
+    ) {
+        answer =
+            "No, nothing seems different when I pee.";
+    }
+    else if (
+        q.includes("medicine") ||
+        q.includes("medication")
+    ) {
+        answer =
+            "I don't take any regular medications.";
+    }
+    else if (
+        q.includes("allergy") ||
+        q.includes("allergic")
+    ) {
+        answer =
+  
