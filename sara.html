@@ -11,22 +11,19 @@
   padding: 0;
 }
 body {
-  min-height: 100vh;
   font-family: Arial, sans-serif;
   background: #e9eef2;
   color: #17202a;
-  overflow: hidden;
+  min-height: 100vh;
 }
 header {
-  height: 70px;
+  height: 65px;
   background: white;
   border-bottom: 1px solid #dce1e5;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 6%;
-  position: relative;
-  z-index: 20;
 }
 .logo {
   font-size: 23px;
@@ -38,25 +35,29 @@ header {
   text-decoration: none;
   font-weight: 700;
 }
+.main {
+  min-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+}
+/* =========================
+   CLINIC
+========================= */
 .clinic {
   position: relative;
-  height: calc(100vh - 70px);
+  height: 500px;
+  overflow: hidden;
+  background: #f7f9fa;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  overflow: hidden;
-}
-.wall {
-  position: absolute;
-  inset: 0;
-  background: #f7f9fa;
 }
 .window {
   position: absolute;
-  top: 55px;
+  top: 35px;
   right: 8%;
-  width: 180px;
-  height: 130px;
+  width: 170px;
+  height: 120px;
   background: #dcecf5;
   border: 8px solid white;
   box-shadow: 0 8px 25px rgba(0,0,0,0.06);
@@ -79,27 +80,28 @@ header {
   height: 3px;
   background: white;
 }
-/* SARA */
+/* =========================
+   SARA
+========================= */
 .sara {
   position: relative;
-  z-index: 3;
   width: 310px;
-  height: 540px;
-  transition: transform 0.3s ease;
+  height: 440px;
+  z-index: 3;
 }
 .hair {
   position: absolute;
-  top: 25px;
+  top: 15px;
   left: 52px;
   width: 205px;
-  height: 230px;
+  height: 225px;
   background: #4a3028;
   border-radius: 48% 48% 42% 42%;
   z-index: 1;
 }
 .head {
   position: absolute;
-  top: 52px;
+  top: 42px;
   left: 72px;
   width: 165px;
   height: 190px;
@@ -112,7 +114,7 @@ header {
   width: 25px;
   height: 45px;
   background: #efbd99;
-  top: 120px;
+  top: 110px;
   border-radius: 50%;
   z-index: 1;
 }
@@ -137,11 +139,9 @@ header {
 .eye.right {
   right: 38px;
 }
-/* BLINK */
 .sara.blink .eye {
   height: 2px;
 }
-/* MOUTH */
 .mouth {
   position: absolute;
   left: 50%;
@@ -153,7 +153,6 @@ header {
   transform: translateX(-50%);
   transition: all 0.2s ease;
 }
-/* EXPRESSIONS */
 .sara.worried .mouth {
   border-bottom: none;
   border-top: 3px solid #7c3f3f;
@@ -176,7 +175,6 @@ header {
   height: 8px;
   border-bottom: 3px solid #7c3f3f;
   border-radius: 50%;
-  transform: translateX(-50%) rotate(-5deg);
 }
 .sara.happy .mouth {
   width: 40px;
@@ -184,157 +182,190 @@ header {
   border-bottom: 4px solid #7c3f3f;
   border-radius: 0 0 50% 50%;
 }
-/* BODY */
 .neck {
   position: absolute;
-  top: 225px;
+  top: 215px;
   left: 128px;
   width: 55px;
-  height: 55px;
+  height: 50px;
   background: #efbd99;
-  z-index: 1;
 }
 .body {
   position: absolute;
-  top: 260px;
+  top: 245px;
   left: 32px;
   width: 245px;
-  height: 260px;
+  height: 210px;
   background: #8fa7b5;
   border-radius: 90px 90px 25px 25px;
-  z-index: 1;
 }
-/* DESK */
+/* =========================
+   DESK
+========================= */
 .desk {
   position: absolute;
-  z-index: 5;
   bottom: 0;
   left: -10%;
   width: 120%;
-  height: 145px;
+  height: 90px;
   background: #8b6a50;
-  box-shadow: 0 -10px 30px rgba(0,0,0,0.12);
+  z-index: 5;
+  box-shadow: 0 -8px 20px rgba(0,0,0,0.12);
 }
 .desk-top {
   position: absolute;
-  top: -12px;
+  top: -10px;
   width: 100%;
-  height: 20px;
+  height: 15px;
   background: #76563e;
 }
-.notebook {
+/* =========================
+   PATIENT INFO
+========================= */
+.patient-card {
   position: absolute;
-  z-index: 6;
-  bottom: 55px;
-  left: 12%;
-  width: 180px;
-  height: 105px;
-  background: white;
-  border-radius: 5px;
-  transform: rotate(-4deg);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-}
-.pen {
-  position: absolute;
-  z-index: 7;
-  bottom: 75px;
-  left: 28%;
-  width: 100px;
-  height: 7px;
-  background: #263746;
-  transform: rotate(18deg);
-  border-radius: 5px;
-}
-/* INFORMATION */
-.status {
-  position: absolute;
-  z-index: 10;
-  top: 25px;
-  left: 25px;
-  background: white;
-  padding: 14px 17px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  font-size: 14px;
-  font-weight: 700;
-}
-.name-card {
-  position: absolute;
-  z-index: 10;
-  top: 25px;
-  right: 25px;
+  top: 20px;
+  left: 20px;
   background: white;
   padding: 15px 18px;
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  z-index: 10;
 }
-.name-card strong {
+.patient-card strong {
   display: block;
   font-size: 18px;
-  margin-bottom: 4px;
 }
-.name-card span {
+.patient-card span {
   font-size: 12px;
   color: #6b7280;
 }
-/* CONTROLS */
-.controls {
-  position: absolute;
-  z-index: 20;
-  bottom: 170px;
-  left: 50%;
-  transform: translateX(-50%);
+/* =========================
+   CHAT
+========================= */
+.chat-section {
+  background: white;
+  padding: 18px;
+  border-top: 1px solid #dce1e5;
+}
+.chat-box {
+  max-width: 850px;
+  margin: auto;
+}
+.messages {
+  height: 190px;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.message {
+  max-width: 80%;
+  padding: 11px 14px;
+  border-radius: 14px;
+  line-height: 1.4;
+  font-size: 14px;
+}
+.sara-message {
+  background: #edf1f4;
+  align-self: flex-start;
+}
+.user-message {
+  background: #17202a;
+  color: white;
+  align-self: flex-end;
+}
+.chat-input {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 90%;
 }
-button {
+.chat-input input {
+  flex: 1;
+  padding: 13px;
+  border: 1px solid #ccd3d8;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+}
+.chat-input input:focus {
+  border-color: #17202a;
+}
+.chat-input button {
   border: none;
   background: #17202a;
   color: white;
-  padding: 10px 14px;
-  border-radius: 9px;
+  padding: 0 20px;
+  border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
 }
-button:hover {
+.chat-input button:hover {
   opacity: 0.85;
 }
+/* =========================
+   QUICK QUESTIONS
+========================= */
+.quick-questions {
+  max-width: 850px;
+  margin: 10px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.quick-questions button {
+  background: #f0f3f5;
+  color: #17202a;
+  border: 1px solid #d9dfe3;
+  padding: 8px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.quick-questions button:hover {
+  background: #e4e9ed;
+}
+/* =========================
+   MOBILE
+========================= */
 @media (max-width: 600px) {
-  .sara {
-    transform: scale(0.8);
-    transform-origin: bottom center;
+  .clinic {
+    height: 420px;
   }
   .window {
     display: none;
   }
-  .name-card {
-    right: 15px;
+  .sara {
+    transform: scale(0.8);
+    transform-origin: bottom center;
   }
-  .status {
-    left: 15px;
+  .messages {
+    height: 180px;
+  }
+  .chat-input button {
+    padding: 0 14px;
   }
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">ClueMD</div>
+  <div class="logo">
+    ClueMD
+  </div>
   <a class="back" href="case001.html">
     ← Case 001
   </a>
 </header>
-<div class="clinic">
-  <div class="wall"></div>
+<div class="main">
+<!-- =========================
+     CLINIC
+========================= -->
+<section class="clinic">
   <div class="window"></div>
-  <div class="status" id="status">
-    Sara is waiting for you...
-  </div>
-  <div class="name-card">
+  <div class="patient-card">
     <strong>Sara</strong>
-    <span>17 · Case 001</span>
+    <span>17 years old · Case 001</span>
   </div>
   <div class="sara" id="sara">
 <div class="hair"></div>
@@ -348,82 +379,127 @@ button:hover {
 <div class="neck"></div>
 <div class="body"></div>
   </div>
-  <div class="controls">
-<button onclick="expression('normal')">
-  🙂 Normal
-</button>
-<button onclick="expression('worried')">
-  😟 Worried
-</button>
-<button onclick="expression('pained')">
-  😣 Pain
-</button>
-<button onclick="expression('nauseous')">
-  🤢 Nauseous
-</button>
-<button onclick="expression('surprised')">
-  😮 Surprised
-</button>
-<button onclick="expression('happy')">
-  😊 Relieved
-</button>
-  </div>
   <div class="desk">
     <div class="desk-top"></div>
-    <div class="notebook"></div>
-    <div class="pen"></div>
+  </div>
+</section>
+<!-- =========================
+     CHAT
+========================= -->
+<section class="chat-section">
+  <div class="chat-box">
+<div class="messages" id="messages">
+  <div class="message sara-message">
+    Hi... I'm Sara. I'm not really sure what's wrong. I've just been feeling strange lately.
   </div>
 </div>
+<div class="chat-input">
+  <input
+    id="userInput"
+    type="text"
+    placeholder="Ask Sara a question..."
+    autocomplete="off"
+  >
+  <button onclick="sendMessage()">
+    Ask
+  </button>
+</div>
+<div class="quick-questions">
+  <button onclick="askQuestion('What brought you in today?')">
+    What brought you in?
+  </button>
+  <button onclick="askQuestion('What symptoms are you having?')">
+    What symptoms do you have?
+  </button>
+  <button onclick="askQuestion('Where does it hurt?')">
+    Where does it hurt?
+  </button>
+  <button onclick="askQuestion('When did this start?')">
+    When did it start?
+  </button>
+  <button onclick="askQuestion('How bad is the pain?')">
+    How bad is the pain?
+  </button>
+  <button onclick="askQuestion('Do you have a fever?')">
+    Any fever?
+  </button>
+  <button onclick="askQuestion('Have you vomited?')">
+    Any vomiting?
+  </button>
+  <button onclick="askQuestion('Are you taking any medications?')">
+    Medications?
+  </button>
+</div>
+  </div>
+</section>
+</div>
 <script>
-const sara = document.getElementById("sara");
-const statusText = document.getElementById("status");
-/* AUTOMATIC BLINKING */
-function blink() {
-  sara.classList.add("blink");
-  setTimeout(function() {
-    sara.classList.remove("blink");
-  }, 130);
+/* =====================================================
+   CLUEMD CASE 001 — SARA
+   This is a fictional educational patient.
+   The student must discover the clues by interviewing her.
+===================================================== */
+/* =========================
+   PATIENT DATA
+========================= */
+const patient = {
+  name: "Sara",
+  age: 17,
+  symptoms:
+    "I've been having pain in my lower right abdomen. I've also felt nauseous and I don't really feel like eating.",
+  location:
+    "It's mostly on the lower right side of my abdomen.",
+  onset:
+    "It started yesterday. At first it wasn't too bad, but it's gotten worse.",
+  duration:
+    "It's been going on since yesterday.",
+  pain:
+    "I'd say it's about a 7 out of 10 right now.",
+  fever:
+    "I felt really hot last night, but I didn't check my temperature.",
+  vomiting:
+    "No, I haven't vomited.",
+  nausea:
+    "Yes. I've been feeling pretty nauseous.",
+  appetite:
+    "I haven't really wanted to eat today.",
+  bowel:
+    "I haven't noticed anything unusual.",
+  urine:
+    "No, I don't think anything is different when I pee.",
+  medications:
+    "I don't take any regular medications.",
+  allergies:
+    "I'm not allergic to anything that I know of.",
+  medicalHistory:
+    "I've never had anything like this before.",
+  worsening:
+    "Walking around seems to make the pain worse.",
+  pregnancy:
+    "No.",
+  familyHistory:
+    "Nothing relevant that I know of."
+};
+/* =========================
+   ELEMENTS
+========================= */
+const messages =
+  document.getElementById("messages");
+const input =
+  document.getElementById("userInput");
+const sara =
+  document.getElementById("sara");
+/* =========================
+   ADD MESSAGE
+========================= */
+function addMessage(text, type) {
+  const message =
+    document.createElement("div");
+  message.className =
+    "message " + type;
+  message.textContent =
+    text;
+  messages.appendChild(message);
+  messages.scrollTop =
+    messages.scrollHeight;
 }
-function randomBlink() {
-  blink();
-  const nextBlink =
-    Math.floor(Math.random() * 4000) + 2500;
-  setTimeout(randomBlink, nextBlink);
-}
-randomBlink();
-/* EXPRESSIONS */
-function expression(type) {
-  sara.classList.remove(
-    "worried",
-    "pained",
-    "nauseous",
-    "surprised",
-    "happy"
-  );
-  if (type === "worried") {
-    sara.classList.add("worried");
-    statusText.textContent = "Sara looks worried.";
-  }
-  else if (type === "pained") {
-    sara.classList.add("pained");
-    statusText.textContent = "Sara looks uncomfortable.";
-  }
-  else if (type === "nauseous") {
-    sara.classList.add("nauseous");
-    statusText.textContent = "Sara looks nauseous.";
-  }
-  else if (type === "surprised") {
-    sara.classList.add("surprised");
-    statusText.textContent = "Sara looks surprised.";
-  }
-  else if (type === "happy") {
-    sara.classList.add("happy");
-    statusText.textContent = "Sara looks relieved.";
-  }
-  else {
-    statusText.textContent = "Sara is listening...";
-  }
-}
-</script>
-</body>
-</html>
