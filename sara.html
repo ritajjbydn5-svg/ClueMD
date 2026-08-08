@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sara | ClueMD</title>
+<title>Sara - ClueMD</title>
 <style>
 * {
     box-sizing: border-box;
 }
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -17,7 +18,7 @@ html, body {
     background: #eef2f4;
 }
 /* HEADER */
-header {
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -29,15 +30,15 @@ header {
     justify-content: space-between;
     padding: 0 18px;
     border-bottom: 1px solid #ddd;
-    z-index: 100;
+    z-index: 10;
 }
 .logo {
     font-size: 23px;
     font-weight: bold;
 }
 .back {
-    color: #18232d;
     text-decoration: none;
+    color: #18232d;
     font-weight: bold;
 }
 /* ROOM */
@@ -48,7 +49,7 @@ header {
     width: 100%;
     height: calc(100% - 58px);
     overflow: hidden;
-    background: #f7f9fa;
+    background: #f6f8f9;
 }
 /* PATIENT LABEL */
 .patient {
@@ -58,14 +59,14 @@ header {
     background: white;
     padding: 10px 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+    box-shadow: 0 3px 12px rgba(0,0,0,.1);
     z-index: 20;
 }
-.patient strong {
-    display: block;
+.patient-name {
     font-size: 17px;
+    font-weight: bold;
 }
-.patient span {
+.patient-info {
     font-size: 11px;
     color: #777;
 }
@@ -74,88 +75,88 @@ header {
 ========================= */
 .sara {
     position: absolute;
-    width: 290px;
-    height: 480px;
     left: 50%;
-    bottom: 125px;
+    bottom: 105px;
+    width: 270px;
+    height: 430px;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 5;
 }
 /* HAIR */
 .hair {
     position: absolute;
-    top: 5px;
-    left: 43px;
-    width: 205px;
-    height: 220px;
+    top: 0;
+    left: 38px;
+    width: 195px;
+    height: 205px;
     background: #493028;
     border-radius: 50%;
 }
 /* EARS */
 .ear {
     position: absolute;
-    top: 108px;
-    width: 23px;
-    height: 42px;
+    top: 105px;
+    width: 22px;
+    height: 40px;
     background: #efbd99;
     border-radius: 50%;
 }
-.ear.left {
-    left: 55px;
+.ear-left {
+    left: 49px;
 }
-.ear.right {
-    right: 55px;
+.ear-right {
+    right: 49px;
 }
 /* FACE */
 .face {
     position: absolute;
-    top: 42px;
-    left: 63px;
-    width: 165px;
-    height: 190px;
+    top: 38px;
+    left: 57px;
+    width: 157px;
+    height: 180px;
     background: #f2c7a5;
     border-radius: 48%;
     z-index: 2;
 }
-/* WORRIED EYEBROWS */
-.eyebrow {
+/* EYEBROWS */
+.brow {
     position: absolute;
-    top: 59px;
-    width: 31px;
+    top: 57px;
+    width: 30px;
     height: 4px;
-    background: #5b3930;
+    background: #57382e;
     border-radius: 5px;
 }
-.eyebrow.left {
-    left: 30px;
+.brow-left {
+    left: 28px;
     transform: rotate(14deg);
 }
-.eyebrow.right {
-    right: 30px;
+.brow-right {
+    right: 28px;
     transform: rotate(-14deg);
 }
 /* EYES */
 .eye {
     position: absolute;
-    top: 75px;
-    width: 18px;
+    top: 73px;
+    width: 17px;
     height: 11px;
     background: #30241f;
     border-radius: 50%;
 }
-.eye.left {
-    left: 37px;
+.eye-left {
+    left: 35px;
 }
-.eye.right {
-    right: 37px;
+.eye-right {
+    right: 35px;
 }
-/* SAD MOUTH */
+/* MOUTH */
 .mouth {
     position: absolute;
-    top: 133px;
+    top: 132px;
     left: 50%;
-    width: 42px;
-    height: 20px;
+    width: 40px;
+    height: 18px;
     border-top: 4px solid #813f46;
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
@@ -163,45 +164,43 @@ header {
 /* NECK */
 .neck {
     position: absolute;
-    top: 220px;
-    left: 118px;
-    width: 55px;
+    top: 210px;
+    left: 109px;
+    width: 52px;
     height: 55px;
     background: #efbd99;
 }
 /* BODY */
 .body {
     position: absolute;
-    top: 255px;
-    left: 23px;
+    top: 250px;
+    left: 13px;
     width: 245px;
-    height: 250px;
+    height: 220px;
     background: #8da6b5;
-    border-radius: 90px 90px 25px 25px;
+    border-radius: 90px 90px 20px 20px;
 }
 /* =========================
-   SPEECH
+   SPEECH BUBBLE
 ========================= */
 .speech {
     display: none;
     position: fixed;
+    top: 100px;
     left: 50%;
-    top: 105px;
     transform: translateX(-50%);
-    width: min(430px, 86%);
+    width: 85%;
+    max-width: 430px;
+    padding: 17px;
     background: white;
-    padding: 18px;
     border-radius: 20px;
     box-shadow: 0 7px 25px rgba(0,0,0,.15);
-    font-size: 15px;
-    line-height: 1.45;
-    z-index: 200;
+    z-index: 100;
 }
-.speech.visible {
+.speech.show {
     display: block;
 }
-.speech-name {
-    display: block;
+.speech-title {
     font-size: 12px;
     font-weight: bold;
     color: #777;
@@ -213,18 +212,18 @@ header {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 100px;
+    height: 95px;
     background: #8b6a50;
-    z-index: 30;
+    z-index: 8;
 }
 /* =========================
-   INPUT PANEL
+   INPUT BOX
 ========================= */
-#inputPanel {
+.input-panel {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 88px;
+    bottom: 90px;
     transform: translateX(-50%);
     width: 90%;
     max-width: 600px;
@@ -232,50 +231,50 @@ header {
     padding: 14px;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0,0,0,.3);
-    z-index: 1000;
+    z-index: 500;
 }
-#inputPanel.visible {
+.input-panel.show {
     display: block;
 }
-#panelTitle {
+.input-title {
     font-weight: bold;
     margin-bottom: 9px;
     font-size: 15px;
 }
-.inputRow {
+.input-row {
     display: flex;
     gap: 8px;
 }
-#answerInput {
+.input {
     flex: 1;
     min-width: 0;
-    border: 1px solid #ccd3d8;
+    border: 1px solid #ccc;
     border-radius: 9px;
     padding: 12px;
     font-size: 16px;
     outline: none;
 }
-#sendButton {
+.send {
     border: none;
+    border-radius: 9px;
     background: #18232d;
     color: white;
-    border-radius: 9px;
     padding: 0 16px;
     font-weight: bold;
 }
 /* =========================
-   BOTTOM ICONS
+   ICONS
 ========================= */
-#buttons {
+.controls {
     position: fixed;
     left: 50%;
-    bottom: 18px;
+    bottom: 15px;
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    z-index: 5000;
+    z-index: 1000;
 }
-.iconButton {
+.icon {
     width: 60px;
     height: 55px;
     border: 2px solid #18232d;
@@ -289,37 +288,32 @@ header {
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
     -webkit-appearance: none;
     appearance: none;
-    touch-action: manipulation;
 }
-.iconButton:active {
+.icon:active {
     transform: scale(.9);
 }
 /* MOBILE */
 @media(max-width:700px) {
     .sara {
+        bottom: 105px;
         transform:
             translateX(-50%)
-            scale(.70);
+            scale(.72);
         transform-origin: bottom center;
-        bottom: 110px;
     }
-    #buttons {
-        bottom: 15px;
+    .controls {
+        bottom: 13px;
     }
-    .iconButton {
+    .icon {
         width: 58px;
         height: 52px;
     }
-}
-/* BLINK */
-.sara.blink .eye {
-    height: 2px;
 }
 </style>
 </head>
 <body>
 <!-- HEADER -->
-<header>
+<div class="header">
 <div class="logo">
     ClueMD
 </div>
@@ -329,64 +323,69 @@ header {
 >
     ← Case 001
 </a>
-</header>
+</div>
 <!-- ROOM -->
 <div class="room">
 <!-- PATIENT -->
 <div class="patient">
-    <strong>Sara</strong>
-    <span>
+    <div class="patient-name">
+        Sara
+    </div>
+    <div class="patient-info">
         17 years old · Case 001
-    </span>
+    </div>
 </div>
 <!-- SARA -->
-<div
-    class="sara"
-    id="sara"
->
+<div class="sara">
     <div class="hair"></div>
-    <div class="ear left"></div>
-    <div class="ear right"></div>
+    <div class="ear ear-left"></div>
+    <div class="ear ear-right"></div>
     <div class="face">
-        <div class="eyebrow left"></div>
-        <div class="eyebrow right"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
+        <div class="brow brow-left"></div>
+        <div class="brow brow-right"></div>
+        <div class="eye eye-left"></div>
+        <div class="eye eye-right"></div>
         <div class="mouth"></div>
     </div>
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SPEECH -->
+<!-- SARA'S SPEECH -->
 <div
     id="speech"
     class="speech"
 >
-    <span class="speech-name">
+    <div class="speech-title">
         SARA
-    </span>
-    <span id="speechText"></span>
+    </div>
+    <div id="speechText"></div>
 </div>
 <div class="desk"></div>
 </div>
 <!-- =========================
      INPUT PANEL
 ========================= -->
-<div id="inputPanel">
-<div id="panelTitle">
+<div
+    id="inputPanel"
+    class="input-panel"
+>
+<div
+    id="inputTitle"
+    class="input-title"
+>
     Ask Sara a question
 </div>
-<div class="inputRow">
+<div class="input-row">
     <input
-        id="answerInput"
+        id="input"
+        class="input"
         type="text"
         placeholder="Type your question..."
-        autocomplete="off"
     >
     <button
-        id="sendButton"
+        class="send"
         type="button"
-        onclick="sendInput()"
+        onclick="send()"
     >
         Send
     </button>
@@ -395,25 +394,28 @@ header {
 <!-- =========================
      THREE BUTTONS
 ========================= -->
-<div id="buttons">
+<div class="controls">
+<!-- KEYBOARD -->
 <button
-    class="iconButton"
+    class="icon"
     type="button"
-    onclick="keyboard()"
+    onclick="openKeyboard()"
 >
     ⌨️
 </button>
+<!-- MICROPHONE -->
 <button
-    class="iconButton"
+    class="icon"
     type="button"
-    onclick="microphone()"
+    onclick="openMicrophone()"
 >
     🎙️
 </button>
+<!-- DIAGNOSIS -->
 <button
-    class="iconButton"
+    class="icon"
     type="button"
-    onclick="diagnosis()"
+    onclick="openDiagnosis()"
 >
     🔎
 </button>
@@ -422,28 +424,28 @@ header {
 /* =========================
    VARIABLES
 ========================= */
-var mode = "question";
-var panel =
+var currentMode = "question";
+var inputPanel =
     document.getElementById("inputPanel");
-var title =
-    document.getElementById("panelTitle");
+var inputTitle =
+    document.getElementById("inputTitle");
 var input =
-    document.getElementById("answerInput");
+    document.getElementById("input");
 var speech =
     document.getElementById("speech");
 var speechText =
     document.getElementById("speechText");
 /* =========================
-   KEYBOARD BUTTON
+   KEYBOARD
 ========================= */
-function keyboard() {
-    mode = "question";
-    title.innerHTML =
+function openKeyboard() {
+    currentMode = "question";
+    inputTitle.innerHTML =
         "Ask Sara a question";
     input.placeholder =
         "Type your question...";
     input.value = "";
-    panel.classList.add("visible");
+    inputPanel.classList.add("show");
     setTimeout(function() {
         input.focus();
     }, 100);
@@ -451,19 +453,16 @@ function keyboard() {
 /* =========================
    MICROPHONE
 ========================= */
-function microphone() {
-    var Recognition =
+function openMicrophone() {
+    var SpeechRecognition =
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
-    if (!Recognition) {
-        keyboard();
-        speechText.innerHTML =
-            "I can't use the microphone here. You can type your question instead.";
-        speech.classList.add("visible");
+    if (!SpeechRecognition) {
+        openKeyboard();
         return;
     }
     var recognition =
-        new Recognition();
+        new SpeechRecognition();
     recognition.lang =
         "en-US";
     recognition.interimResults =
@@ -472,26 +471,28 @@ function microphone() {
         function(event) {
             input.value =
                 event.results[0][0].transcript;
-            mode = "question";
-            sendInput();
+            currentMode =
+                "question";
+            send();
         };
     recognition.onerror =
         function() {
-            keyboard();
+            openKeyboard();
         };
     recognition.start();
 }
 /* =========================
-   MAGNIFIER
+   DIAGNOSIS
 ========================= */
-function diagnosis() {
-    mode = "diagnosis";
-    title.innerHTML =
+function openDiagnosis() {
+    currentMode =
+        "diagnosis";
+    inputTitle.innerHTML =
         "What do you think Sara has?";
     input.placeholder =
         "Enter your diagnosis...";
     input.value = "";
-    panel.classList.add("visible");
+    inputPanel.classList.add("show");
     setTimeout(function() {
         input.focus();
     }, 100);
@@ -499,23 +500,22 @@ function diagnosis() {
 /* =========================
    SEND
 ========================= */
-function sendInput() {
+function send() {
     var text =
         input.value.trim();
     if (text === "") {
-        input.focus();
         return;
     }
     /* DIAGNOSIS */
-    if (mode === "diagnosis") {
+    if (currentMode === "diagnosis") {
         speechText.innerHTML =
             "Your diagnosis: <strong>"
             +
-            escapeHTML(text)
+            text
             +
             "</strong>";
-        speech.classList.add("visible");
-        panel.classList.remove("visible");
+        speech.classList.add("show");
+        inputPanel.classList.remove("show");
         input.value = "";
         return;
     }
@@ -524,5 +524,9 @@ function sendInput() {
         text.toLowerCase();
     var answer;
     if (
-        q.includes("where") ||
-   
+        q.indexOf("where") !== -1 ||
+        q.indexOf("location") !== -1 ||
+        q.indexOf("side") !== -1
+    ) {
+        answer =
+            "It'
