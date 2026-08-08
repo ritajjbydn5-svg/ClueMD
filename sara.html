@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sara | ClueMD</title>
+<title>Sara - ClueMD</title>
 <style>
 * {
     box-sizing: border-box;
 }
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -17,6 +18,7 @@ html, body {
     font-family: Arial, sans-serif;
     background: #eef2f4;
 }
+/* HEADER */
 header {
     height: 58px;
     background: white;
@@ -37,6 +39,7 @@ header {
     text-decoration: none;
     font-weight: bold;
 }
+/* ROOM */
 .room {
     position: relative;
     width: 100%;
@@ -44,6 +47,7 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
+/* PATIENT LABEL */
 .patient {
     position: absolute;
     top: 15px;
@@ -71,6 +75,7 @@ header {
     transform: translateX(-50%);
     z-index: 5;
 }
+/* HAIR */
 .hair {
     position: absolute;
     top: 0;
@@ -80,6 +85,7 @@ header {
     background: #493028;
     border-radius: 50%;
 }
+/* EARS */
 .ear {
     position: absolute;
     top: 105px;
@@ -94,6 +100,7 @@ header {
 .ear.right {
     right: 49px;
 }
+/* FACE */
 .face {
     position: absolute;
     top: 38px;
@@ -104,6 +111,7 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
+/* WORRIED EYEBROWS */
 .brow {
     position: absolute;
     top: 57px;
@@ -120,6 +128,7 @@ header {
     right: 28px;
     transform: rotate(-14deg);
 }
+/* EYES */
 .eye {
     position: absolute;
     top: 73px;
@@ -134,6 +143,7 @@ header {
 .eye.right {
     right: 35px;
 }
+/* SAD MOUTH */
 .mouth {
     position: absolute;
     top: 132px;
@@ -144,6 +154,7 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
+/* NECK */
 .neck {
     position: absolute;
     top: 210px;
@@ -152,6 +163,7 @@ header {
     height: 55px;
     background: #efbd99;
 }
+/* BODY */
 .body {
     position: absolute;
     top: 250px;
@@ -161,7 +173,7 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* SPEECH */
+/* SPEECH CLOUD */
 .speech {
     position: absolute;
     top: 85px;
@@ -211,17 +223,21 @@ header {
     box-shadow: 0 8px 30px rgba(0,0,0,.35);
     z-index: 99999;
 }
+/* OPEN QUESTION BOX */
 #keyboard:target {
     display: block;
 }
+/* OPEN DIAGNOSIS BOX */
 #diagnosis:target {
     display: block;
 }
+/* POPUP TITLE */
 .popup-title {
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 12px;
 }
+/* INPUT */
 .input-row {
     display: flex;
     gap: 8px;
@@ -236,6 +252,7 @@ header {
     font-size: 16px;
     outline: none;
 }
+/* SEND */
 .send-button {
     flex-shrink: 0;
     border: none;
@@ -246,10 +263,10 @@ header {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
 }
-.send-button:active {
-    transform: scale(.95);
-}
+/* CLOSE */
 .close {
     display: inline-block;
     margin-top: 12px;
@@ -258,12 +275,13 @@ header {
     font-size: 14px;
     font-weight: bold;
 }
+/* DIAGNOSIS RESULT */
 #diagnosisResult {
     margin-top: 12px;
     font-weight: bold;
     line-height: 1.4;
 }
-/* BUTTONS */
+/* BOTTOM BUTTONS */
 .controls {
     position: fixed;
     left: 50%;
@@ -286,10 +304,12 @@ header {
     text-decoration: none;
     font-size: 25px;
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
+    -webkit-tap-highlight-color: transparent;
 }
 .control:active {
     transform: scale(.92);
 }
+/* IPAD / PHONE */
 @media (max-width: 700px) {
     .sara {
         transform: translateX(-50%) scale(.72);
@@ -303,17 +323,25 @@ header {
 </style>
 </head>
 <body>
+<!-- HEADER -->
 <header>
 <div class="logo">
     ClueMD
 </div>
-<a href="case001.html" class="back">
+<a
+    href="case001.html"
+    class="back"
+>
     ← Case 001
 </a>
 </header>
+<!-- ROOM -->
 <div class="room">
+<!-- PATIENT -->
 <div class="patient">
-    <strong>Sara</strong>
+    <strong>
+        Sara
+    </strong>
     <small>
         17 years old · Case 001
     </small>
@@ -333,7 +361,7 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SPEECH CLOUD -->
+<!-- SPEECH -->
 <div class="speech">
     <span class="speech-name">
         SARA
@@ -342,17 +370,22 @@ header {
         I'm really worried... I don't feel well.
     </span>
 </div>
+<!-- DESK -->
 <div class="desk"></div>
 </div>
-<!-- =================================================
+<!-- ==================================================
      ASK SARA
-================================================= -->
-<div id="keyboard" class="popup">
+================================================== -->
+<div
+    id="keyboard"
+    class="popup"
+>
 <div class="popup-title">
     Ask Sara a question
 </div>
-<!-- REAL FORM -->
-<form onsubmit="askSara(); return false;">
+<form
+    id="questionForm"
+>
     <div class="input-row">
         <input
             id="questionInput"
@@ -368,18 +401,26 @@ header {
         </button>
     </div>
 </form>
-<a href="#" class="close">
+<a
+    href="#"
+    class="close"
+>
     Close
 </a>
 </div>
-<!-- =================================================
+<!-- ==================================================
      DIAGNOSIS
-================================================= -->
-<div id="diagnosis" class="popup">
+================================================== -->
+<div
+    id="diagnosis"
+    class="popup"
+>
 <div class="popup-title">
     What do you think Sara has?
 </div>
-<form onsubmit="submitDiagnosis(); return false;">
+<form
+    id="diagnosisForm"
+>
     <div class="input-row">
         <input
             id="diagnosisInput"
@@ -396,13 +437,16 @@ header {
     </div>
 </form>
 <div id="diagnosisResult"></div>
-<a href="#" class="close">
+<a
+    href="#"
+    class="close"
+>
     Close
 </a>
 </div>
-<!-- =================================================
-     BOTTOM BUTTONS
-================================================= -->
+<!-- ==================================================
+     BUTTONS
+================================================== -->
 <div class="controls">
 <!-- KEYBOARD -->
 <a
@@ -422,71 +466,63 @@ header {
 </a>
 </div>
 <script>
-/* =================================================
-   SARA'S ANSWERS
-================================================= */
-function askSara() {
+/*
+======================================================
+TEMPORARY TEST CONNECTION
+This is ONLY a front-end test.
+Later we will replace this function with the
+AI connection to your backend.
+======================================================
+*/
+document
+.getElementById("questionForm")
+.addEventListener("submit", function(event) {
+    event.preventDefault();
     var input =
         document.getElementById("questionInput");
     var speech =
         document.getElementById("speechText");
     var question =
-        input.value.toLowerCase().trim();
+        input.value.trim();
     if (question === "") {
         input.focus();
-        return false;
+        return;
     }
-    var answer =
-        "I'm not sure how to answer that. You can ask me about my pain or other symptoms.";
+    speech.textContent =
+        "I heard you ask: " + question;
+    input.value = "";
+    window.location.hash = "";
+});
+/*
+======================================================
+DIAGNOSIS TEST
+======================================================
+*/
+document
+.getElementById("diagnosisForm")
+.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var input =
+        document.getElementById("diagnosisInput");
+    var result =
+        document.getElementById("diagnosisResult");
+    var diagnosis =
+        input.value.trim().toLowerCase();
+    if (diagnosis === "") {
+        input.focus();
+        return;
+    }
     if (
-        question.indexOf("where") !== -1 ||
-        question.indexOf("location") !== -1 ||
-        question.indexOf("side") !== -1
+        diagnosis.includes("appendicitis") ||
+        diagnosis.includes("appendix")
     ) {
-        answer =
-            "It hurts mostly on the lower right side of my stomach.";
+        result.textContent =
+            "Correct! Your diagnosis is appendicitis.";
+    } else {
+        result.textContent =
+            "Not quite. Review Sara's symptoms and investigate further.";
     }
-    else if (
-        question.indexOf("when") !== -1 ||
-        question.indexOf("started") !== -1 ||
-        question.indexOf("began") !== -1
-    ) {
-        answer =
-            "It started yesterday. It has been getting worse.";
-    }
-    else if (
-        question.indexOf("pain") !== -1 ||
-        question.indexOf("hurt") !== -1 ||
-        question.indexOf("painful") !== -1 ||
-        question.indexOf("severity") !== -1 ||
-        question.indexOf("scale") !== -1
-    ) {
-        answer =
-            "It's pretty painful... maybe a 7 out of 10.";
-    }
-    else if (
-        question.indexOf("nausea") !== -1 ||
-        question.indexOf("nauseous") !== -1
-    ) {
-        answer =
-            "Yes... I've been feeling really nauseous.";
-    }
-    else if (
-        question.indexOf("vomit") !== -1 ||
-        question.indexOf("vomiting") !== -1
-    ) {
-        answer =
-            "No, I haven't vomited.";
-    }
-    else if (
-        question.indexOf("fever") !== -1 ||
-        question.indexOf("temperature") !== -1 ||
-        question.indexOf("hot") !== -1
-    ) {
-        answer =
-            "I felt hot last night, but I didn't check my temperature.";
-    }
-    else if (
-        question.indexOf("appetite") !== -1 ||
-        question.indexOf("hungry") !== -1 ||
-        question.indexO
+});
+</script>
+</body>
+</html>
