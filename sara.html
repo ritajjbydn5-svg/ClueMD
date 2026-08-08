@@ -5,106 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sara | ClueMD</title>
 <style>
-/* =========================
-   PAGE
-========================= */
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-family: Arial, sans-serif;
     background: #eef2f4;
-    color: #17202a;
-    min-height: 100vh;
     overflow: hidden;
+    color: #18232d;
 }
-/* =========================
-   HEADER
-========================= */
 header {
     height: 64px;
     background: white;
-    border-bottom: 1px solid #dce1e4;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5%;
-    position: relative;
-    z-index: 100;
+    padding: 0 25px;
+    border-bottom: 1px solid #ddd;
 }
 .logo {
-    font-size: 23px;
-    font-weight: 800;
-    letter-spacing: 1px;
+    font-size: 24px;
+    font-weight: bold;
 }
 .back {
     text-decoration: none;
-    color: #17202a;
-    font-weight: 700;
+    color: #18232d;
+    font-weight: bold;
 }
-/* =========================
-   CLINIC
-========================= */
 .clinic {
-    position: relative;
     height: calc(100vh - 64px);
+    position: relative;
     background: #f7f9fa;
-    overflow: hidden;
 }
 /* =========================
-   WINDOW
+   PATIENT LABEL
 ========================= */
-.window {
+.patient {
     position: absolute;
-    top: 40px;
-    right: 8%;
-    width: 190px;
-    height: 135px;
-    background: #dcecf5;
-    border: 9px solid white;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-}
-.window::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 3px;
+    top: 20px;
+    left: 20px;
     background: white;
-}
-.window::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: white;
-}
-/* =========================
-   PATIENT CARD
-========================= */
-.patient-card {
-    position: absolute;
-    top: 23px;
-    left: 24px;
-    background: white;
-    padding: 13px 17px;
+    padding: 12px 17px;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
     z-index: 20;
 }
-.patient-card strong {
+.patient b {
     display: block;
     font-size: 18px;
-    margin-bottom: 3px;
 }
-.patient-card span {
-    color: #6b7280;
-    font-size: 12px;
+.patient small {
+    color: #777;
 }
 /* =========================
    SARA
@@ -112,24 +64,23 @@ header {
 .sara {
     position: absolute;
     width: 310px;
-    height: 540px;
+    height: 530px;
     left: 50%;
     bottom: 65px;
     transform: translateX(-50%);
     z-index: 5;
 }
-/* HAIR */
+/* hair */
 .hair {
     position: absolute;
-    top: 20px;
+    top: 15px;
     left: 52px;
     width: 205px;
     height: 230px;
-    background: #4a3028;
-    border-radius: 48% 48% 42% 42%;
-    z-index: 1;
+    background: #493028;
+    border-radius: 50%;
 }
-/* EARS */
+/* ears */
 .ear {
     position: absolute;
     top: 115px;
@@ -140,87 +91,67 @@ header {
     z-index: 1;
 }
 .ear.left {
-    left: 65px;
+    left: 64px;
 }
 .ear.right {
-    right: 65px;
+    right: 64px;
 }
-/* FACE */
-.head {
+/* face */
+.face {
     position: absolute;
     top: 48px;
     left: 72px;
     width: 165px;
     height: 190px;
     background: #f2c7a5;
-    border-radius: 48% 48% 45% 45%;
+    border-radius: 48%;
     z-index: 2;
 }
-/* EYES */
+/* eyes */
 .eye {
     position: absolute;
-    top: 75px;
+    top: 76px;
     width: 18px;
-    height: 12px;
+    height: 11px;
     background: #30241f;
     border-radius: 50%;
-    transition: 0.15s;
+    transition: .15s;
 }
 .eye.left {
-    left: 38px;
+    left: 37px;
 }
 .eye.right {
-    right: 38px;
+    right: 37px;
 }
-/* BLINK */
-.sara.blink .eye {
-    height: 2px;
+/* sad eyebrows */
+.eyebrow {
+    position: absolute;
+    top: 60px;
+    width: 30px;
+    height: 4px;
+    background: #5b3930;
+    border-radius: 5px;
 }
-/* MOUTH */
+.eyebrow.left {
+    left: 30px;
+    transform: rotate(15deg);
+}
+.eyebrow.right {
+    right: 30px;
+    transform: rotate(-15deg);
+}
+/* sad mouth */
 .mouth {
     position: absolute;
+    top: 132px;
     left: 50%;
-    top: 125px;
-    width: 35px;
-    height: 12px;
-    border-bottom: 3px solid #7c3f3f;
-    border-radius: 0 0 50% 50%;
-    transform: translateX(-50%);
-    transition: 0.25s;
-}
-/* =========================
-   AUTOMATIC EXPRESSIONS
-========================= */
-.sara.worried .mouth {
-    border-bottom: none;
-    border-top: 3px solid #7c3f3f;
-    border-radius: 50% 50% 0 0;
-}
-.sara.pained .mouth {
-    width: 28px;
+    width: 42px;
     height: 20px;
-    border: 3px solid #7c3f3f;
-    border-radius: 50%;
+    border-top: 4px solid #813f46;
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-50%);
 }
-.sara.nauseous .mouth {
-    width: 30px;
-    height: 8px;
-    border-bottom: 3px solid #7c3f3f;
-    border-radius: 50%;
-}
-.sara.surprised .mouth {
-    width: 22px;
-    height: 28px;
-    border: 3px solid #7c3f3f;
-    border-radius: 50%;
-}
-.sara.happy .mouth {
-    width: 40px;
-    height: 18px;
-    border-bottom: 4px solid #7c3f3f;
-    border-radius: 0 0 50% 50%;
-}
-/* NECK */
+/* neck */
 .neck {
     position: absolute;
     top: 225px;
@@ -229,57 +160,51 @@ header {
     height: 55px;
     background: #efbd99;
 }
-/* BODY */
+/* body */
 .body {
     position: absolute;
     top: 260px;
     left: 32px;
     width: 245px;
     height: 270px;
-    background: #8fa7b5;
+    background: #8da6b5;
     border-radius: 90px 90px 25px 25px;
 }
+/* blink */
+.sara.blink .eye {
+    height: 2px;
+}
 /* =========================
-   SPEECH BUBBLE
+   SPEECH
 ========================= */
-.speech-bubble {
+.speech {
     position: absolute;
     z-index: 30;
     left: calc(50% + 120px);
-    bottom: 360px;
-    width: 340px;
-    min-height: 105px;
+    bottom: 355px;
+    width: 350px;
     background: white;
-    padding: 20px 22px;
+    padding: 20px;
     border-radius: 22px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,.12);
     font-size: 17px;
     line-height: 1.45;
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
 }
-/* SPEECH BUBBLE TAIL */
-.speech-bubble::before {
+.speech::before {
     content: "";
     position: absolute;
     left: -18px;
     bottom: 30px;
-    width: 0;
-    height: 0;
     border-top: 14px solid transparent;
     border-bottom: 14px solid transparent;
     border-right: 20px solid white;
 }
-/* SARA NAME */
-.sara-name {
+.speech-name {
     display: block;
     font-size: 12px;
-    font-weight: 800;
-    color: #6b7280;
+    font-weight: bold;
+    color: #777;
     margin-bottom: 7px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
 }
 /* =========================
    DESK
@@ -287,189 +212,119 @@ header {
 .desk {
     position: absolute;
     bottom: 0;
-    left: -5%;
-    width: 110%;
-    height: 112px;
-    background: #8b6a50;
-    z-index: 10;
-    box-shadow: 0 -8px 25px rgba(0,0,0,0.12);
-}
-.desk::before {
-    content: "";
-    position: absolute;
-    top: -10px;
     left: 0;
     width: 100%;
-    height: 15px;
-    background: #76563e;
+    height: 110px;
+    background: #8b6a50;
+    z-index: 10;
 }
 /* =========================
-   KEYBOARD BUTTON
+   CONTROLS
 ========================= */
-.keyboard-button {
+.controls {
     position: absolute;
-    z-index: 60;
+    z-index: 100;
+    bottom: 25px;
     left: 50%;
-    bottom: 22px;
     transform: translateX(-50%);
-    width: 62px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+/* all buttons */
+.control {
+    width: 58px;
     height: 52px;
     border: none;
     border-radius: 14px;
     background: white;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.18);
-    font-size: 24px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.18);
+    font-size: 23px;
     cursor: pointer;
 }
-.keyboard-button:hover {
-    transform:
-        translateX(-50%)
-        translateY(-2px);
+.control:hover {
+    transform: translateY(-2px);
 }
 /* =========================
-   QUESTION PANEL
+   QUESTION AREA
 ========================= */
-.question-panel {
-    position: absolute;
-    z-index: 70;
-    left: 50%;
-    bottom: 17px;
-    transform:
-        translateX(-50%)
-        translateY(20px);
-    width: min(720px, 92%);
+.question-area {
     display: none;
-    gap: 8px;
-    opacity: 0;
-    transition: 0.25s;
+    position: absolute;
+    z-index: 200;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(700px, 90%);
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgba(0,0,0,.18);
 }
-.question-panel.open {
+.question-area.open {
     display: flex;
-    opacity: 1;
-    transform:
-        translateX(-50%)
-        translateY(0);
+    gap: 8px;
 }
-.question-panel input {
+.question-area input {
     flex: 1;
     border: none;
     outline: none;
-    border-radius: 13px;
-    padding: 15px 17px;
-    font-size: 15px;
-    box-shadow:
-        0 4px 18px
-        rgba(0,0,0,0.15);
+    font-size: 16px;
+    padding: 12px;
 }
-.question-panel button {
+.question-area button {
     border: none;
-    border-radius: 13px;
-    background: #17202a;
+    border-radius: 10px;
+    background: #18232d;
     color: white;
-    padding: 0 20px;
-    font-weight: 700;
-    cursor: pointer;
+    padding: 0 16px;
+    font-weight: bold;
 }
-.question-panel .mic {
-    width: 54px;
-    padding: 0;
-    font-size: 18px;
-}
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 700px) {
-    .window {
+/* mobile */
+@media(max-width:700px) {
+    .speech {
+        left: 50%;
+        bottom: 370px;
+        transform: translateX(-50%);
+        width: 82%;
+        font-size: 15px;
+    }
+    .speech::before {
         display: none;
     }
     .sara {
         transform:
             translateX(-50%)
-            scale(0.72);
-        transform-origin:
-            bottom center;
-        bottom: 55px;
+            scale(.72);
+        transform-origin: bottom center;
     }
-    .speech-bubble {
-        left: 50%;
-        bottom: 380px;
-        transform:
-            translateX(-50%);
-        width: 88%;
-        font-size: 15px;
-    }
-    .speech-bubble::before {
-        display: none;
-    }
-    .patient-card {
-        top: 14px;
-        left: 14px;
-    }
-}
-/* =========================
-   TALKING ANIMATION
-========================= */
-@keyframes talking {
-    0% {
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-    50% {
-        transform:
-            translateX(-50%)
-            translateY(-3px);
-    }
-    100% {
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-}
-.sara.talking {
-    animation:
-        talking 0.45s ease-in-out;
 }
 </style>
 </head>
 <body>
-<!-- =========================
-     HEADER
-========================= -->
 <header>
 <div class="logo">
     ClueMD
 </div>
-<a
-    class="back"
-    href="case001.html"
->
+<a href="case001.html" class="back">
     ← Case 001
 </a>
 </header>
-<!-- =========================
-     CLINIC
-========================= -->
-<section class="clinic">
-<div class="window"></div>
-<!-- PATIENT CARD -->
-<div class="patient-card">
-    <strong>Sara</strong>
-    <span>
+<div class="clinic">
+<div class="patient">
+    <b>Sara</b>
+    <small>
         17 years old · Case 001
-    </span>
+    </small>
 </div>
-<!-- =====================
-     SARA
-====================== -->
-<div
-    class="sara"
-    id="sara"
->
+<!-- SARA -->
+<div class="sara" id="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
     <div class="ear right"></div>
-    <div class="head">
+    <div class="face">
+        <div class="eyebrow left"></div>
+        <div class="eyebrow right"></div>
         <div class="eye left"></div>
         <div class="eye right"></div>
         <div class="mouth"></div>
@@ -477,43 +332,164 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- =====================
-     SPEECH BUBBLE
-====================== -->
-<div
-    class="speech-bubble"
-    id="speechBubble"
->
-    <span class="sara-name">
-        Sara
+<!-- SARA'S SPEECH -->
+<div class="speech" id="speech">
+    <span class="speech-name">
+        SARA
     </span>
-    Hi... I'm Sara. I've been having this really bad pain since yesterday. I'm starting to get worried because it seems to be getting worse.
+    Hi... I'm Sara. I've been having this really bad pain since yesterday. It has been getting worse, and I'm starting to feel scared.
 </div>
-<!-- =====================
-     DESK
-====================== -->
+<!-- DESK -->
 <div class="desk"></div>
-<!-- =====================
-     KEYBOARD BUTTON
-====================== -->
-<button
-    type="button"
-    class="keyboard-button"
-    id="keyboardButton"
-    onclick="openKeyboard()"
-    aria-label="Ask Sara a question"
->
-    ⌨️
-</button>
-<!-- =====================
-     HIDDEN QUESTION PANEL
-====================== -->
+<!-- QUESTION AREA -->
 <div
-    class="question-panel"
-    id="questionPanel"
+    class="question-area"
+    id="questionArea"
 >
     <input
-        id="questionInput"
+        id="question"
         type="text"
         placeholder="Ask Sara a question..."
-        autocomplete="of
+    >
+</div>
+<!-- CONTROLS -->
+<div class="controls">
+    <!-- KEYBOARD -->
+    <button
+        type="button"
+        class="control"
+        onclick="openKeyboard()"
+        aria-label="Keyboard"
+    >
+        ⌨️
+    </button>
+    <!-- MICROPHONE -->
+    <button
+        type="button"
+        class="control"
+        onclick="microphone()"
+        aria-label="Microphone"
+    >
+        🎙️
+    </button>
+    <!-- SEARCH / ANSWER -->
+    <button
+        type="button"
+        class="control"
+        onclick="submitQuestion()"
+        aria-label="Ask Sara"
+    >
+        🔎
+    </button>
+</div>
+</div>
+<script>
+/* =========================
+   ELEMENTS
+========================= */
+const questionArea =
+    document.getElementById("questionArea");
+const question =
+    document.getElementById("question");
+const speech =
+    document.getElementById("speech");
+const sara =
+    document.getElementById("sara");
+/* =========================
+   KEYBOARD
+========================= */
+function openKeyboard() {
+    questionArea.classList.add("open");
+    question.focus();
+}
+/* =========================
+   SEARCH / ASK
+========================= */
+function submitQuestion() {
+    const q =
+        question.value
+            .trim()
+            .toLowerCase();
+    if (!q) {
+        openKeyboard();
+        return;
+    }
+    let answer = "";
+    /* reason for visit */
+    if (
+        q.includes("why") ||
+        q.includes("brought") ||
+        q.includes("reason") ||
+        q.includes("here")
+    ) {
+        answer =
+            "I've been having this pain since yesterday. It started getting worse, so I decided I needed to see someone.";
+    }
+    /* symptoms */
+    else if (
+        q.includes("symptom") ||
+        q.includes("feel") ||
+        q.includes("wrong") ||
+        q.includes("problem")
+    ) {
+        answer =
+            "My lower right abdomen really hurts. I've also been feeling nauseous and I don't really feel like eating.";
+    }
+    /* location */
+    else if (
+        q.includes("where") ||
+        q.includes("location") ||
+        q.includes("side") ||
+        q.includes("part")
+    ) {
+        answer =
+            "It's mostly on the lower right side of my abdomen.";
+    }
+    /* timing */
+    else if (
+        q.includes("when") ||
+        q.includes("started") ||
+        q.includes("begin") ||
+        q.includes("began") ||
+        q.includes("long")
+    ) {
+        answer =
+            "It started yesterday. It wasn't as bad at first, but it has gotten worse.";
+    }
+    /* severity */
+    else if (
+        q.includes("how bad") ||
+        q.includes("severe") ||
+        q.includes("severity") ||
+        q.includes("pain scale") ||
+        q.includes("out of 10")
+    ) {
+        answer =
+            "I'd say it's about a 7 out of 10 right now.";
+    }
+    /* nausea */
+    else if (
+        q.includes("nausea") ||
+        q.includes("nauseous") ||
+        q.includes("sick")
+    ) {
+        answer =
+            "Yes, I feel pretty nauseous.";
+    }
+    /* vomiting */
+    else if (
+        q.includes("vomit") ||
+        q.includes("throw up")
+    ) {
+        answer =
+            "No, I haven't vomited.";
+    }
+    /* fever */
+    else if (
+        q.includes("fever") ||
+        q.includes("temperature") ||
+        q.includes("hot") ||
+        q.includes("chills")
+    ) {
+        answer =
+            "I felt really hot last night,
