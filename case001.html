@@ -1,306 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case 001 | ClueMD</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f8fb;
-      color: #17202a;
-    }
-    header {
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .logo {
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-    .back {
-      text-decoration: none;
-      color: #17202a;
-      font-weight: 600;
-    }
-    .container {
-      max-width: 900px;
-      margin: 45px auto;
-      padding: 0 20px;
-    }
-    .case-label {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 001 | ClueMD</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7f8;
+    color: #18232d;
+}
+/* HEADER */
+header {
+    height: 64px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    border-bottom: 1px solid #ddd;
+}
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+.back {
+    text-decoration: none;
+    color: #18232d;
+    font-weight: bold;
+}
+/* MAIN */
+main {
+    max-width: 850px;
+    margin: 70px auto;
+    padding: 0 25px;
+    text-align: center;
+}
+/* CASE NUMBER */
+.case-number {
+    font-size: 14px;
+    font-weight: bold;
+    color: #687681;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+/* TITLE */
+h1 {
+    font-size: 42px;
+    margin: 0 0 20px;
+}
+/* DESCRIPTION */
+.description {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #56636d;
+}
+/* PATIENT */
+.patient {
+    background: white;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.08);
+    text-align: left;
+}
+.patient h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+.patient p {
+    margin: 8px 0;
+    color: #5f6b74;
+}
+/* INVESTIGATE BUTTON */
+.start-button {
+    display: inline-block;
+    padding: 16px 42px;
+    background: #18232d;
+    color: white;
+    text-decoration: none;
+    border-radius: 13px;
+    font-size: 17px;
+    font-weight: bold;
+    transition: .2s;
+}
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
+}
+/* MOBILE */
+@media(max-width:600px) {
+    main {
+        margin-top: 45px;
     }
     h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+        font-size: 34px;
     }
     .description {
-      color: #6b7280;
-      line-height: 1.6;
-      margin-bottom: 30px;
+        font-size: 16px;
     }
-    .patient {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 25px;
-    }
-    .patient h2 {
-      margin-bottom: 8px;
-    }
-    .patient p {
-      color: #6b7280;
-      line-height: 1.6;
-    }
-    .character-button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 18px;
-      background: #17202a;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 700;
-    }
-    .chat {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      overflow: hidden;
-    }
-    .chat-header {
-      padding: 18px 20px;
-      border-bottom: 1px solid #e5e7eb;
-      font-weight: 800;
-    }
-    .messages {
-      min-height: 300px;
-      max-height: 450px;
-      overflow-y: auto;
-      padding: 20px;
-    }
-    .message {
-      max-width: 80%;
-      padding: 13px 16px;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-    .patient-message {
-      background: #f0f3f5;
-      margin-right: auto;
-    }
-    .student-message {
-      background: #17202a;
-      color: white;
-      margin-left: auto;
-    }
-    .input-area {
-      display: flex;
-      gap: 10px;
-      padding: 15px;
-      border-top: 1px solid #e5e7eb;
-    }
-    input {
-      flex: 1;
-      padding: 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 16px;
-    }
-    button {
-      border: none;
-      padding: 14px 20px;
-      border-radius: 10px;
-      background: #17202a;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    button:hover {
-      opacity: 0.85;
-    }
-    .diagnosis {
-      margin-top: 25px;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 25px;
-    }
-    .diagnosis h2 {
-      margin-bottom: 10px;
-    }
-    .diagnosis p {
-      color: #6b7280;
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-    .diagnosis input {
-      width: 100%;
-      margin-bottom: 12px;
-    }
-    #result {
-      margin-top: 15px;
-      font-weight: 700;
-    }
-    .notice {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #6b7280;
-      text-align: center;
-      line-height: 1.5;
-    }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 34px;
-      }
-      .input-area {
-        flex-direction: column;
-      }
-      button {
-        width: 100%;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 <body>
+<!-- HEADER -->
 <header>
-  <div class="logo">ClueMD</div>
-  <a class="back" href="cases.html">
-    ← Cases
-  </a>
-</header>
-<div class="container">
-  <div class="case-label">CASE 001</div>
-  <h1>The Sudden Stomachache</h1>
-  <p class="description">
-    You are the investigator. Interview the fictional patient,
-    collect clues, and use your scientific reasoning to solve
-    the mystery.
-  </p>
-  <div class="patient">
-<h2>👩 Sara, 17</h2>
-<p>
-  Sara is sitting in front of you in the clinic.
-  She isn't feeling well, but she has agreed to answer
-  your questions.
-</p>
-<a class="character-button" href="sara.html">
-  Meet Sara →
-</a>
-  </div>
-  <div class="chat">
-<div class="chat-header">
-  💬 Interview Sara
+<div class="logo">
+    ClueMD
 </div>
-<div class="messages" id="messages">
-  <div class="message patient-message">
-    Hi... I haven't been feeling well today.
-    You can ask me questions.
-  </div>
-</div>
-<div class="input-area">
-  <input
-    id="question"
-    type="text"
-    placeholder="Ask Sara a question..."
-    onkeydown="if(event.key === 'Enter') askQuestion()"
-  >
-  <button onclick="askQuestion()">
-    Ask
-  </button>
-</div>
-  </div>
-  <div class="diagnosis">
-<h2>🔎 Solve the Mystery</h2>
-<p>
-  When you think you have collected enough clues,
-  enter what you think is happening.
-</p>
-<input
-  id="diagnosisInput"
-  type="text"
-  placeholder="What do you think is happening?"
+<a
+    href="cases.html"
+    class="back"
 >
-<button onclick="submitDiagnosis()">
-  Submit Answer
-</button>
-<p id="result"></p>
-  </div>
-  <div class="notice">
-    ClueMD is a fictional educational science experience.
-    Cases are designed for learning and are not intended
-    to diagnose real people or provide medical advice.
-  </div>
+    ← Cases
+</a>
+</header>
+<!-- CASE -->
+<main>
+<div class="case-number">
+    CASE 001
 </div>
-<script>
-function askQuestion() {
-  const input = document.getElementById("question");
-  const messages = document.getElementById("messages");
-  const question = input.value.trim();
-  if (question === "") {
-    return;
-  }
-  // Student message
-  const studentMessage =
-    document.createElement("div");
-  studentMessage.className =
-    "message student-message";
-  studentMessage.textContent =
-    question;
-  messages.appendChild(studentMessage);
-  input.value = "";
-  // Temporary patient response
-  const response =
-    document.createElement("div");
-  response.className =
-    "message patient-message";
-  response.textContent =
-    "I'm not sure how to answer that yet. Try asking me about my symptoms, when they started, where the pain is, or how I'm feeling.";
-  messages.appendChild(response);
-  messages.scrollTop =
-    messages.scrollHeight;
-}
-function submitDiagnosis() {
-  const diagnosis =
-    document
-      .getElementById("diagnosisInput")
-      .value
-      .trim()
-      .toLowerCase();
-  const result =
-    document.getElementById("result");
-  if (diagnosis === "") {
-    result.textContent =
-      "Please enter an answer first.";
-    return;
-  }
-  if (
-    diagnosis.includes("appendicitis") ||
-    diagnosis.includes("appendix")
-  ) {
-    result.textContent =
-      "🎉 Excellent! You identified the condition behind Case 001.";
-  } else {
-    result.textContent =
-      "Good investigation! Keep looking at the clues and think about what could explain the symptoms.";
-  }
-}
-</script>
+<h1>
+    The Abdominal Pain
+</h1>
+<p class="description">
+    A 17-year-old patient arrives at your clinic
+    complaining of abdominal pain that has been
+    getting worse since yesterday.
+    Your job is to interview the patient,
+    identify the important clues, and determine
+    what might be happening.
+</p>
+<!-- PATIENT INFORMATION -->
+<div class="patient">
+    <h2>
+        Patient
+    </h2>
+    <p>
+        <strong>Name:</strong> Sara
+    </p>
+    <p>
+        <strong>Age:</strong> 17
+    </p>
+    <p>
+        <strong>Chief complaint:</strong>
+        Abdominal pain
+    </p>
+</div>
+<!-- ONLY BUTTON -->
+<a
+    href="sara.html"
+    class="start-button"
+>
+    Investigate
+</a>
+</main>
 </body>
 </html>
