@@ -14,7 +14,9 @@ body {
     background: #eef2f4;
     overflow: hidden;
 }
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header {
     height: 58px;
     background: white;
@@ -23,6 +25,8 @@ header {
     justify-content: space-between;
     padding: 0 18px;
     border-bottom: 1px solid #ddd;
+    position: relative;
+    z-index: 100;
 }
 .logo {
     font-size: 23px;
@@ -33,13 +37,18 @@ header {
     color: #18232d;
     font-weight: bold;
 }
-/* ROOM */
+/* =========================
+   ROOM
+========================= */
 .room {
     position: relative;
     height: calc(100vh - 58px);
     overflow: hidden;
+    background: #f7f9fa;
 }
-/* PATIENT NAME */
+/* =========================
+   PATIENT LABEL
+========================= */
 .patient {
     position: absolute;
     top: 15px;
@@ -48,7 +57,7 @@ header {
     padding: 10px 15px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,.12);
-    z-index: 10;
+    z-index: 20;
 }
 .patient strong {
     display: block;
@@ -57,7 +66,9 @@ header {
 .patient small {
     color: #777;
 }
-/* SARA */
+/* =========================
+   SARA
+========================= */
 .sara {
     position: absolute;
     width: 270px;
@@ -65,6 +76,7 @@ header {
     left: 50%;
     bottom: 105px;
     transform: translateX(-50%);
+    z-index: 5;
 }
 /* HAIR */
 .hair {
@@ -100,6 +112,7 @@ header {
     height: 180px;
     background: #f2c7a5;
     border-radius: 48%;
+    z-index: 2;
 }
 /* WORRIED EYEBROWS */
 .brow {
@@ -163,7 +176,9 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* SPEECH CLOUD */
+/* =========================
+   SPEECH CLOUD
+========================= */
 .speech {
     position: absolute;
     top: 85px;
@@ -175,7 +190,16 @@ header {
     padding: 18px;
     border-radius: 22px;
     box-shadow: 0 6px 22px rgba(0,0,0,.15);
-    z-index: 20;
+    z-index: 30;
+}
+.speech:after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 15px solid white;
 }
 .speech-name {
     display: block;
@@ -184,7 +208,13 @@ header {
     color: #777;
     margin-bottom: 7px;
 }
-/* DESK */
+#speechText {
+    font-size: 16px;
+    line-height: 1.45;
+}
+/* =========================
+   DESK
+========================= */
 .desk {
     position: absolute;
     left: 0;
@@ -192,8 +222,57 @@ header {
     width: 100%;
     height: 95px;
     background: #8b6a50;
+    z-index: 40;
 }
-/* CONTROLS */
+/* =========================
+   QUESTION BOX
+========================= */
+#questionBox {
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: 88px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    z-index: 1000;
+}
+#questionBox.show {
+    display: block;
+}
+#boxTitle {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.inputRow {
+    display: flex;
+    gap: 8px;
+}
+#questionInput {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+}
+#sendButton {
+    border: none;
+    border-radius: 9px;
+    background: #18232d;
+    color: white;
+    padding: 0 16px;
+    font-weight: bold;
+}
+/* =========================
+   BOTTOM CONTROLS
+========================= */
 .controls {
     position: fixed;
     left: 50%;
@@ -201,7 +280,7 @@ header {
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    z-index: 100;
+    z-index: 2000;
 }
 .control {
     width: 60px;
@@ -213,32 +292,12 @@ header {
     cursor: pointer;
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
 }
-/* INPUT */
-#questionBox {
-    display: none;
-    position: fixed;
-    left: 50%;
-    bottom: 88px;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 600px;
-    background: white;
-    padding: 15px;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.3);
-    z-index: 500;
+.control:active {
+    transform: scale(.9);
 }
-#questionBox.show {
-    display: block;
-}
-#questionInput {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    font-size: 16px;
-}
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 @media(max-width:700px) {
     .sara {
         transform:
@@ -266,6 +325,7 @@ header {
 </a>
 </header>
 <div class="room">
+<!-- PATIENT -->
 <div class="patient">
     <strong>Sara</strong>
     <small>
@@ -287,90 +347,162 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SARA SPEECH -->
+<!-- SARA'S SPEECH -->
 <div class="speech">
     <span class="speech-name">
         SARA
     </span>
-    I... I'm really worried.
-    I don't know what's happening to me.
+    <span id="speechText">
+        I'm really worried... I don't feel well.
+    </span>
 </div>
 <div class="desk"></div>
 </div>
-<!-- QUESTION BOX -->
+<!-- =========================
+     QUESTION / DIAGNOSIS BOX
+========================= -->
 <div id="questionBox">
-<strong id="boxTitle">
+<span id="boxTitle">
     Ask Sara a question
-</strong>
-<br><br>
-<input
-    id="questionInput"
-    type="text"
-    placeholder="Type your question..."
->
+</span>
+<div class="inputRow">
+    <input
+        id="questionInput"
+        type="text"
+        placeholder="Type your question..."
+        autocomplete="off"
+    >
+    <button
+        id="sendButton"
+        type="button"
+        onclick="sendQuestion()"
+    >
+        Send
+    </button>
 </div>
-<!-- BUTTONS -->
+</div>
+<!-- =========================
+     BUTTONS
+========================= -->
 <div class="controls">
+<!-- KEYBOARD -->
 <button
     class="control"
     type="button"
-    onclick="showKeyboard()"
+    onclick="openKeyboard()"
 >
     ⌨️
 </button>
+<!-- DIAGNOSIS -->
 <button
     class="control"
     type="button"
-    onclick="showMicrophone()"
->
-    🎙️
-</button>
-<button
-    class="control"
-    type="button"
-    onclick="showDiagnosis()"
+    onclick="openDiagnosis()"
 >
     🔎
 </button>
 </div>
 <script>
-function showKeyboard() {
-    var box =
-        document.getElementById("questionBox");
-    var title =
-        document.getElementById("boxTitle");
-    var input =
-        document.getElementById("questionInput");
-    title.innerHTML =
+/* =========================
+   VARIABLES
+========================= */
+var mode = "question";
+var questionBox =
+    document.getElementById("questionBox");
+var boxTitle =
+    document.getElementById("boxTitle");
+var questionInput =
+    document.getElementById("questionInput");
+var speechText =
+    document.getElementById("speechText");
+/* =========================
+   KEYBOARD
+========================= */
+function openKeyboard() {
+    mode = "question";
+    boxTitle.innerHTML =
         "Ask Sara a question";
-    input.placeholder =
+    questionInput.placeholder =
         "Type your question...";
-    box.classList.add("show");
-    input.focus();
+    questionInput.value = "";
+    questionBox.classList.add("show");
+    setTimeout(function() {
+        questionInput.focus();
+    }, 100);
 }
-function showDiagnosis() {
-    var box =
-        document.getElementById("questionBox");
-    var title =
-        document.getElementById("boxTitle");
-    var input =
-        document.getElementById("questionInput");
-    title.innerHTML =
+/* =========================
+   DIAGNOSIS
+========================= */
+function openDiagnosis() {
+    mode = "diagnosis";
+    boxTitle.innerHTML =
         "What do you think Sara has?";
-    input.placeholder =
+    questionInput.placeholder =
         "Enter your diagnosis...";
-    box.classList.add("show");
-    input.focus();
+    questionInput.value = "";
+    questionBox.classList.add("show");
+    setTimeout(function() {
+        questionInput.focus();
+    }, 100);
 }
-function showMicrophone() {
-    var box =
-        document.getElementById("questionBox");
-    var title =
-        document.getElementById("boxTitle");
-    title.innerHTML =
-        "Microphone";
-    box.classList.add("show");
-}
-</script>
-</body>
-</html>
+/* =========================
+   SEND
+========================= */
+function sendQuestion() {
+    var question =
+        questionInput.value.trim();
+    if (question === "") {
+        return;
+    }
+    /* =====================
+       DIAGNOSIS
+    ===================== */
+    if (mode === "diagnosis") {
+        speechText.innerHTML =
+            "You think I have <strong>"
+            +
+            question
+            +
+            "</strong>.";
+        questionBox.classList.remove("show");
+        questionInput.value = "";
+        return;
+    }
+    /* =====================
+       SARA INTERVIEW
+    ===================== */
+    var q =
+        question.toLowerCase();
+    var answer;
+    /* MAIN COMPLAINT */
+    if (
+        q.includes("what") &&
+        (
+            q.includes("wrong") ||
+            q.includes("happen") ||
+            q.includes("problem")
+        )
+    ) {
+        answer =
+            "My stomach really hurts. It started yesterday and it's getting worse.";
+    }
+    /* PAIN LOCATION */
+    else if (
+        q.includes("where") ||
+        q.includes("location") ||
+        q.includes("side")
+    ) {
+        answer =
+            "The pain is mostly on the lower right side of my abdomen.";
+    }
+    /* PAIN SEVERITY */
+    else if (
+        q.includes("how bad") ||
+        q.includes("severity") ||
+        q.includes("scale") ||
+        q.includes("how much") ||
+        q.includes("pain")
+    ) {
+        answer =
+            "It's pretty strong... maybe a 7 out of 10.";
+ 
