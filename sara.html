@@ -3,21 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sara - ClueMD</title>
+<title>Sara | ClueMD</title>
 <style>
 * {
     box-sizing: border-box;
 }
 html, body {
     margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     font-family: Arial, sans-serif;
     background: #eef2f4;
 }
-/* HEADER */
 .header {
     position: fixed;
     top: 0;
@@ -30,7 +28,7 @@ html, body {
     justify-content: space-between;
     padding: 0 18px;
     border-bottom: 1px solid #ddd;
-    z-index: 10;
+    z-index: 100;
 }
 .logo {
     font-size: 23px;
@@ -41,7 +39,6 @@ html, body {
     color: #18232d;
     font-weight: bold;
 }
-/* ROOM */
 .room {
     position: fixed;
     top: 58px;
@@ -49,9 +46,8 @@ html, body {
     width: 100%;
     height: calc(100% - 58px);
     overflow: hidden;
-    background: #f6f8f9;
+    background: #f7f9fa;
 }
-/* PATIENT LABEL */
 .patient {
     position: absolute;
     top: 15px;
@@ -59,30 +55,27 @@ html, body {
     background: white;
     padding: 10px 15px;
     border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
     z-index: 20;
 }
-.patient-name {
+.patient strong {
+    display: block;
     font-size: 17px;
-    font-weight: bold;
 }
-.patient-info {
+.patient span {
     font-size: 11px;
     color: #777;
 }
-/* =========================
-   SARA
-========================= */
+/* SARA */
 .sara {
     position: absolute;
-    left: 50%;
-    bottom: 105px;
     width: 270px;
     height: 430px;
+    left: 50%;
+    bottom: 105px;
     transform: translateX(-50%);
     z-index: 5;
 }
-/* HAIR */
 .hair {
     position: absolute;
     top: 0;
@@ -92,7 +85,6 @@ html, body {
     background: #493028;
     border-radius: 50%;
 }
-/* EARS */
 .ear {
     position: absolute;
     top: 105px;
@@ -101,13 +93,12 @@ html, body {
     background: #efbd99;
     border-radius: 50%;
 }
-.ear-left {
+.ear.left {
     left: 49px;
 }
-.ear-right {
+.ear.right {
     right: 49px;
 }
-/* FACE */
 .face {
     position: absolute;
     top: 38px;
@@ -118,7 +109,6 @@ html, body {
     border-radius: 48%;
     z-index: 2;
 }
-/* EYEBROWS */
 .brow {
     position: absolute;
     top: 57px;
@@ -127,15 +117,14 @@ html, body {
     background: #57382e;
     border-radius: 5px;
 }
-.brow-left {
+.brow.left {
     left: 28px;
     transform: rotate(14deg);
 }
-.brow-right {
+.brow.right {
     right: 28px;
     transform: rotate(-14deg);
 }
-/* EYES */
 .eye {
     position: absolute;
     top: 73px;
@@ -144,13 +133,12 @@ html, body {
     background: #30241f;
     border-radius: 50%;
 }
-.eye-left {
+.eye.left {
     left: 35px;
 }
-.eye-right {
+.eye.right {
     right: 35px;
 }
-/* MOUTH */
 .mouth {
     position: absolute;
     top: 132px;
@@ -161,7 +149,6 @@ html, body {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
-/* NECK */
 .neck {
     position: absolute;
     top: 210px;
@@ -170,7 +157,6 @@ html, body {
     height: 55px;
     background: #efbd99;
 }
-/* BODY */
 .body {
     position: absolute;
     top: 250px;
@@ -180,24 +166,22 @@ html, body {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* =========================
-   SPEECH BUBBLE
-========================= */
+/* SPEECH */
 .speech {
-    display: none;
     position: fixed;
+    display: none;
     top: 100px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
     max-width: 430px;
-    padding: 17px;
     background: white;
+    padding: 18px;
     border-radius: 20px;
     box-shadow: 0 7px 25px rgba(0,0,0,.15);
-    z-index: 100;
+    z-index: 300;
 }
-.speech.show {
+.speech:target {
     display: block;
 }
 .speech-title {
@@ -216,55 +200,41 @@ html, body {
     background: #8b6a50;
     z-index: 8;
 }
-/* =========================
-   INPUT BOX
-========================= */
-.input-panel {
-    display: none;
+/* PANELS */
+.panel {
     position: fixed;
+    display: none;
     left: 50%;
-    bottom: 90px;
+    bottom: 88px;
     transform: translateX(-50%);
     width: 90%;
     max-width: 600px;
     background: white;
-    padding: 14px;
-    border-radius: 15px;
+    padding: 15px;
+    border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0,0,0,.3);
-    z-index: 500;
+    z-index: 2000;
 }
-.input-panel.show {
+.panel:target {
     display: block;
 }
-.input-title {
+.panel-title {
     font-weight: bold;
-    margin-bottom: 9px;
-    font-size: 15px;
+    margin-bottom: 10px;
 }
-.input-row {
-    display: flex;
-    gap: 8px;
-}
-.input {
-    flex: 1;
-    min-width: 0;
+.panel input {
+    width: 100%;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 9px;
-    padding: 12px;
     font-size: 16px;
-    outline: none;
 }
-.send {
-    border: none;
-    border-radius: 9px;
-    background: #18232d;
-    color: white;
-    padding: 0 16px;
-    font-weight: bold;
+.panel-note {
+    margin-top: 9px;
+    font-size: 12px;
+    color: #777;
 }
-/* =========================
-   ICONS
-========================= */
+/* BUTTONS */
 .controls {
     position: fixed;
     left: 50%;
@@ -272,7 +242,7 @@ html, body {
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    z-index: 1000;
+    z-index: 5000;
 }
 .icon {
     width: 60px;
@@ -284,25 +254,16 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    text-decoration: none;
+    color: black;
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
-    -webkit-appearance: none;
-    appearance: none;
-}
-.icon:active {
-    transform: scale(.9);
 }
 /* MOBILE */
 @media(max-width:700px) {
     .sara {
-        bottom: 105px;
-        transform:
-            translateX(-50%)
-            scale(.72);
+        transform: translateX(-50%) scale(.72);
         transform-origin: bottom center;
-    }
-    .controls {
-        bottom: 13px;
+        bottom: 105px;
     }
     .icon {
         width: 58px;
@@ -312,221 +273,104 @@ html, body {
 </style>
 </head>
 <body>
-<!-- HEADER -->
 <div class="header">
 <div class="logo">
     ClueMD
 </div>
-<a
-    class="back"
-    href="case001.html"
->
+<a class="back" href="case001.html">
     ← Case 001
 </a>
 </div>
-<!-- ROOM -->
 <div class="room">
-<!-- PATIENT -->
 <div class="patient">
-    <div class="patient-name">
-        Sara
-    </div>
-    <div class="patient-info">
-        17 years old · Case 001
-    </div>
+    <strong>Sara</strong>
+    <span>17 years old · Case 001</span>
 </div>
-<!-- SARA -->
 <div class="sara">
     <div class="hair"></div>
-    <div class="ear ear-left"></div>
-    <div class="ear ear-right"></div>
+    <div class="ear left"></div>
+    <div class="ear right"></div>
     <div class="face">
-        <div class="brow brow-left"></div>
-        <div class="brow brow-right"></div>
-        <div class="eye eye-left"></div>
-        <div class="eye eye-right"></div>
+        <div class="brow left"></div>
+        <div class="brow right"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
         <div class="mouth"></div>
     </div>
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SARA'S SPEECH -->
-<div
-    id="speech"
-    class="speech"
->
-    <div class="speech-title">
-        SARA
-    </div>
-    <div id="speechText"></div>
-</div>
 <div class="desk"></div>
 </div>
-<!-- =========================
-     INPUT PANEL
-========================= -->
-<div
-    id="inputPanel"
-    class="input-panel"
->
-<div
-    id="inputTitle"
-    class="input-title"
->
+<!-- KEYBOARD PANEL -->
+<div id="keyboard" class="panel">
+<div class="panel-title">
     Ask Sara a question
 </div>
-<div class="input-row">
-    <input
-        id="input"
-        class="input"
-        type="text"
-        placeholder="Type your question..."
-    >
-    <button
-        class="send"
-        type="button"
-        onclick="send()"
-    >
-        Send
-    </button>
+<input
+    type="text"
+    placeholder="Type your question..."
+>
+<div class="panel-note">
+    Type your question here. We can connect Sara's answers to this interview next.
+</div>
+<br>
+<a href="#close" class="back">
+    Close
+</a>
+</div>
+<!-- DIAGNOSIS PANEL -->
+<div id="diagnosis" class="panel">
+<div class="panel-title">
+    What do you think Sara has?
+</div>
+<input
+    type="text"
+    placeholder="Enter your diagnosis..."
+>
+<div class="panel-note">
+    This is where you submit your final diagnosis.
+</div>
+<br>
+<a href="#close" class="back">
+    Close
+</a>
+</div>
+<!-- SPEECH -->
+<div id="close" class="speech">
+<div class="speech-title">
+    SARA
+</div>
+<div>
+    I'm really worried. I don't feel very well.
 </div>
 </div>
-<!-- =========================
-     THREE BUTTONS
-========================= -->
+<!-- THREE BUTTONS -->
 <div class="controls">
 <!-- KEYBOARD -->
-<button
+<a
+    href="#keyboard"
     class="icon"
-    type="button"
-    onclick="openKeyboard()"
+    aria-label="Ask Sara"
 >
     ⌨️
-</button>
+</a>
 <!-- MICROPHONE -->
-<button
+<a
+    href="#keyboard"
     class="icon"
-    type="button"
-    onclick="openMicrophone()"
+    aria-label="Microphone"
 >
     🎙️
-</button>
+</a>
 <!-- DIAGNOSIS -->
-<button
+<a
+    href="#diagnosis"
     class="icon"
-    type="button"
-    onclick="openDiagnosis()"
+    aria-label="Submit diagnosis"
 >
     🔎
-</button>
+</a>
 </div>
-<script>
-/* =========================
-   VARIABLES
-========================= */
-var currentMode = "question";
-var inputPanel =
-    document.getElementById("inputPanel");
-var inputTitle =
-    document.getElementById("inputTitle");
-var input =
-    document.getElementById("input");
-var speech =
-    document.getElementById("speech");
-var speechText =
-    document.getElementById("speechText");
-/* =========================
-   KEYBOARD
-========================= */
-function openKeyboard() {
-    currentMode = "question";
-    inputTitle.innerHTML =
-        "Ask Sara a question";
-    input.placeholder =
-        "Type your question...";
-    input.value = "";
-    inputPanel.classList.add("show");
-    setTimeout(function() {
-        input.focus();
-    }, 100);
-}
-/* =========================
-   MICROPHONE
-========================= */
-function openMicrophone() {
-    var SpeechRecognition =
-        window.SpeechRecognition ||
-        window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-        openKeyboard();
-        return;
-    }
-    var recognition =
-        new SpeechRecognition();
-    recognition.lang =
-        "en-US";
-    recognition.interimResults =
-        false;
-    recognition.onresult =
-        function(event) {
-            input.value =
-                event.results[0][0].transcript;
-            currentMode =
-                "question";
-            send();
-        };
-    recognition.onerror =
-        function() {
-            openKeyboard();
-        };
-    recognition.start();
-}
-/* =========================
-   DIAGNOSIS
-========================= */
-function openDiagnosis() {
-    currentMode =
-        "diagnosis";
-    inputTitle.innerHTML =
-        "What do you think Sara has?";
-    input.placeholder =
-        "Enter your diagnosis...";
-    input.value = "";
-    inputPanel.classList.add("show");
-    setTimeout(function() {
-        input.focus();
-    }, 100);
-}
-/* =========================
-   SEND
-========================= */
-function send() {
-    var text =
-        input.value.trim();
-    if (text === "") {
-        return;
-    }
-    /* DIAGNOSIS */
-    if (currentMode === "diagnosis") {
-        speechText.innerHTML =
-            "Your diagnosis: <strong>"
-            +
-            text
-            +
-            "</strong>";
-        speech.classList.add("show");
-        inputPanel.classList.remove("show");
-        input.value = "";
-        return;
-    }
-    /* QUESTION */
-    var q =
-        text.toLowerCase();
-    var answer;
-    if (
-        q.indexOf("where") !== -1 ||
-        q.indexOf("location") !== -1 ||
-        q.indexOf("side") !== -1
-    ) {
-        answer =
-            "It'
+</body>
+</html>
