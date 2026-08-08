@@ -8,15 +8,15 @@
 * {
     box-sizing: border-box;
 }
-body {
+html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: Arial, sans-serif;
     background: #eef2f4;
     overflow: hidden;
 }
-/* =========================
-   HEADER
-========================= */
 header {
     height: 58px;
     background: white;
@@ -37,18 +37,13 @@ header {
     color: #18232d;
     font-weight: bold;
 }
-/* =========================
-   ROOM
-========================= */
 .room {
     position: relative;
+    width: 100%;
     height: calc(100vh - 58px);
     overflow: hidden;
     background: #f7f9fa;
 }
-/* =========================
-   PATIENT LABEL
-========================= */
 .patient {
     position: absolute;
     top: 15px;
@@ -66,9 +61,7 @@ header {
 .patient small {
     color: #777;
 }
-/* =========================
-   SARA
-========================= */
+/* SARA */
 .sara {
     position: absolute;
     width: 270px;
@@ -78,7 +71,6 @@ header {
     transform: translateX(-50%);
     z-index: 5;
 }
-/* HAIR */
 .hair {
     position: absolute;
     top: 0;
@@ -88,7 +80,6 @@ header {
     background: #493028;
     border-radius: 50%;
 }
-/* EARS */
 .ear {
     position: absolute;
     top: 105px;
@@ -103,7 +94,6 @@ header {
 .ear.right {
     right: 49px;
 }
-/* FACE */
 .face {
     position: absolute;
     top: 38px;
@@ -114,7 +104,6 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
-/* WORRIED EYEBROWS */
 .brow {
     position: absolute;
     top: 57px;
@@ -131,7 +120,6 @@ header {
     right: 28px;
     transform: rotate(-14deg);
 }
-/* EYES */
 .eye {
     position: absolute;
     top: 73px;
@@ -146,7 +134,6 @@ header {
 .eye.right {
     right: 35px;
 }
-/* SAD MOUTH */
 .mouth {
     position: absolute;
     top: 132px;
@@ -157,7 +144,6 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
-/* NECK */
 .neck {
     position: absolute;
     top: 210px;
@@ -166,7 +152,6 @@ header {
     height: 55px;
     background: #efbd99;
 }
-/* BODY */
 .body {
     position: absolute;
     top: 250px;
@@ -176,9 +161,7 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* =========================
-   SPEECH CLOUD
-========================= */
+/* SPEECH */
 .speech {
     position: absolute;
     top: 85px;
@@ -192,15 +175,6 @@ header {
     box-shadow: 0 6px 22px rgba(0,0,0,.15);
     z-index: 30;
 }
-.speech:after {
-    content: "";
-    position: absolute;
-    bottom: -14px;
-    left: 50%;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 15px solid white;
-}
 .speech-name {
     display: block;
     font-size: 12px;
@@ -212,9 +186,7 @@ header {
     font-size: 16px;
     line-height: 1.45;
 }
-/* =========================
-   DESK
-========================= */
+/* DESK */
 .desk {
     position: absolute;
     left: 0;
@@ -225,84 +197,85 @@ header {
     z-index: 40;
 }
 /* =========================
-   QUESTION BOX
+   KEYBOARD / DIAGNOSIS BOX
 ========================= */
-#questionBox {
+#inputBox {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 88px;
+    bottom: 85px;
     transform: translateX(-50%);
     width: 90%;
     max-width: 600px;
     background: white;
-    padding: 16px;
+    padding: 18px;
     border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.3);
-    z-index: 1000;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    z-index: 9999;
 }
-#questionBox.show {
+#inputBox.open {
     display: block;
 }
-#boxTitle {
-    display: block;
+#inputTitle {
     font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 12px;
 }
 .inputRow {
     display: flex;
     gap: 8px;
 }
-#questionInput {
+#answerInput {
     flex: 1;
     min-width: 0;
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 13px;
+    border: 1px solid #bbb;
     border-radius: 9px;
     font-size: 16px;
     outline: none;
 }
-#sendButton {
+#send {
     border: none;
-    border-radius: 9px;
     background: #18232d;
     color: white;
-    padding: 0 16px;
+    border-radius: 9px;
+    padding: 0 17px;
     font-weight: bold;
 }
-/* =========================
-   BOTTOM CONTROLS
-========================= */
+#closeBox {
+    display: block;
+    margin-top: 10px;
+    border: none;
+    background: transparent;
+    color: #555;
+}
+/* BUTTONS */
 .controls {
     position: fixed;
     left: 50%;
-    bottom: 15px;
+    bottom: 14px;
     transform: translateX(-50%);
     display: flex;
     gap: 14px;
-    z-index: 2000;
+    z-index: 10000;
 }
 .control {
-    width: 60px;
+    width: 62px;
     height: 55px;
     border: 2px solid #18232d;
     border-radius: 15px;
     background: white;
-    font-size: 24px;
+    font-size: 25px;
     cursor: pointer;
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
 }
 .control:active {
     transform: scale(.9);
 }
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 @media(max-width:700px) {
     .sara {
-        transform:
-            translateX(-50%)
-            scale(.72);
+        transform: translateX(-50%) scale(.72);
         transform-origin: bottom center;
     }
     .control {
@@ -317,20 +290,14 @@ header {
 <div class="logo">
     ClueMD
 </div>
-<a
-    class="back"
-    href="case001.html"
->
+<a href="case001.html" class="back">
     ← Case 001
 </a>
 </header>
 <div class="room">
-<!-- PATIENT -->
 <div class="patient">
     <strong>Sara</strong>
-    <small>
-        17 years old · Case 001
-    </small>
+    <small>17 years old · Case 001</small>
 </div>
 <!-- SARA -->
 <div class="sara">
@@ -347,7 +314,7 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SARA'S SPEECH -->
+<!-- SARA SPEAKING -->
 <div class="speech">
     <span class="speech-name">
         SARA
@@ -358,34 +325,35 @@ header {
 </div>
 <div class="desk"></div>
 </div>
-<!-- =========================
-     QUESTION / DIAGNOSIS BOX
-========================= -->
-<div id="questionBox">
-<span id="boxTitle">
+<!-- INPUT BOX -->
+<div id="inputBox">
+<div id="inputTitle">
     Ask Sara a question
-</span>
+</div>
 <div class="inputRow">
     <input
-        id="questionInput"
+        id="answerInput"
         type="text"
         placeholder="Type your question..."
-        autocomplete="off"
     >
     <button
-        id="sendButton"
+        id="send"
         type="button"
-        onclick="sendQuestion()"
+        onclick="sendAnswer()"
     >
         Send
     </button>
 </div>
+<button
+    id="closeBox"
+    type="button"
+    onclick="closeBox()"
+>
+    Close
+</button>
 </div>
-<!-- =========================
-     BUTTONS
-========================= -->
+<!-- TWO BUTTONS ONLY -->
 <div class="controls">
-<!-- KEYBOARD -->
 <button
     class="control"
     type="button"
@@ -393,7 +361,6 @@ header {
 >
     ⌨️
 </button>
-<!-- DIAGNOSIS -->
 <button
     class="control"
     type="button"
@@ -403,106 +370,144 @@ header {
 </button>
 </div>
 <script>
-/* =========================
-   VARIABLES
-========================= */
+/* CURRENT MODE */
 var mode = "question";
-var questionBox =
-    document.getElementById("questionBox");
-var boxTitle =
-    document.getElementById("boxTitle");
-var questionInput =
-    document.getElementById("questionInput");
+/* ELEMENTS */
+var inputBox =
+    document.getElementById("inputBox");
+var inputTitle =
+    document.getElementById("inputTitle");
+var answerInput =
+    document.getElementById("answerInput");
 var speechText =
     document.getElementById("speechText");
 /* =========================
-   KEYBOARD
+   OPEN KEYBOARD
 ========================= */
 function openKeyboard() {
     mode = "question";
-    boxTitle.innerHTML =
+    inputTitle.innerText =
         "Ask Sara a question";
-    questionInput.placeholder =
+    answerInput.placeholder =
         "Type your question...";
-    questionInput.value = "";
-    questionBox.classList.add("show");
+    answerInput.value = "";
+    inputBox.classList.add("open");
     setTimeout(function() {
-        questionInput.focus();
+        answerInput.focus();
     }, 100);
 }
 /* =========================
-   DIAGNOSIS
+   OPEN DIAGNOSIS
 ========================= */
 function openDiagnosis() {
     mode = "diagnosis";
-    boxTitle.innerHTML =
+    inputTitle.innerText =
         "What do you think Sara has?";
-    questionInput.placeholder =
+    answerInput.placeholder =
         "Enter your diagnosis...";
-    questionInput.value = "";
-    questionBox.classList.add("show");
+    answerInput.value = "";
+    inputBox.classList.add("open");
     setTimeout(function() {
-        questionInput.focus();
+        answerInput.focus();
     }, 100);
+}
+/* =========================
+   CLOSE
+========================= */
+function closeBox() {
+    inputBox.classList.remove("open");
 }
 /* =========================
    SEND
 ========================= */
-function sendQuestion() {
-    var question =
-        questionInput.value.trim();
-    if (question === "") {
+function sendAnswer() {
+    var text =
+        answerInput.value.trim();
+    if (text === "") {
         return;
     }
-    /* =====================
-       DIAGNOSIS
-    ===================== */
+    /* DIAGNOSIS */
     if (mode === "diagnosis") {
-        speechText.innerHTML =
-            "You think I have <strong>"
-            +
-            question
-            +
-            "</strong>.";
-        questionBox.classList.remove("show");
-        questionInput.value = "";
+        speechText.innerText =
+            "You think I have " +
+            text +
+            ".";
+        closeBox();
+        answerInput.value = "";
         return;
     }
-    /* =====================
-       SARA INTERVIEW
-    ===================== */
+    /* QUESTION */
     var q =
-        question.toLowerCase();
+        text.toLowerCase();
     var answer;
-    /* MAIN COMPLAINT */
     if (
-        q.includes("what") &&
-        (
-            q.includes("wrong") ||
-            q.includes("happen") ||
-            q.includes("problem")
-        )
-    ) {
-        answer =
-            "My stomach really hurts. It started yesterday and it's getting worse.";
-    }
-    /* PAIN LOCATION */
-    else if (
         q.includes("where") ||
         q.includes("location") ||
         q.includes("side")
     ) {
         answer =
-            "The pain is mostly on the lower right side of my abdomen.";
+            "It hurts mostly on the lower right side of my stomach.";
     }
-    /* PAIN SEVERITY */
     else if (
-        q.includes("how bad") ||
-        q.includes("severity") ||
-        q.includes("scale") ||
-        q.includes("how much") ||
-        q.includes("pain")
+        q.includes("when") ||
+        q.includes("started") ||
+        q.includes("began")
     ) {
         answer =
-            "It's pretty strong... maybe a 7 out of 10.";
- 
+            "It started yesterday. It has been getting worse.";
+    }
+    else if (
+        q.includes("pain") ||
+        q.includes("hurt") ||
+        q.includes("bad") ||
+        q.includes("severity")
+    ) {
+        answer =
+            "It's pretty painful... maybe a 7 out of 10.";
+    }
+    else if (
+        q.includes("nausea") ||
+        q.includes("nauseous")
+    ) {
+        answer =
+            "Yes... I've been feeling really nauseous.";
+    }
+    else if (
+        q.includes("vomit") ||
+        q.includes("vomiting")
+    ) {
+        answer =
+            "No, I haven't vomited.";
+    }
+    else if (
+        q.includes("fever") ||
+        q.includes("temperature") ||
+        q.includes("hot")
+    ) {
+        answer =
+            "I felt hot last night, but I didn't check my temperature.";
+    }
+    else if (
+        q.includes("eat") ||
+        q.includes("appetite") ||
+        q.includes("hungry")
+    ) {
+        answer =
+            "I don't really feel like eating.";
+    }
+    else if (
+        q.includes("move") ||
+        q.includes("walking") ||
+        q.includes("walk")
+    ) {
+        answer =
+            "Moving around makes the pain worse.";
+    }
+    else if (
+        q.includes("bowel") ||
+        q.includes("stool") ||
+        q.includes("poop")
+    ) {
+        answer =
+            "I haven't noticed anything unusual with my bowel movements.";
+    }
