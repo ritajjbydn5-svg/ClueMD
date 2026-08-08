@@ -1,16 +1,376 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>TEST</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara | ClueMD</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2f4;
+    overflow: hidden;
+}
+/* HEADER */
+header {
+    height: 58px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    border-bottom: 1px solid #ddd;
+}
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+.back {
+    text-decoration: none;
+    color: #18232d;
+    font-weight: bold;
+}
+/* ROOM */
+.room {
+    position: relative;
+    height: calc(100vh - 58px);
+    overflow: hidden;
+}
+/* PATIENT NAME */
+.patient {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.12);
+    z-index: 10;
+}
+.patient strong {
+    display: block;
+    font-size: 17px;
+}
+.patient small {
+    color: #777;
+}
+/* SARA */
+.sara {
+    position: absolute;
+    width: 270px;
+    height: 430px;
+    left: 50%;
+    bottom: 105px;
+    transform: translateX(-50%);
+}
+/* HAIR */
+.hair {
+    position: absolute;
+    top: 0;
+    left: 38px;
+    width: 195px;
+    height: 205px;
+    background: #493028;
+    border-radius: 50%;
+}
+/* EARS */
+.ear {
+    position: absolute;
+    top: 105px;
+    width: 22px;
+    height: 40px;
+    background: #efbd99;
+    border-radius: 50%;
+}
+.ear.left {
+    left: 49px;
+}
+.ear.right {
+    right: 49px;
+}
+/* FACE */
+.face {
+    position: absolute;
+    top: 38px;
+    left: 57px;
+    width: 157px;
+    height: 180px;
+    background: #f2c7a5;
+    border-radius: 48%;
+}
+/* WORRIED EYEBROWS */
+.brow {
+    position: absolute;
+    top: 57px;
+    width: 30px;
+    height: 4px;
+    background: #57382e;
+    border-radius: 5px;
+}
+.brow.left {
+    left: 28px;
+    transform: rotate(14deg);
+}
+.brow.right {
+    right: 28px;
+    transform: rotate(-14deg);
+}
+/* EYES */
+.eye {
+    position: absolute;
+    top: 73px;
+    width: 17px;
+    height: 11px;
+    background: #30241f;
+    border-radius: 50%;
+}
+.eye.left {
+    left: 35px;
+}
+.eye.right {
+    right: 35px;
+}
+/* SAD MOUTH */
+.mouth {
+    position: absolute;
+    top: 132px;
+    left: 50%;
+    width: 40px;
+    height: 18px;
+    border-top: 4px solid #813f46;
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-50%);
+}
+/* NECK */
+.neck {
+    position: absolute;
+    top: 210px;
+    left: 109px;
+    width: 52px;
+    height: 55px;
+    background: #efbd99;
+}
+/* BODY */
+.body {
+    position: absolute;
+    top: 250px;
+    left: 13px;
+    width: 245px;
+    height: 220px;
+    background: #8da6b5;
+    border-radius: 90px 90px 20px 20px;
+}
+/* SPEECH CLOUD */
+.speech {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 430px;
+    background: white;
+    padding: 18px;
+    border-radius: 22px;
+    box-shadow: 0 6px 22px rgba(0,0,0,.15);
+    z-index: 20;
+}
+.speech-name {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 7px;
+}
+/* DESK */
+.desk {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 95px;
+    background: #8b6a50;
+}
+/* CONTROLS */
+.controls {
+    position: fixed;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    z-index: 100;
+}
+.control {
+    width: 60px;
+    height: 55px;
+    border: 2px solid #18232d;
+    border-radius: 15px;
+    background: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0,0,0,.3);
+}
+/* INPUT */
+#questionBox {
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: 88px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    z-index: 500;
+}
+#questionBox.show {
+    display: block;
+}
+#questionInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 16px;
+}
+/* MOBILE */
+@media(max-width:700px) {
+    .sara {
+        transform:
+            translateX(-50%)
+            scale(.72);
+        transform-origin: bottom center;
+    }
+    .control {
+        width: 58px;
+        height: 52px;
+    }
+}
+</style>
 </head>
-
 <body>
-
-<h1>CLUE MD TEST 123</h1>
-
-<button onclick="alert('IT WORKS')">
-CLICK ME
+<header>
+<div class="logo">
+    ClueMD
+</div>
+<a
+    class="back"
+    href="case001.html"
+>
+    ← Case 001
+</a>
+</header>
+<div class="room">
+<div class="patient">
+    <strong>Sara</strong>
+    <small>
+        17 years old · Case 001
+    </small>
+</div>
+<!-- SARA -->
+<div class="sara">
+    <div class="hair"></div>
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+    <div class="face">
+        <div class="brow left"></div>
+        <div class="brow right"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth"></div>
+    </div>
+    <div class="neck"></div>
+    <div class="body"></div>
+</div>
+<!-- SARA SPEECH -->
+<div class="speech">
+    <span class="speech-name">
+        SARA
+    </span>
+    I... I'm really worried.
+    I don't know what's happening to me.
+</div>
+<div class="desk"></div>
+</div>
+<!-- QUESTION BOX -->
+<div id="questionBox">
+<strong id="boxTitle">
+    Ask Sara a question
+</strong>
+<br><br>
+<input
+    id="questionInput"
+    type="text"
+    placeholder="Type your question..."
+>
+</div>
+<!-- BUTTONS -->
+<div class="controls">
+<button
+    class="control"
+    type="button"
+    onclick="showKeyboard()"
+>
+    ⌨️
 </button>
-
+<button
+    class="control"
+    type="button"
+    onclick="showMicrophone()"
+>
+    🎙️
+</button>
+<button
+    class="control"
+    type="button"
+    onclick="showDiagnosis()"
+>
+    🔎
+</button>
+</div>
+<script>
+function showKeyboard() {
+    var box =
+        document.getElementById("questionBox");
+    var title =
+        document.getElementById("boxTitle");
+    var input =
+        document.getElementById("questionInput");
+    title.innerHTML =
+        "Ask Sara a question";
+    input.placeholder =
+        "Type your question...";
+    box.classList.add("show");
+    input.focus();
+}
+function showDiagnosis() {
+    var box =
+        document.getElementById("questionBox");
+    var title =
+        document.getElementById("boxTitle");
+    var input =
+        document.getElementById("questionInput");
+    title.innerHTML =
+        "What do you think Sara has?";
+    input.placeholder =
+        "Enter your diagnosis...";
+    box.classList.add("show");
+    input.focus();
+}
+function showMicrophone() {
+    var box =
+        document.getElementById("questionBox");
+    var title =
+        document.getElementById("boxTitle");
+    title.innerHTML =
+        "Microphone";
+    box.classList.add("show");
+}
+</script>
 </body>
 </html>
