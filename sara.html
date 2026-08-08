@@ -201,8 +201,12 @@ header{
     box-shadow:0 8px 30px rgba(0,0,0,.35);
     z-index:99999;
 }
-#keyboard:target{display:block}
-#diagnosis:target{display:block}
+#keyboard:target{
+    display:block;
+}
+#diagnosis:target{
+    display:block;
+}
 .popup-title{
     font-size:17px;
     font-weight:bold;
@@ -300,7 +304,6 @@ header{
     <strong>Sara</strong>
     <small>17 years old · Case 001</small>
 </div>
-<!-- SARA -->
 <div class="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
@@ -315,11 +318,8 @@ header{
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SPEECH -->
 <div class="speech">
-    <span class="speech-name">
-        SARA
-    </span>
+    <span class="speech-name">SARA</span>
     <span id="speechText">
         I'm really worried... I don't feel well.
     </span>
@@ -331,22 +331,21 @@ header{
 <div class="popup-title">
     Ask Sara a question
 </div>
-<form id="questionForm">
-    <div class="input-row">
-        <input
-            id="questionInput"
-            type="text"
-            autocomplete="off"
-            placeholder="Type your question..."
-        >
-        <button
-            type="submit"
-            class="send-button"
-        >
-            Send
-        </button>
-    </div>
-</form>
+<div class="input-row">
+    <input
+        id="questionInput"
+        type="text"
+        autocomplete="off"
+        placeholder="Type your question..."
+    >
+    <button
+        type="button"
+        class="send-button"
+        onclick="sendQuestion()"
+    >
+        Send
+    </button>
+</div>
 <a href="#" class="close">
     Close
 </a>
@@ -356,118 +355,80 @@ header{
 <div class="popup-title">
     What do you think Sara has?
 </div>
-<form id="diagnosisForm">
-    <div class="input-row">
-        <input
-            id="diagnosisInput"
-            type="text"
-            autocomplete="off"
-            placeholder="Enter your diagnosis..."
-        >
-        <button
-            type="submit"
-            class="send-button"
-        >
-            Submit
-        </button>
-    </div>
-</form>
+<div class="input-row">
+    <input
+        id="diagnosisInput"
+        type="text"
+        autocomplete="off"
+        placeholder="Enter your diagnosis..."
+    >
+    <button
+        type="button"
+        class="send-button"
+        onclick="submitDiagnosis()"
+    >
+        Submit
+    </button>
+</div>
 <div id="diagnosisResult"></div>
 <a href="#" class="close">
     Close
 </a>
 </div>
-<!-- BUTTONS -->
+<!-- CONTROLS -->
 <div class="controls">
 <a
     href="#keyboard"
     class="control"
     aria-label="Ask Sara"
->
-    ⌨️
-</a>
+>⌨️</a>
 <a
     href="#diagnosis"
     class="control"
     aria-label="Diagnosis"
->
-    🔎
-</a>
+>🔎</a>
 </div>
 <script>
 /* =====================================================
-   SARA CASE DATABASE
-   ===================================================== */
-const saraAnswers = [
-/* CHIEF COMPLAINT */
-{
-keys:["why are you here","why did you come","what brought you","what brings you","reason for coming","chief complaint"],
-answer:"The pain kept getting worse, so I decided I needed to get checked."
-},
-{
-keys:["what is wrong","what happened","how do you feel","how are you feeling"],
-answer:"I don't feel well. My stomach really hurts and I'm worried."
-},
-/* PAIN LOCATION */
-{
-keys:["where does it hurt","where is the pain","where does the pain","location of the pain","which side","what side","where exactly","point to the pain","where is it painful"],
-answer:"It's mostly on the lower right side of my stomach."
-},
-/* ONSET */
-{
-keys:["when did it start","when did this start","when did the pain start","when did it begin","how long","duration","how long has it","started when","begin when"],
-answer:"It started yesterday. It wasn't this bad at first, but it has been getting worse."
-},
-/* PROGRESSION */
-{
-keys:["getting worse","getting better","changing","progressing","worse or better","has it changed"],
-answer:"It's definitely getting worse. It hurts more than it did yesterday."
-},
-/* SEVERITY */
-{
-keys:["how bad","how severe","severity","pain score","pain scale","out of ten","one to ten","10","rate the pain"],
-answer:"I'd say it's about a 7 out of 10 right now."
-},
-/* CHARACTER */
-{
-keys:["what does it feel like","describe the pain","type of pain","kind of pain","sharp","dull","burning","cramping","stabbing"],
-answer:"It's mostly a sharp pain, especially when I move."
-},
-/* RADIATION */
-{
-keys:["does it spread","does it radiate","radiation","spread anywhere","move anywhere","go anywhere else"],
-answer:"No, it mostly stays on the lower right side."
-},
-/* MOVEMENT */
-{
-keys:["movement","moving","walking","walk","does movement","worse when moving","worse with movement"],
-answer:"Yes. Walking around or moving makes it hurt more."
-},
-/* BETTER */
-{
-keys:["what makes it better","anything make it better","relieve","relieves","better when","rest"],
-answer:"Lying still seems to help a little."
-},
-/* NAUSEA */
-{
-keys:["nausea","nauseous","feel sick","sick to your stomach"],
-answer:"Yes... I've been feeling pretty nauseous."
-},
-/* VOMITING */
-{
-keys:["vomit","vomiting","throw up","threw up","been vomiting"],
-answer:"No, I haven't vomited."
-},
-/* FEVER */
-{
-keys:["fever","temperature","high temperature","hot","feverish"],
-answer:"I felt hot last night, but I didn't actually measure my temperature."
-},
-/* CHILLS */
-{
-keys:["chills","shivering","shiver"],
-answer:"I don't think I've had chills."
-},
-/* APPETITE */
-{
-keys:["appetite","hungry","eating","eat","f
+   SARA'S KNOWLEDGE
+===================================================== */
+const saraData = [
+/* INTRODUCTION */
+["why are you here","The pain kept getting worse, so I decided I needed to get checked."],
+["why did you come","The pain kept getting worse, so I decided I needed to get checked."],
+["what brought you","The pain kept getting worse, so I decided I needed to get checked."],
+["what brings you","The pain kept getting worse, so I decided I needed to get checked."],
+["reason for coming","The pain kept getting worse, so I decided I needed to get checked."],
+/* PAIN */
+["where does it hurt","It's mostly on the lower right side of my stomach."],
+["where is the pain","It's mostly on the lower right side of my stomach."],
+["where exactly","It's mostly on the lower right side of my stomach."],
+["what area hurts","It's mostly on the lower right side of my stomach."],
+["which side","It's mostly on the lower right side of my stomach."],
+["location of pain","It's mostly on the lower right side of my stomach."],
+["when did it start","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+["when did this start","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+["when did the pain start","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+["how long","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+["getting worse","It's definitely getting worse. It hurts more than it did yesterday."],
+["getting better","No, it's getting worse."],
+["has it changed","It's definitely getting worse."],
+["how bad","I'd say it's about a 7 out of 10 right now."],
+["how severe","I'd say it's about a 7 out of 10 right now."],
+["pain score","I'd say it's about a 7 out of 10 right now."],
+["pain scale","I'd say it's about a 7 out of 10 right now."],
+["out of ten","I'd say it's about a 7 out of 10 right now."],
+["rate the pain","I'd say it's about a 7 out of 10 right now."],
+["what does it feel like","It's mostly a sharp pain, especially when I move."],
+["describe the pain","It's mostly a sharp pain, especially when I move."],
+["type of pain","It's mostly a sharp pain, especially when I move."],
+["sharp pain","It's mostly a sharp pain, especially when I move."],
+["dull pain","It's mostly a sharp pain, especially when I move."],
+["cramping","It's mostly a sharp pain, especially when I move."],
+["does it spread","No, it mostly stays on the lower right side."],
+["does it radiate","No, it mostly stays on the lower right side."],
+["radiation","No, it mostly stays on the lower right side."],
+["spread anywhere","No, it mostly stays on the lower right side."],
+["what makes it worse","Walking around or moving makes it hurt more."],
+["worse when moving","Walking around or moving makes it hurt more."],
+["does movement
