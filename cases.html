@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Library | MEDMYSTERY</title>
+  <title>Case Library | ClueMD</title>
   <style>
     * {
       box-sizing: border-box;
@@ -68,10 +68,11 @@
       border: 1px solid #e5e7eb;
       border-radius: 20px;
       padding: 28px;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .case:hover {
       transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     }
     .number {
       font-size: 13px;
@@ -102,6 +103,14 @@
       border-radius: 10px;
       font-weight: 700;
     }
+    .button:hover {
+      opacity: 0.85;
+    }
+    .coming {
+      background: #e9edf0;
+      color: #6b7280;
+      cursor: default;
+    }
     footer {
       padding: 30px;
       text-align: center;
@@ -118,27 +127,37 @@
 </head>
 <body>
 <header>
-  <div class="logo">MEDMYSTERY</div>
-
-← Home
-
+  <div class="logo">ClueMD</div>
+  <a class="back" href="index.html">
+    ← Home
+  </a>
 </header>
 <section class="hero">
-  <div class="tag">Case Library</div>
-  <h1>Choose your mystery.</h1>
+  <div class="tag">
+    Case Library
+  </div>
+  <h1>
+    Choose your mystery.
+  </h1>
   <p class="intro">
-    Every case contains a fictional character, hidden clues,
-    and a scientific mystery. Ask questions, investigate,
-    and see if you can solve it.
+    Enter fictional cases, interview virtual patients,
+    uncover hidden clues, and use scientific reasoning
+    to solve each mystery.
   </p>
 </section>
 <section class="cases">
+  <!-- CASE 001 -->
   <div class="case">
-<div class="number">CASE 001</div>
-<h2>The Sudden Stomachache</h2>
+<div class="number">
+  CASE 001
+</div>
+<h2>
+  The Sudden Stomachache
+</h2>
 <p>
-  A teenager suddenly develops abdominal pain and doesn't
-  feel like eating. Something isn't quite right.
+  Sara suddenly develops abdominal pain and doesn't
+  feel like eating. Interview her carefully and see
+  whether you can uncover what is happening.
 </p>
 <div class="difficulty">
   Difficulty: ⭐
@@ -147,37 +166,47 @@
   Investigate →
 </a>
   </div>
+  <!-- CASE 002 -->
   <div class="case">
-<div class="number">CASE 002</div>
-<h2>The Exhausted Student</h2>
+<div class="number">
+  CASE 002
+</div>
+<h2>
+  The Exhausted Student
+</h2>
 <p>
-  A student has been unusually tired and struggling to
-  concentrate. Can you figure out what is happening?
+  A student has been unusually tired and struggling
+  to concentrate. What clues could explain the change?
 </p>
 <div class="difficulty">
   Difficulty: ⭐⭐
 </div>
-<a class="button" href="#">
+<span class="button coming">
   Coming Soon
-</a>
+</span>
   </div>
+  <!-- CASE 003 -->
   <div class="case">
-<div class="number">CASE 003</div>
-<h2>The Mysterious Cough</h2>
+<div class="number">
+  CASE 003
+</div>
+<h2>
+  The Mysterious Cough
+</h2>
 <p>
-  A student develops persistent breathing symptoms.
-  Ask the right questions to uncover the mystery.
+  A student develops persistent respiratory symptoms.
+  Ask the right questions and uncover the mystery.
 </p>
 <div class="difficulty">
   Difficulty: ⭐⭐⭐
 </div>
-<a class="button" href="#">
+<span class="button coming">
   Coming Soon
-</a>
+</span>
   </div>
 </section>
 <footer>
-  MEDMYSTERY · Fictional educational science experience
+  ClueMD · Fictional educational science experience
 </footer>
 </body>
 </html>
