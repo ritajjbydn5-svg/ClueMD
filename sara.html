@@ -8,103 +8,118 @@
 * {
     box-sizing: border-box;
 }
+html,
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef2f4;
-    color: #18232d;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #f5f7f8;
+    color: #18232d;
 }
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header {
-    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 58px;
     background: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 22px;
+    padding: 0 20px;
     border-bottom: 1px solid #ddd;
-    position: relative;
-    z-index: 100;
+    z-index: 500;
 }
 .logo {
     font-size: 23px;
-    font-weight: 800;
+    font-weight: bold;
 }
 .back {
     color: #18232d;
     text-decoration: none;
     font-weight: bold;
 }
-/* CLINIC */
+/* =========================
+   CLINIC
+========================= */
 .clinic {
-    position: relative;
-    height: calc(100vh - 60px);
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 58px);
     overflow: hidden;
     background: #f7f9fa;
 }
-/* PATIENT LABEL */
+/* =========================
+   PATIENT LABEL
+========================= */
 .patient {
     position: absolute;
-    top: 18px;
-    left: 18px;
+    top: 15px;
+    left: 15px;
     background: white;
-    padding: 11px 16px;
+    padding: 10px 15px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,.08);
-    z-index: 40;
+    z-index: 100;
 }
 .patient strong {
     display: block;
     font-size: 17px;
 }
 .patient span {
+    font-size: 11px;
     color: #777;
-    font-size: 12px;
 }
 /* =========================
    SARA
 ========================= */
 .sara {
     position: absolute;
-    width: 300px;
-    height: 500px;
+    width: 290px;
+    height: 480px;
     left: 50%;
-    bottom: 130px;
+    bottom: 145px;
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 10;
 }
 /* HAIR */
 .hair {
     position: absolute;
-    top: 10px;
-    left: 48px;
+    top: 5px;
+    left: 43px;
     width: 205px;
-    height: 225px;
+    height: 220px;
     background: #493028;
     border-radius: 50%;
 }
 /* EARS */
 .ear {
     position: absolute;
-    top: 110px;
-    width: 24px;
-    height: 43px;
+    top: 108px;
+    width: 23px;
+    height: 42px;
     background: #efbd99;
     border-radius: 50%;
     z-index: 1;
 }
 .ear.left {
-    left: 60px;
+    left: 55px;
 }
 .ear.right {
-    right: 60px;
+    right: 55px;
 }
 /* FACE */
 .face {
     position: absolute;
-    top: 45px;
-    left: 68px;
+    top: 42px;
+    left: 63px;
     width: 165px;
     height: 190px;
     background: #f2c7a5;
@@ -114,7 +129,7 @@ header {
 /* SAD EYEBROWS */
 .eyebrow {
     position: absolute;
-    top: 60px;
+    top: 59px;
     width: 31px;
     height: 4px;
     background: #5b3930;
@@ -131,7 +146,7 @@ header {
 /* EYES */
 .eye {
     position: absolute;
-    top: 76px;
+    top: 75px;
     width: 18px;
     height: 11px;
     background: #30241f;
@@ -146,7 +161,7 @@ header {
 /* SAD MOUTH */
 .mouth {
     position: absolute;
-    top: 134px;
+    top: 133px;
     left: 50%;
     width: 42px;
     height: 20px;
@@ -157,8 +172,8 @@ header {
 /* NECK */
 .neck {
     position: absolute;
-    top: 225px;
-    left: 123px;
+    top: 220px;
+    left: 118px;
     width: 55px;
     height: 55px;
     background: #efbd99;
@@ -166,24 +181,24 @@ header {
 /* BODY */
 .body {
     position: absolute;
-    top: 260px;
-    left: 27px;
+    top: 255px;
+    left: 23px;
     width: 245px;
     height: 250px;
     background: #8da6b5;
     border-radius: 90px 90px 25px 25px;
 }
 /* =========================
-   SPEECH
+   SPEECH BUBBLE
 ========================= */
 .speech {
     position: absolute;
-    z-index: 50;
-    left: calc(50% + 115px);
-    bottom: 350px;
-    width: 340px;
+    z-index: 200;
+    left: calc(50% + 105px);
+    top: 130px;
+    width: 330px;
     background: white;
-    padding: 19px;
+    padding: 18px;
     border-radius: 22px;
     box-shadow: 0 8px 30px rgba(0,0,0,.12);
     font-size: 16px;
@@ -213,87 +228,105 @@ header {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 150px;
+    height: 115px;
     background: #8b6a50;
-    z-index: 10;
-    box-shadow: 0 -5px 15px rgba(0,0,0,.12);
-}
-/* =========================
-   CONTROLS
-========================= */
-.controls {
-    position: absolute;
-    z-index: 100;
-    bottom: 55px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-}
-.control {
-    width: 62px;
-    height: 56px;
-    border: none;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 5px 18px rgba(0,0,0,.25);
-    font-size: 24px;
-    cursor: pointer;
-}
-.control:active {
-    transform: scale(.94);
+    z-index: 50;
 }
 /* =========================
    QUESTION BOX
 ========================= */
 .question-area {
     display: none;
-    position: absolute;
-    z-index: 200;
-    bottom: 120px;
+    position: fixed;
     left: 50%;
+    bottom: 82px;
     transform: translateX(-50%);
-    width: min(650px, 90%);
+    width: min(650px, 88%);
     background: white;
-    padding: 10px;
+    padding: 9px;
     border-radius: 14px;
-    box-shadow: 0 7px 25px rgba(0,0,0,.2);
+    box-shadow: 0 7px 25px rgba(0,0,0,.25);
+    z-index: 600;
 }
 .question-area.open {
-    display: flex;
+    display: block;
 }
 .question-area input {
-    flex: 1;
+    width: 100%;
     border: none;
     outline: none;
+    padding: 13px;
     font-size: 16px;
-    padding: 12px;
 }
-/* MOBILE */
+/* =========================
+   IMPORTANT:
+   FIXED BUTTONS
+========================= */
+.controls {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    z-index: 1000;
+}
+.control {
+    width: 60px;
+    height: 55px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.30);
+    font-size: 24px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.control:active {
+    transform: scale(.92);
+}
+/* =========================
+   MOBILE
+========================= */
 @media(max-width:700px) {
     .sara {
+        width: 270px;
+        height: 440px;
+        bottom: 120px;
         transform:
             translateX(-50%)
-            scale(.68);
+            scale(.72);
         transform-origin:
             bottom center;
-        bottom: 125px;
     }
     .speech {
+        top: 105px;
         left: 50%;
-        bottom: 365px;
         transform: translateX(-50%);
-        width: 82%;
-        font-size: 15px;
+        width: 84%;
+        font-size: 14px;
     }
     .speech::before {
         display: none;
     }
+    .patient {
+        top: 12px;
+        left: 12px;
+    }
     .controls {
-        bottom: 55px;
+        bottom: 18px;
+        gap: 12px;
+    }
+    .control {
+        width: 58px;
+        height: 52px;
+        font-size: 22px;
     }
 }
-/* BLINK */
+/* =========================
+   BLINK
+========================= */
 .sara.blink .eye {
     height: 2px;
 }
@@ -361,27 +394,35 @@ header {
 </div>
 <!-- DESK -->
 <div class="desk"></div>
-<!-- CONTROLS -->
-<div class="controls">
-    <button
-        class="control"
-        onclick="openKeyboard()"
-    >
-        ⌨️
-    </button>
-    <button
-        class="control"
-        onclick="startMicrophone()"
-    >
-        🎙️
-    </button>
-    <button
-        class="control"
-        onclick="askSara()"
-    >
-        🔎
-    </button>
 </div>
+<!-- =========================
+     FIXED CONTROLS
+========================= -->
+<div class="controls">
+<button
+    class="control"
+    type="button"
+    onclick="openKeyboard()"
+    aria-label="Keyboard"
+>
+    ⌨️
+</button>
+<button
+    class="control"
+    type="button"
+    onclick="startMicrophone()"
+    aria-label="Microphone"
+>
+    🎙️
+</button>
+<button
+    class="control"
+    type="button"
+    onclick="askSara()"
+    aria-label="Ask Sara"
+>
+    🔎
+</button>
 </div>
 <script>
 const questionArea =
@@ -390,12 +431,16 @@ const questionInput =
     document.getElementById("questionInput");
 const speech =
     document.getElementById("speech");
-/* KEYBOARD */
+/* =========================
+   KEYBOARD
+========================= */
 function openKeyboard() {
     questionArea.classList.add("open");
     questionInput.focus();
 }
-/* ASK SARA */
+/* =========================
+   ASK SARA
+========================= */
 function askSara() {
     const q =
         questionInput.value
@@ -409,7 +454,8 @@ function askSara() {
     if (
         q.includes("why") ||
         q.includes("brought") ||
-        q.includes("reason")
+        q.includes("reason") ||
+        q.includes("here")
     ) {
         answer =
             "I've been having this pain since yesterday. It started getting worse, so I decided to come here.";
@@ -441,7 +487,8 @@ function askSara() {
     }
     else if (
         q.includes("nausea") ||
-        q.includes("nauseous")
+        q.includes("nauseous") ||
+        q.includes("sick")
     ) {
         answer =
             "Yes... I've been feeling really nauseous.";
@@ -466,43 +513,4 @@ function askSara() {
         q.includes("appetite") ||
         q.includes("hungry")
     ) {
-        answer =
-            "I haven't really wanted to eat today.";
-    }
-    else if (
-        q.includes("move") ||
-        q.includes("walking") ||
-        q.includes("movement")
-    ) {
-        answer =
-            "Moving around seems to make the pain worse.";
-    }
-    else if (
-        q.includes("bowel") ||
-        q.includes("stool") ||
-        q.includes("poop")
-    ) {
-        answer =
-            "I haven't noticed anything unusual with my bowel movements.";
-    }
-    else if (
-        q.includes("urine") ||
-        q.includes("pee") ||
-        q.includes("urinate")
-    ) {
-        answer =
-            "No, nothing seems different when I pee.";
-    }
-    else if (
-        q.includes("medicine") ||
-        q.includes("medication")
-    ) {
-        answer =
-            "I don't take any regular medications.";
-    }
-    else if (
-        q.includes("allergy") ||
-        q.includes("allergic")
-    ) {
-        answer =
-  
+        
