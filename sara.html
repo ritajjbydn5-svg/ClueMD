@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sara | MEDMYSTERY</title>
+  <title>Sara | ClueMD</title>
   <style>
     * {
       box-sizing: border-box;
@@ -26,6 +26,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 6%;
+      z-index: 50;
     }
     .logo {
       font-size: 23px;
@@ -45,10 +46,8 @@
       align-items: flex-end;
       padding: 35px 20px 0;
       overflow: hidden;
+      min-height: calc(100vh - 70px);
     }
-    /*
-      BACKGROUND
-    */
     .wall {
       position: absolute;
       inset: 0;
@@ -96,6 +95,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: transform 0.3s ease;
     }
     .hair {
       position: absolute;
@@ -114,6 +114,7 @@
       background: #f2c7a5;
       border-radius: 48% 48% 45% 45%;
       z-index: 2;
+      transition: transform 0.25s ease;
     }
     .ear {
       position: absolute;
@@ -137,7 +138,7 @@
       height: 12px;
       background: #30241f;
       border-radius: 50%;
-      transition: height 0.12s;
+      transition: height 0.12s, transform 0.2s;
     }
     .eye.left {
       left: 38px;
@@ -150,8 +151,10 @@
     */
     .sara.blink .eye {
       height: 2px;
-      border-radius: 50%;
     }
+    /*
+      MOUTH
+    */
     .mouth {
       position: absolute;
       left: 50%;
@@ -161,7 +164,7 @@
       border-bottom: 3px solid #7c3f3f;
       border-radius: 0 0 50% 50%;
       transform: translateX(-50%);
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
     /*
       EXPRESSIONS
@@ -183,6 +186,22 @@
       border: 3px solid #7c3f3f;
       border-radius: 50%;
     }
+    .sara.nauseous .mouth {
+      width: 30px;
+      height: 8px;
+      border-bottom: 3px solid #7c3f3f;
+      border-radius: 50%;
+      transform: translateX(-50%) rotate(-5deg);
+    }
+    .sara.happy .mouth {
+      width: 40px;
+      height: 18px;
+      border-bottom: 4px solid #7c3f3f;
+      border-radius: 0 0 50% 50%;
+    }
+    /*
+      BODY
+    */
     .neck {
       position: absolute;
       top: 225px;
@@ -228,7 +247,7 @@
       left: 12%;
       width: 180px;
       height: 105px;
-      background: #fff;
+      background: white;
       border-radius: 5px;
       transform: rotate(-4deg);
       box-shadow: 0 5px 15px rgba(0,0,0,0.15);
@@ -245,7 +264,7 @@
       border-radius: 5px;
     }
     /*
-      STATUS
+      INFORMATION PANEL
     */
     .status {
       position: absolute;
@@ -253,12 +272,35 @@
       top: 25px;
       left: 25px;
       background: white;
-      padding: 12px 16px;
+      padding: 14px 17px;
       border-radius: 12px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
       font-size: 14px;
       font-weight: 700;
+      max-width: 230px;
     }
+    .name-card {
+      position: absolute;
+      z-index: 10;
+      top: 25px;
+      right: 25px;
+      background: white;
+      padding: 15px 18px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    .name-card strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .name-card span {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    /*
+      CONTROLS
+    */
     .controls {
       position: absolute;
       z-index: 20;
@@ -269,6 +311,7 @@
       gap: 8px;
       flex-wrap: wrap;
       justify-content: center;
+      width: 90%;
     }
     button {
       border: none;
@@ -293,12 +336,21 @@
       .controls {
         bottom: 160px;
       }
+      .name-card {
+        top: 25px;
+        right: 15px;
+      }
+      .status {
+        left: 15px;
+      }
     }
   </style>
 </head>
 <body>
 <header>
-  <div class="logo">MEDMYSTERY</div>
+  <div class="logo">
+    ClueMD
+  </div>
   <a class="back" href="case001.html">
     ← Case 001
   </a>
@@ -308,6 +360,10 @@
   <div class="window"></div>
   <div class="status" id="status">
     Sara is waiting for you...
+  </div>
+  <div class="name-card">
+<strong>Sara</strong>
+<span>17 · Case 001</span>
   </div>
   <div class="sara" id="sara">
 <div class="hair"></div>
@@ -331,8 +387,14 @@
 <button onclick="expression('pained')">
   😣 Pain
 </button>
+<button onclick="expression('nauseous')">
+  🤢 Nauseous
+</button>
 <button onclick="expression('surprised')">
   😮 Surprised
+</button>
+<button onclick="expression('happy')">
+  😊 Relieved
 </button>
   </div>
   <div class="desk">
@@ -342,8 +404,10 @@
   </div>
 </div>
 <script>
-const sara = document.getElementById("sara");
-const statusText = document.getElementById("status");
+const sara =
+  document.getElementById("sara");
+const statusText =
+  document.getElementById("status");
 /*
   AUTOMATIC BLINKING
 */
@@ -353,14 +417,14 @@ function blink() {
     sara.classList.remove("blink");
   }, 130);
 }
-/*
-  Random natural blinking
-*/
 function randomBlink() {
   blink();
   const nextBlink =
     Math.floor(Math.random() * 4000) + 2500;
-  setTimeout(randomBlink, nextBlink);
+  setTimeout(
+    randomBlink,
+    nextBlink
+  );
 }
 randomBlink();
 /*
@@ -370,7 +434,9 @@ function expression(type) {
   sara.classList.remove(
     "worried",
     "pained",
-    "surprised"
+    "nauseous",
+    "surprised",
+    "happy"
   );
   if (type === "worried") {
     sara.classList.add("worried");
@@ -382,10 +448,20 @@ function expression(type) {
     statusText.textContent =
       "Sara looks uncomfortable.";
   }
+  else if (type === "nauseous") {
+    sara.classList.add("nauseous");
+    statusText.textContent =
+      "Sara looks nauseous.";
+  }
   else if (type === "surprised") {
     sara.classList.add("surprised");
     statusText.textContent =
       "Sara looks surprised.";
+  }
+  else if (type === "happy") {
+    sara.classList.add("happy");
+    statusText.textContent =
+      "Sara looks relieved.";
   }
   else {
     statusText.textContent =
