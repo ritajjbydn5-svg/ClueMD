@@ -14,7 +14,7 @@ html, body {
     height: 100%;
     overflow: hidden;
     font-family: Arial, sans-serif;
-    background: #f5f7f8;
+    background: #eef2f4;
     color: #18232d;
 }
 /* HEADER */
@@ -28,20 +28,20 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 18px;
     border-bottom: 1px solid #ddd;
-    z-index: 500;
+    z-index: 1000;
 }
 .logo {
     font-size: 23px;
-    font-weight: bold;
+    font-weight: 800;
 }
 .back {
-    color: #18232d;
     text-decoration: none;
+    color: #18232d;
     font-weight: bold;
 }
-/* CLINIC */
+/* MAIN ROOM */
 .clinic {
     position: fixed;
     top: 58px;
@@ -51,13 +51,13 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
-/* PATIENT */
+/* PATIENT LABEL */
 .patient {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 14px;
+    left: 14px;
     background: white;
-    padding: 10px 15px;
+    padding: 10px 14px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,.08);
     z-index: 100;
@@ -78,9 +78,9 @@ header {
     width: 290px;
     height: 480px;
     left: 50%;
-    bottom: 145px;
+    bottom: 135px;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 20;
 }
 .hair {
     position: absolute;
@@ -116,6 +116,7 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
+/* WORRIED EYEBROWS */
 .eyebrow {
     position: absolute;
     top: 59px;
@@ -146,6 +147,7 @@ header {
 .eye.right {
     right: 37px;
 }
+/* SAD/WORRIED MOUTH */
 .mouth {
     position: absolute;
     top: 133px;
@@ -174,13 +176,14 @@ header {
     border-radius: 90px 90px 25px 25px;
 }
 /* =========================
-   SPEECH
+   SPEECH BUBBLE
 ========================= */
 .speech {
     position: absolute;
-    z-index: 200;
+    display: none;
+    z-index: 300;
     left: calc(50% + 105px);
-    top: 130px;
+    top: 125px;
     width: 330px;
     background: white;
     padding: 18px;
@@ -188,6 +191,9 @@ header {
     box-shadow: 0 8px 30px rgba(0,0,0,.12);
     font-size: 16px;
     line-height: 1.45;
+}
+.speech.show {
+    display: block;
 }
 .speech::before {
     content: "";
@@ -205,44 +211,66 @@ header {
     color: #777;
     margin-bottom: 7px;
 }
-/* DESK */
+/* =========================
+   DESK
+========================= */
 .desk {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 115px;
+    height: 105px;
     background: #8b6a50;
     z-index: 50;
 }
 /* =========================
-   QUESTION
+   QUESTION PANEL
 ========================= */
-.question-area {
+.panel {
     display: none;
     position: fixed;
     left: 50%;
-    bottom: 90px;
+    bottom: 92px;
     transform: translateX(-50%);
-    width: min(650px, 88%);
+    width: min(650px, 90%);
     background: white;
-    padding: 9px;
-    border-radius: 14px;
-    box-shadow: 0 7px 25px rgba(0,0,0,.25);
-    z-index: 900;
+    padding: 14px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    z-index: 2000;
 }
-.question-area.open {
+.panel.show {
     display: block;
 }
-.question-input {
-    width: 100%;
-    border: none;
+.panel-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+.panel-row {
+    display: flex;
+    gap: 8px;
+}
+.panel input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid #ccd3d8;
+    border-radius: 10px;
+    padding: 12px;
     outline: none;
-    padding: 13px;
     font-size: 16px;
 }
+.panel button {
+    border: none;
+    border-radius: 10px;
+    padding: 0 16px;
+    background: #18232d;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 /* =========================
-   BUTTONS
+   FIXED ICONS
 ========================= */
 .controls {
     position: fixed;
@@ -251,12 +279,9 @@ header {
     transform: translateX(-50%);
     display: flex;
     gap: 12px;
-    z-index: 2000;
+    z-index: 3000;
 }
 .control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 60px;
     height: 55px;
     padding: 0;
@@ -268,17 +293,17 @@ header {
     cursor: pointer;
     pointer-events: auto;
     touch-action: manipulation;
-    position: relative;
+    -webkit-tap-highlight-color: transparent;
 }
 .control:active {
     transform: scale(.92);
 }
 /* MOBILE */
-@media(max-width:700px) {
+@media (max-width: 700px) {
     .sara {
         width: 270px;
         height: 440px;
-        bottom: 125px;
+        bottom: 120px;
         transform:
             translateX(-50%)
             scale(.70);
@@ -307,9 +332,7 @@ header {
 </head>
 <body>
 <header>
-<div class="logo">
-    ClueMD
-</div>
+<div class="logo">ClueMD</div>
 <a href="case001.html" class="back">
     ← Case 001
 </a>
@@ -317,9 +340,7 @@ header {
 <div class="clinic">
 <div class="patient">
     <strong>Sara</strong>
-    <span>
-        17 years old · Case 001
-    </span>
+    <span>17 years old · Case 001</span>
 </div>
 <!-- SARA -->
 <div class="sara" id="sara">
@@ -336,164 +357,145 @@ header {
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SPEECH -->
+<!--
+    IMPORTANT:
+    NO CHATBOX IS SHOWN HERE.
+    Sara only speaks after you ask her something.
+-->
 <div class="speech" id="speech">
-    <span class="speech-name">
-        SARA
-    </span>
-    Hi... I'm Sara. I've been having this really bad pain since yesterday. It has been getting worse, and I'm starting to feel scared.
-</div>
-<!-- QUESTION -->
-<div class="question-area" id="questionArea">
-    <input
-        class="question-input"
-        id="questionInput"
-        type="text"
-        placeholder="Ask Sara a question..."
-        autocomplete="off"
-    >
+    <span class="speech-name">SARA</span>
+    <span id="speechText"></span>
 </div>
 <div class="desk"></div>
 </div>
 <!-- =========================
-     BUTTONS
+     QUESTION / DIAGNOSIS PANEL
+========================= -->
+<div class="panel" id="questionPanel">
+<div class="panel-title" id="panelTitle">
+    Ask Sara a question
+</div>
+<div class="panel-row">
+    <input
+        id="panelInput"
+        type="text"
+        autocomplete="off"
+        placeholder="Type your question..."
+    >
+    <button
+        type="button"
+        onclick="submitQuestion()"
+    >
+        Send
+    </button>
+</div>
+</div>
+<!-- =========================
+     THREE ICONS
 ========================= -->
 <div class="controls">
+<!-- KEYBOARD -->
 <button
-    id="keyboardButton"
-    class="control"
     type="button"
+    class="control"
+    id="keyboardButton"
+    onclick="openKeyboard()"
+    aria-label="Ask Sara with keyboard"
 >
     ⌨️
 </button>
+<!-- MICROPHONE -->
 <button
-    id="microphoneButton"
-    class="control"
     type="button"
+    class="control"
+    id="microphoneButton"
+    onclick="startMicrophone()"
+    aria-label="Ask Sara with microphone"
 >
     🎙️
 </button>
+<!-- MAGNIFIER = DIAGNOSIS -->
 <button
-    id="searchButton"
-    class="control"
     type="button"
+    class="control"
+    id="diagnosisButton"
+    onclick="openDiagnosis()"
+    aria-label="Submit diagnosis"
 >
     🔎
 </button>
 </div>
 <script>
 /* =========================
-   GET ELEMENTS
+   ELEMENTS
 ========================= */
-const keyboardButton =
-    document.getElementById("keyboardButton");
-const microphoneButton =
-    document.getElementById("microphoneButton");
-const searchButton =
-    document.getElementById("searchButton");
-const questionArea =
-    document.getElementById("questionArea");
-const questionInput =
-    document.getElementById("questionInput");
+const panel =
+    document.getElementById("questionPanel");
+const panelTitle =
+    document.getElementById("panelTitle");
+const panelInput =
+    document.getElementById("panelInput");
 const speech =
     document.getElementById("speech");
+const speechText =
+    document.getElementById("speechText");
 /* =========================
-   KEYBOARD BUTTON
+   MODE
 ========================= */
-keyboardButton.addEventListener(
-    "click",
-    function() {
-        questionArea.classList.add("open");
-        setTimeout(
-            function() {
-                questionInput.focus();
-            },
-            50
-        );
+let currentMode = "question";
+/* =========================
+   KEYBOARD
+========================= */
+function openKeyboard() {
+    currentMode = "question";
+    panelTitle.textContent =
+        "Ask Sara a question";
+    panelInput.placeholder =
+        "Type your question...";
+    panelInput.value = "";
+    panel.classList.add("show");
+    setTimeout(function() {
+        panelInput.focus();
+    }, 100);
+}
+/* =========================
+   SUBMIT QUESTION
+========================= */
+function submitQuestion() {
+    if (currentMode !== "question") {
+        submitDiagnosis();
+        return;
     }
-);
-/* =========================
-   SEARCH BUTTON
-========================= */
-searchButton.addEventListener(
-    "click",
-    function() {
-        askSara();
-    }
-);
-/* =========================
-   ASK SARA
-========================= */
-function askSara() {
-    const q =
-        questionInput.value
-        .trim()
-        .toLowerCase();
-    if (q === "") {
-        questionArea.classList.add("open");
-        questionInput.focus();
+    const question =
+        panelInput.value.trim().toLowerCase();
+    if (!question) {
         return;
     }
     let answer;
+    /* WHY / REASON */
     if (
-        q.includes("why") ||
-        q.includes("brought") ||
-        q.includes("reason") ||
-        q.includes("here")
+        question.includes("why") ||
+        question.includes("brought") ||
+        question.includes("reason") ||
+        question.includes("here")
     ) {
         answer =
             "I've been having this pain since yesterday. It started getting worse, so I decided to come here.";
     }
+    /* LOCATION */
     else if (
-        q.includes("where") ||
-        q.includes("location") ||
-        q.includes("side")
+        question.includes("where") ||
+        question.includes("location") ||
+        question.includes("side")
     ) {
         answer =
             "It's mostly on the lower right side of my abdomen.";
     }
+    /* ONSET */
     else if (
-        q.includes("when") ||
-        q.includes("started") ||
-        q.includes("began") ||
-        q.includes("long")
+        question.includes("when") ||
+        question.includes("started") ||
+        question.includes("began") ||
+        question.includes("long")
     ) {
-        answer =
-            "It started yesterday. It wasn't too bad at first, but it has gotten worse.";
-    }
-    else if (
-        q.includes("pain") ||
-        q.includes("hurt") ||
-        q.includes("hurts")
-    ) {
-        answer =
-            "It's a pretty strong pain. I'd say it's about 7 out of 10.";
-    }
-    else if (
-        q.includes("nausea") ||
-        q.includes("nauseous") ||
-        q.includes("sick")
-    ) {
-        answer =
-            "Yes... I've been feeling really nauseous.";
-    }
-    else if (
-        q.includes("vomit") ||
-        q.includes("vomiting")
-    ) {
-        answer =
-            "No, I haven't vomited.";
-    }
-    else if (
-        q.includes("fever") ||
-        q.includes("temperature") ||
-        q.includes("chills")
-    ) {
-        answer =
-            "I felt really hot last night, but I didn't check my temperature.";
-    }
-    else if (
-        q.includes("eat") ||
-        q.includes("appetite") ||
-        q.includes("hungry")
-    
+      
