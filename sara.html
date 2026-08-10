@@ -2,338 +2,371 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name=“viewport”
+content=“width=device-width, initial-scale=1.0”
+
 <title>Sara - ClueMD</title>
 <style>
-*{
-    box-sizing:border-box;
+/* =========================
+   GENERAL
+========================= */
+* {
+    box-sizing: border-box;
 }
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    font-family:Arial,sans-serif;
-    background:#eef2f4;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #eef2f4;
 }
-header{
-    height:58px;
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 18px;
-    border-bottom:1px solid #ddd;
-    position:relative;
-    z-index:100;
+/* =========================
+   HEADER
+========================= */
+header {
+    height: 58px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    z-index: 100;
 }
-.logo{
-    font-size:23px;
-    font-weight:bold;
+.logo {
+    font-size: 23px;
+    font-weight: bold;
 }
-.back{
-    color:#18232d;
-    text-decoration:none;
-    font-weight:bold;
+.back {
+    color: #18232d;
+    text-decoration: none;
+    font-weight: bold;
 }
-.room{
-    position:relative;
-    width:100%;
-    height:calc(100vh - 58px);
-    overflow:hidden;
-    background:#f7f9fa;
+/* =========================
+   ROOM
+========================= */
+.room {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 58px);
+    overflow: hidden;
+    background: #f7f9fa;
 }
-.patient{
-    position:absolute;
-    top:15px;
-    left:15px;
-    background:white;
-    padding:10px 15px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,.12);
-    z-index:20;
+/* =========================
+   PATIENT LABEL
+========================= */
+.patient {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.12);
+    z-index: 20;
 }
-.patient strong{
-    display:block;
-    font-size:17px;
+.patient strong {
+    display: block;
+    font-size: 17px;
 }
-.patient small{
-    color:#777;
+.patient small {
+    color: #777;
 }
 /* =========================
    SARA
 ========================= */
-.sara{
-    position:absolute;
-    width:270px;
-    height:430px;
-    left:50%;
-    bottom:105px;
-    transform:translateX(-50%);
-    z-index:5;
+.sara {
+    position: absolute;
+    width: 270px;
+    height: 430px;
+    left: 50%;
+    bottom: 105px;
+    transform: translateX(-50%);
+    z-index: 5;
 }
-.hair{
-    position:absolute;
-    top:0;
-    left:38px;
-    width:195px;
-    height:205px;
-    background:#493028;
-    border-radius:50%;
+.hair {
+    position: absolute;
+    top: 0;
+    left: 38px;
+    width: 195px;
+    height: 205px;
+    background: #493028;
+    border-radius: 50%;
 }
-.ear{
-    position:absolute;
-    top:105px;
-    width:22px;
-    height:40px;
-    background:#efbd99;
-    border-radius:50%;
+.ear {
+    position: absolute;
+    top: 105px;
+    width: 22px;
+    height: 40px;
+    background: #efbd99;
+    border-radius: 50%;
 }
-.ear.left{
-    left:49px;
+.ear.left {
+    left: 49px;
 }
-.ear.right{
-    right:49px;
+.ear.right {
+    right: 49px;
 }
-.face{
-    position:absolute;
-    top:38px;
-    left:57px;
-    width:157px;
-    height:180px;
-    background:#f2c7a5;
-    border-radius:48%;
-    z-index:2;
+.face {
+    position: absolute;
+    top: 38px;
+    left: 57px;
+    width: 157px;
+    height: 180px;
+    background: #f2c7a5;
+    border-radius: 48%;
+    z-index: 2;
 }
-.brow{
-    position:absolute;
-    top:57px;
-    width:30px;
-    height:4px;
-    background:#57382e;
-    border-radius:5px;
+.brow {
+    position: absolute;
+    top: 57px;
+    width: 30px;
+    height: 4px;
+    background: #57382e;
+    border-radius: 5px;
 }
-.brow.left{
-    left:28px;
-    transform:rotate(14deg);
+.brow.left {
+    left: 28px;
+    transform: rotate(14deg);
 }
-.brow.right{
-    right:28px;
-    transform:rotate(-14deg);
+.brow.right {
+    right: 28px;
+    transform: rotate(-14deg);
 }
-.eye{
-    position:absolute;
-    top:73px;
-    width:17px;
-    height:11px;
-    background:#30241f;
-    border-radius:50%;
+.eye {
+    position: absolute;
+    top: 73px;
+    width: 17px;
+    height: 11px;
+    background: #30241f;
+    border-radius: 50%;
 }
-.eye.left{
-    left:35px;
+.eye.left {
+    left: 35px;
 }
-.eye.right{
-    right:35px;
+.eye.right {
+    right: 35px;
 }
-.mouth{
-    position:absolute;
-    top:132px;
-    left:50%;
-    width:40px;
-    height:18px;
-    border-top:4px solid #813f46;
-    border-radius:50% 50% 0 0;
-    transform:translateX(-50%);
+.mouth {
+    position: absolute;
+    top: 132px;
+    left: 50%;
+    width: 40px;
+    height: 18px;
+    border-top: 4px solid #813f46;
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-50%);
 }
-.neck{
-    position:absolute;
-    top:210px;
-    left:109px;
-    width:52px;
-    height:55px;
-    background:#efbd99;
+.neck {
+    position: absolute;
+    top: 210px;
+    left: 109px;
+    width: 52px;
+    height: 55px;
+    background: #efbd99;
 }
-.body{
-    position:absolute;
-    top:250px;
-    left:13px;
-    width:245px;
-    height:220px;
-    background:#8da6b5;
-    border-radius:90px 90px 20px 20px;
+.body {
+    position: absolute;
+    top: 250px;
+    left: 13px;
+    width: 245px;
+    height: 220px;
+    background: #8da6b5;
+    border-radius: 90px 90px 20px 20px;
 }
 /* =========================
    SPEECH CLOUD
 ========================= */
-.speech{
-    position:absolute;
-    top:85px;
-    left:50%;
-    transform:translateX(-50%);
-    width:85%;
-    max-width:430px;
-    background:white;
-    padding:18px;
-    border-radius:22px;
-    box-shadow:0 6px 22px rgba(0,0,0,.15);
-    z-index:30;
+.speech {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 430px;
+    background: white;
+    padding: 18px;
+    border-radius: 22px;
+    box-shadow: 0 6px 22px rgba(0,0,0,.15);
+    z-index: 30;
 }
-.speech-name{
-    display:block;
-    font-size:12px;
-    font-weight:bold;
-    color:#777;
-    margin-bottom:7px;
+.speech-name {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 7px;
 }
-#speechText{
-    font-size:16px;
-    line-height:1.45;
+#speechText {
+    font-size: 16px;
+    line-height: 1.45;
 }
 /* =========================
    DESK
 ========================= */
-.desk{
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:100%;
-    height:95px;
-    background:#8b6a50;
-    z-index:40;
+.desk {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 95px;
+    background: #8b6a50;
+    z-index: 40;
 }
 /* =========================
    POPUPS
 ========================= */
-.popup{
-    position:fixed;
-    display:none;
-    left:50%;
-    bottom:85px;
-    transform:translateX(-50%);
-    width:90%;
-    max-width:600px;
-    background:white;
-    padding:18px;
-    border-radius:16px;
-    box-shadow:0 8px 30px rgba(0,0,0,.35);
-    z-index:99999;
+.popup {
+    position: fixed;
+    display: none;
+    left: 50%;
+    bottom: 85px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    z-index: 99999;
 }
-#keyboard:target{
-    display:block;
+.popup.open {
+    display: block;
 }
-#diagnosis:target{
-    display:block;
+.popup-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
-.popup-title{
-    font-size:17px;
-    font-weight:bold;
-    margin-bottom:12px;
+.input-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
 }
-.input-row{
-    display:flex;
-    gap:8px;
-    width:100%;
+.input-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #bbb;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
 }
-.input-row input{
-    flex:1;
-    min-width:0;
-    padding:13px;
-    border:1px solid #bbb;
-    border-radius:9px;
-    font-size:16px;
-    outline:none;
+.input-row input:focus {
+    border-color: #18232d;
 }
-.send-button{
-    flex-shrink:0;
-    border:none;
-    background:#18232d;
-    color:white;
-    border-radius:9px;
-    padding:0 17px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    -webkit-appearance:none;
-    appearance:none;
-    touch-action:manipulation;
+.send-button {
+    flex-shrink: 0;
+    border: none;
+    background: #18232d;
+    color: white;
+    border-radius: 9px;
+    padding: 0 17px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
 }
-.send-button:active{
-    transform:scale(.95);
+.send-button:active {
+    transform: scale(.95);
 }
-.close{
-    display:inline-block;
-    margin-top:12px;
-    color:#555;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
+.close {
+    display: inline-block;
+    margin-top: 12px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
 }
-#diagnosisResult{
-    margin-top:12px;
-    font-weight:bold;
-    line-height:1.4;
+#diagnosisResult {
+    margin-top: 12px;
+    font-weight: bold;
+    line-height: 1.4;
 }
 /* =========================
    BOTTOM BUTTONS
 ========================= */
-.controls{
-    position:fixed;
-    left:50%;
-    bottom:14px;
-    transform:translateX(-50%);
-    display:flex;
-    gap:14px;
-    z-index:100000;
+.controls {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    z-index: 100000;
 }
-.control{
-    width:62px;
-    height:55px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:2px solid #18232d;
-    border-radius:15px;
-    background:white;
-    color:black;
-    text-decoration:none;
-    font-size:25px;
-    box-shadow:0 5px 18px rgba(0,0,0,.3);
-    -webkit-tap-highlight-color:transparent;
-    touch-action:manipulation;
+.control {
+    width: 62px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #18232d;
+    border-radius: 15px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.3);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
 }
-.control:active{
-    transform:scale(.92);
+.control:active {
+    transform: scale(.92);
 }
-@media(max-width:700px){
-    .sara{
-        transform:translateX(-50%) scale(.72);
-        transform-origin:bottom center;
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 700px) {
+    .sara {
+        transform: translateX(-50%) scale(.72);
+        transform-origin: bottom center;
     }
-    .control{
-        width:58px;
-        height:52px;
+    .control {
+        width: 58px;
+        height: 52px;
     }
 }
 </style>
 </head>
 <body>
+<!-- =========================
+     HEADER
+========================= -->
 <header>
 <div class="logo">
     ClueMD
 </div>
-<a href="case001.html" class="back">
+<a
+    href="case001.html"
+    class="back"
+>
     ← Case 001
 </a>
 </header>
+<!-- =========================
+     ROOM
+========================= -->
 <div class="room">
+<!-- PATIENT LABEL -->
 <div class="patient">
     <strong>Sara</strong>
     <small>
         17 years old · Case 001
     </small>
 </div>
-<!-- SARA -->
+<!-- =========================
+     SARA
+========================= -->
 <div class="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
@@ -348,7 +381,9 @@ header{
     <div class="neck"></div>
     <div class="body"></div>
 </div>
-<!-- SPEECH -->
+<!-- =========================
+     SPEECH
+========================= -->
 <div class="speech">
     <span class="speech-name">
         SARA
@@ -360,9 +395,12 @@ header{
 <div class="desk"></div>
 </div>
 <!-- =========================
-     QUESTION BOX
+     QUESTION POPUP
 ========================= -->
-<div id="keyboard" class="popup">
+<div
+    id="keyboardPopup"
+    class="popup"
+>
 <div class="popup-title">
     Ask Sara a question
 </div>
@@ -371,30 +409,32 @@ header{
         id="questionInput"
         type="text"
         autocomplete="off"
+        autocapitalize="sentences"
         placeholder="Type your question..."
     >
-    <!-- NO FORM.
-         DIRECT BUTTON. -->
     <button
         id="sendQuestionButton"
         class="send-button"
         type="button"
-        onclick="sendQuestion()"
     >
         Send
     </button>
 </div>
 <a
     href="#"
+    id="closeKeyboard"
     class="close"
 >
     Close
 </a>
 </div>
 <!-- =========================
-     DIAGNOSIS BOX
+     DIAGNOSIS POPUP
 ========================= -->
-<div id="diagnosis" class="popup">
+<div
+    id="diagnosisPopup"
+    class="popup"
+>
 <div class="popup-title">
     What do you think Sara has?
 </div>
@@ -403,13 +443,13 @@ header{
         id="diagnosisInput"
         type="text"
         autocomplete="off"
+        autocapitalize="sentences"
         placeholder="Enter your diagnosis..."
     >
     <button
         id="diagnosisButton"
         class="send-button"
         type="button"
-        onclick="submitDiagnosis()"
     >
         Submit
     </button>
@@ -417,78 +457,56 @@ header{
 <div id="diagnosisResult"></div>
 <a
     href="#"
+    id="closeDiagnosis"
     class="close"
 >
     Close
 </a>
 </div>
 <!-- =========================
-     BUTTONS
+     BOTTOM CONTROLS
 ========================= -->
 <div class="controls">
 <a
-    href="#keyboard"
+    href="#"
+    id="keyboardButton"
     class="control"
     aria-label="Ask Sara"
 >
     ⌨️
 </a>
 <a
-    href="#diagnosis"
+    href="#"
+    id="diagnosisOpenButton"
     class="control"
     aria-label="Diagnosis"
 >
     🔎
 </a>
 </div>
-<!-- =========================
+<!-- =====================================================
      JAVASCRIPT
-     =========================
-     This is intentionally at
-     the VERY END of the page.
-========================= -->
+===================================================== -->
 <script>
-/* ==========================================
-   SARA'S CASE INFORMATION
-========================================== */
-var saraAnswers = [
-    ["why are you here",
-     "The pain kept getting worse, so I decided I needed to get checked."],
-    ["why did you come",
-     "The pain kept getting worse, so I decided I needed to get checked."],
-    ["what brought you",
-     "The pain kept getting worse, so I decided I needed to get checked."],
-    ["what brings you",
-     "The pain kept getting worse, so I decided I needed to get checked."],
-    ["where does it hurt",
-     "It's mostly on the lower right side of my stomach."],
-    ["where is the pain",
-     "It's mostly on the lower right side of my stomach."],
-    ["where exactly",
-     "It's mostly on the lower right side of my stomach."],
-    ["which side",
-     "It's mostly on the lower right side of my stomach."],
-    ["location of the pain",
-     "It's mostly on the lower right side of my stomach."],
-    ["when did it start",
-     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-    ["when did the pain start",
-     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-    ["when did this start",
-     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-    ["how long has it been",
-     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-    ["getting worse",
-     "It's definitely getting worse. It hurts more than it did yesterday."],
-    ["getting better",
-     "No, it's getting worse."],
-    ["has it changed",
-     "It's definitely getting worse."],
-    ["how bad",
-     "I'd say it's about a 7 out of 10 right now."],
-    ["how severe",
-     "I'd say it's about a 7 out of 10 right now."],
-    ["pain score",
-     "I'd say it's about a 7 out of 10 right now."],
-    ["pain scale",
-     "I'd say it's about a 7 out of 10 right
+(function () {
+    "use strict";
+    /* =================================================
+       SARA'S ANSWERS
+    ================================================= */
+    var saraAnswers = [
+        ["why are you here",
+        "The pain kept getting worse, so I decided I needed to get checked."],
+        ["why did you come",
+        "The pain kept getting worse, so I decided I needed to get checked."],
+        ["what brought you",
+        "The pain kept getting worse, so I decided I needed to get checked."],
+        ["what brings you",
+        "The pain kept getting worse, so I decided I needed to get checked."],
+        ["where does it hurt",
+        "It's mostly on the lower right side of my stomach."],
+        ["where is the pain",
+        "It's mostly on the lower right side of my stomach."],
+        ["where exactly",
+        "It's mostly on the lower right side of my stomach."],
+        ["which side",
+        "It's mostly on the lower right side of my st
