@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sara - ClueMD</title>
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 html,body{
     margin:0;
     padding:0;
@@ -59,7 +61,9 @@ header{
 .patient small{
     color:#777;
 }
-/* SARA */
+/* =========================
+   SARA
+========================= */
 .sara{
     position:absolute;
     width:270px;
@@ -86,8 +90,12 @@ header{
     background:#efbd99;
     border-radius:50%;
 }
-.ear.left{left:49px}
-.ear.right{right:49px}
+.ear.left{
+    left:49px;
+}
+.ear.right{
+    right:49px;
+}
 .face{
     position:absolute;
     top:38px;
@@ -122,8 +130,12 @@ header{
     background:#30241f;
     border-radius:50%;
 }
-.eye.left{left:35px}
-.eye.right{right:35px}
+.eye.left{
+    left:35px;
+}
+.eye.right{
+    right:35px;
+}
 .mouth{
     position:absolute;
     top:132px;
@@ -151,7 +163,9 @@ header{
     background:#8da6b5;
     border-radius:90px 90px 20px 20px;
 }
-/* SPEECH */
+/* =========================
+   SPEECH CLOUD
+========================= */
 .speech{
     position:absolute;
     top:85px;
@@ -176,7 +190,9 @@ header{
     font-size:16px;
     line-height:1.45;
 }
-/* DESK */
+/* =========================
+   DESK
+========================= */
 .desk{
     position:absolute;
     left:0;
@@ -186,7 +202,9 @@ header{
     background:#8b6a50;
     z-index:40;
 }
-/* POPUPS */
+/* =========================
+   POPUPS
+========================= */
 .popup{
     position:fixed;
     display:none;
@@ -238,6 +256,10 @@ header{
     cursor:pointer;
     -webkit-appearance:none;
     appearance:none;
+    touch-action:manipulation;
+}
+.send-button:active{
+    transform:scale(.95);
 }
 .close{
     display:inline-block;
@@ -252,7 +274,9 @@ header{
     font-weight:bold;
     line-height:1.4;
 }
-/* BUTTONS */
+/* =========================
+   BOTTOM BUTTONS
+========================= */
 .controls{
     position:fixed;
     left:50%;
@@ -276,6 +300,7 @@ header{
     font-size:25px;
     box-shadow:0 5px 18px rgba(0,0,0,.3);
     -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
 }
 .control:active{
     transform:scale(.92);
@@ -294,7 +319,9 @@ header{
 </head>
 <body>
 <header>
-    <div class="logo">ClueMD</div>
+<div class="logo">
+    ClueMD
+</div>
 <a href="case001.html" class="back">
     ← Case 001
 </a>
@@ -302,8 +329,11 @@ header{
 <div class="room">
 <div class="patient">
     <strong>Sara</strong>
-    <small>17 years old · Case 001</small>
+    <small>
+        17 years old · Case 001
+    </small>
 </div>
+<!-- SARA -->
 <div class="sara">
     <div class="hair"></div>
     <div class="ear left"></div>
@@ -318,15 +348,20 @@ header{
     <div class="neck"></div>
     <div class="body"></div>
 </div>
+<!-- SPEECH -->
 <div class="speech">
-    <span class="speech-name">SARA</span>
+    <span class="speech-name">
+        SARA
+    </span>
     <span id="speechText">
         I'm really worried... I don't feel well.
     </span>
 </div>
 <div class="desk"></div>
 </div>
-<!-- ASK SARA -->
+<!-- =========================
+     QUESTION BOX
+========================= -->
 <div id="keyboard" class="popup">
 <div class="popup-title">
     Ask Sara a question
@@ -338,19 +373,27 @@ header{
         autocomplete="off"
         placeholder="Type your question..."
     >
+    <!-- NO FORM.
+         DIRECT BUTTON. -->
     <button
-        type="button"
+        id="sendQuestionButton"
         class="send-button"
+        type="button"
         onclick="sendQuestion()"
     >
         Send
     </button>
 </div>
-<a href="#" class="close">
+<a
+    href="#"
+    class="close"
+>
     Close
 </a>
 </div>
-<!-- DIAGNOSIS -->
+<!-- =========================
+     DIAGNOSIS BOX
+========================= -->
 <div id="diagnosis" class="popup">
 <div class="popup-title">
     What do you think Sara has?
@@ -363,72 +406,89 @@ header{
         placeholder="Enter your diagnosis..."
     >
     <button
-        type="button"
+        id="diagnosisButton"
         class="send-button"
+        type="button"
         onclick="submitDiagnosis()"
     >
         Submit
     </button>
 </div>
 <div id="diagnosisResult"></div>
-<a href="#" class="close">
+<a
+    href="#"
+    class="close"
+>
     Close
 </a>
 </div>
-<!-- CONTROLS -->
+<!-- =========================
+     BUTTONS
+========================= -->
 <div class="controls">
 <a
     href="#keyboard"
     class="control"
     aria-label="Ask Sara"
->⌨️</a>
+>
+    ⌨️
+</a>
 <a
     href="#diagnosis"
     class="control"
     aria-label="Diagnosis"
->🔎</a>
+>
+    🔎
+</a>
 </div>
+<!-- =========================
+     JAVASCRIPT
+     =========================
+     This is intentionally at
+     the VERY END of the page.
+========================= -->
 <script>
-/* =====================================================
-   SARA'S KNOWLEDGE
-===================================================== */
-const saraData = [
-/* INTRODUCTION */
-["why are you here","The pain kept getting worse, so I decided I needed to get checked."],
-["why did you come","The pain kept getting worse, so I decided I needed to get checked."],
-["what brought you","The pain kept getting worse, so I decided I needed to get checked."],
-["what brings you","The pain kept getting worse, so I decided I needed to get checked."],
-["reason for coming","The pain kept getting worse, so I decided I needed to get checked."],
-/* PAIN */
-["where does it hurt","It's mostly on the lower right side of my stomach."],
-["where is the pain","It's mostly on the lower right side of my stomach."],
-["where exactly","It's mostly on the lower right side of my stomach."],
-["what area hurts","It's mostly on the lower right side of my stomach."],
-["which side","It's mostly on the lower right side of my stomach."],
-["location of pain","It's mostly on the lower right side of my stomach."],
-["when did it start","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-["when did this start","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-["when did the pain start","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-["how long","It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-["getting worse","It's definitely getting worse. It hurts more than it did yesterday."],
-["getting better","No, it's getting worse."],
-["has it changed","It's definitely getting worse."],
-["how bad","I'd say it's about a 7 out of 10 right now."],
-["how severe","I'd say it's about a 7 out of 10 right now."],
-["pain score","I'd say it's about a 7 out of 10 right now."],
-["pain scale","I'd say it's about a 7 out of 10 right now."],
-["out of ten","I'd say it's about a 7 out of 10 right now."],
-["rate the pain","I'd say it's about a 7 out of 10 right now."],
-["what does it feel like","It's mostly a sharp pain, especially when I move."],
-["describe the pain","It's mostly a sharp pain, especially when I move."],
-["type of pain","It's mostly a sharp pain, especially when I move."],
-["sharp pain","It's mostly a sharp pain, especially when I move."],
-["dull pain","It's mostly a sharp pain, especially when I move."],
-["cramping","It's mostly a sharp pain, especially when I move."],
-["does it spread","No, it mostly stays on the lower right side."],
-["does it radiate","No, it mostly stays on the lower right side."],
-["radiation","No, it mostly stays on the lower right side."],
-["spread anywhere","No, it mostly stays on the lower right side."],
-["what makes it worse","Walking around or moving makes it hurt more."],
-["worse when moving","Walking around or moving makes it hurt more."],
-["does movement
+/* ==========================================
+   SARA'S CASE INFORMATION
+========================================== */
+var saraAnswers = [
+    ["why are you here",
+     "The pain kept getting worse, so I decided I needed to get checked."],
+    ["why did you come",
+     "The pain kept getting worse, so I decided I needed to get checked."],
+    ["what brought you",
+     "The pain kept getting worse, so I decided I needed to get checked."],
+    ["what brings you",
+     "The pain kept getting worse, so I decided I needed to get checked."],
+    ["where does it hurt",
+     "It's mostly on the lower right side of my stomach."],
+    ["where is the pain",
+     "It's mostly on the lower right side of my stomach."],
+    ["where exactly",
+     "It's mostly on the lower right side of my stomach."],
+    ["which side",
+     "It's mostly on the lower right side of my stomach."],
+    ["location of the pain",
+     "It's mostly on the lower right side of my stomach."],
+    ["when did it start",
+     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+    ["when did the pain start",
+     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+    ["when did this start",
+     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+    ["how long has it been",
+     "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+    ["getting worse",
+     "It's definitely getting worse. It hurts more than it did yesterday."],
+    ["getting better",
+     "No, it's getting worse."],
+    ["has it changed",
+     "It's definitely getting worse."],
+    ["how bad",
+     "I'd say it's about a 7 out of 10 right now."],
+    ["how severe",
+     "I'd say it's about a 7 out of 10 right now."],
+    ["pain score",
+     "I'd say it's about a 7 out of 10 right now."],
+    ["pain scale",
+     "I'd say it's about a 7 out of 10 right
