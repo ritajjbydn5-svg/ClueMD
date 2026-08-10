@@ -469,7 +469,7 @@ header {
         Ask Sara a question
     </div>
 
-    <form onsubmit="sendQuestion(); return false;">
+    <form onsubmit="handleSend(event);">
         <div class="input-row">
 
             <input
@@ -512,7 +512,7 @@ header {
         What do you think Sara has?
     </div>
 
-    <form onsubmit="submitDiagnosis(); return false;">
+    <form onsubmit="handleDiagnosis(event);">
         <div class="input-row">
 
             <input
@@ -571,17 +571,26 @@ header {
 
 <script>
 
-var saraAnswers = [
-
-    ["why are you here", "The pain kept getting worse, so I decided I needed to get checked."],
-    ["why did you come", "The pain kept getting worse, so I decided I needed to get checked."],
-    ["what brought you", "The pain kept getting worse, so I decided I needed to get checked."],
-    ["what brings you", "The pain kept getting worse, so I decided I needed to get checked."],
-
-    ["where does it hurt", "It's mostly on the lower right side of my stomach."],
-    ["where is the pain", "It's mostly on the lower right side of my stomach."],
-    ["where exactly", "It's mostly on the lower right side of my stomach."],
-    ["which side", "It's mostly on the lower right side of my stomach."],
-    ["location of the pain", "It's mostly on the lower right side of my stomach."],
-
-    ["when did the pain start", "It started yesterday. It wasn't this bad at first, but it has been getting
+var saraKnowledge = [
+    {
+        keys: ["where", "location", "side", "place", "hurt", "stomach", "belly", "abdomen"],
+        reply: "It's mostly on the lower right side of my stomach."
+    },
+    {
+        keys: ["when", "start", "long", "yesterday", "begin", "ago", "since"],
+        reply: "It started yesterday. It wasn't this bad at first, but it has been getting worse."
+    },
+    {
+        keys: ["worse", "better", "change", "progress", "getting"],
+        reply: "It's definitely getting worse. It hurts more than it did yesterday."
+    },
+    {
+        keys: ["bad", "severe", "scale", "score", "rate", "number", "10", "ten"],
+        reply: "I'd say it's about a 7 out of 10 right now."
+    },
+    {
+        keys: ["describe", "feel", "type", "sharp", "dull", "kind", "nature"],
+        reply: "It's mostly a sharp pain, especially when I move."
+    },
+    {
+        keys: ["spread", "radiate", "move", "radiation", 
