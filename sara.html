@@ -256,13 +256,9 @@ header {
     pointer-events: auto;
 }
 
-/* KEYBOARD OPENS WITH CHECKBOX */
-
 #keyboardToggle:checked ~ #keyboardPopup {
     display: block;
 }
-
-/* DIAGNOSIS OPENS WITH CHECKBOX */
 
 #diagnosisToggle:checked ~ #diagnosisPopup {
     display: block;
@@ -288,12 +284,6 @@ header {
     border-radius: 9px;
     font-size: 16px;
     outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.input-row input:focus {
-    border-color: #18232d;
 }
 
 .send-button {
@@ -306,13 +296,6 @@ header {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
-    touch-action: manipulation;
-}
-
-.send-button:active {
-    transform: scale(.95);
 }
 
 .close {
@@ -330,8 +313,6 @@ header {
     font-weight: bold;
     line-height: 1.4;
 }
-
-/* BOTTOM BUTTONS */
 
 .controls {
     position: fixed;
@@ -356,13 +337,7 @@ header {
     text-decoration: none;
     font-size: 25px;
     box-shadow: 0 5px 18px rgba(0,0,0,.3);
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
     cursor: pointer;
-}
-
-.control:active {
-    transform: scale(.92);
 }
 
 @media(max-width:700px) {
@@ -383,213 +358,86 @@ header {
 
 <header>
     <div class="logo">ClueMD</div>
-
-    <a href="case001.html" class="back">
-        ← Case 001
-    </a>
+    <a href="case001.html" class="back">← Case 001</a>
 </header>
 
-
 <div class="room">
-
     <div class="patient">
         <strong>Sara</strong>
         <small>17 years old · Case 001</small>
     </div>
 
-
-    <!-- SARA -->
-
     <div class="sara">
-
         <div class="hair"></div>
-
         <div class="ear left"></div>
         <div class="ear right"></div>
-
         <div class="face">
-
             <div class="brow left"></div>
             <div class="brow right"></div>
-
             <div class="eye left"></div>
             <div class="eye right"></div>
-
             <div class="mouth"></div>
-
         </div>
-
         <div class="neck"></div>
         <div class="body"></div>
-
     </div>
-
-
-    <!-- SPEECH -->
 
     <div class="speech">
-
-        <span class="speech-name">
-            SARA
-        </span>
-
+        <span class="speech-name">SARA</span>
         <span id="speechText">I'm really worried... I don't feel well.</span>
-
     </div>
-
 
     <div class="desk"></div>
-
 </div>
 
-
-<input
-    type="checkbox"
-    id="keyboardToggle"
-    class="hidden-toggle"
->
-
-<input
-    type="checkbox"
-    id="diagnosisToggle"
-    class="hidden-toggle"
->
-
+<input type="checkbox" id="keyboardToggle" class="hidden-toggle">
+<input type="checkbox" id="diagnosisToggle" class="hidden-toggle">
 
 <!-- QUESTION BOX -->
-
-<div
-    id="keyboardPopup"
-    class="popup"
->
-
-    <div class="popup-title">
-        Ask Sara a question
+<div id="keyboardPopup" class="popup">
+    <div class="popup-title">Ask Sara a question</div>
+    <div class="input-row">
+        <input id="questionInput" type="text" placeholder="Type your question...">
+        <button id="sendQuestionButton" class="send-button" type="button">Send</button>
     </div>
-
-    <form onsubmit="handleSend(event);">
-        <div class="input-row">
-
-            <input
-                id="questionInput"
-                type="text"
-                autocomplete="off"
-                autocapitalize="sentences"
-                placeholder="Type your question..."
-            >
-
-            <button
-                id="sendQuestionButton"
-                class="send-button"
-                type="submit"
-            >
-                Send
-            </button>
-
-        </div>
-    </form>
-
-    <label
-        for="keyboardToggle"
-        class="close"
-    >
-        Close
-    </label>
-
+    <label for="keyboardToggle" class="close">Close</label>
 </div>
-
 
 <!-- DIAGNOSIS BOX -->
-
-<div
-    id="diagnosisPopup"
-    class="popup"
->
-
-    <div class="popup-title">
-        What do you think Sara has?
+<div id="diagnosisPopup" class="popup">
+    <div class="popup-title">What do you think Sara has?</div>
+    <div class="input-row">
+        <input id="diagnosisInput" type="text" placeholder="Enter your diagnosis...">
+        <button id="diagnosisButton" class="send-button" type="button">Submit</button>
     </div>
-
-    <form onsubmit="handleDiagnosis(event);">
-        <div class="input-row">
-
-            <input
-                id="diagnosisInput"
-                type="text"
-                autocomplete="off"
-                autocapitalize="sentences"
-                placeholder="Enter your diagnosis..."
-            >
-
-            <button
-                id="diagnosisButton"
-                class="send-button"
-                type="submit"
-            >
-                Submit
-            </button>
-
-        </div>
-    </form>
-
     <div id="diagnosisResult"></div>
-
-    <label
-        for="diagnosisToggle"
-        class="close"
-    >
-        Close
-    </label>
-
+    <label for="diagnosisToggle" class="close">Close</label>
 </div>
-
 
 <!-- BOTTOM BUTTONS -->
-
 <div class="controls">
-
-    <label
-        for="keyboardToggle"
-        class="control"
-        aria-label="Ask Sara"
-    >
-        ⌨️
-    </label>
-
-    <label
-        for="diagnosisToggle"
-        class="control"
-        aria-label="Diagnosis"
-    >
-        🔎
-    </label>
-
+    <label for="keyboardToggle" class="control" aria-label="Ask Sara">⌨️</label>
+    <label for="diagnosisToggle" class="control" aria-label="Diagnosis">🔎</label>
 </div>
 
-
 <script>
-
 var saraKnowledge = [
-    {
-        keys: ["where", "location", "side", "place", "hurt", "stomach", "belly", "abdomen"],
-        reply: "It's mostly on the lower right side of my stomach."
-    },
-    {
-        keys: ["when", "start", "long", "yesterday", "begin", "ago", "since"],
-        reply: "It started yesterday. It wasn't this bad at first, but it has been getting worse."
-    },
-    {
-        keys: ["worse", "better", "change", "progress", "getting"],
-        reply: "It's definitely getting worse. It hurts more than it did yesterday."
-    },
-    {
-        keys: ["bad", "severe", "scale", "score", "rate", "number", "10", "ten"],
-        reply: "I'd say it's about a 7 out of 10 right now."
-    },
-    {
-        keys: ["describe", "feel", "type", "sharp", "dull", "kind", "nature"],
-        reply: "It's mostly a sharp pain, especially when I move."
-    },
-    {
-        keys: ["spread", "radiate", "move", "radiation", "elsewhere"],
-        
+    { keys: ["where", "location", "side", "place", "hurt", "stomach", "belly", "abdomen", "pain"], reply: "It's mostly on the lower right side of my stomach." },
+    { keys: ["when", "start", "long", "yesterday", "begin", "ago", "since"], reply: "It started yesterday. It wasn't this bad at first, but it has been getting worse." },
+    { keys: ["worse", "better", "change", "progress", "getting"], reply: "It's definitely getting worse. It hurts more than it did yesterday." },
+    { keys: ["bad", "severe", "scale", "score", "rate", "number", "10", "ten"], reply: "I'd say it's about a 7 out of 10 right now." },
+    { keys: ["describe", "feel", "type", "sharp", "dull", "kind", "nature"], reply: "It's mostly a sharp pain, especially when I move." },
+    { keys: ["spread", "radiate", "move", "radiation", "elsewhere"], reply: "No, it mostly stays on the lower right side." },
+    { keys: ["walk", "movement", "moving", "worse with"], reply: "Walking around or moving makes it hurt more." },
+    { keys: ["rest", "lying", "still", "better with", "relieve"], reply: "Lying still seems to help a little." },
+    { keys: ["nausea", "sick", "queasy", "nauseous"], reply: "Yes... I've been feeling pretty nauseous." },
+    { keys: ["vomit", "throw", "puke", "barf", "vomiting"], reply: "No, I haven't vomited." },
+    { keys: ["fever", "temperature", "hot", "chills", "warm"], reply: "I felt hot last night, but I didn't actually measure my temperature." },
+    { keys: ["appetite", "eat", "hungry", "food"], reply: "I don't really feel like eating." },
+    { keys: ["stool", "bowel", "poop", "diarrhea", "constipation"], reply: "I haven't noticed anything unusual with my bowel movements." },
+    { keys: ["pee", "urine", "urinating", "water", "bathroom"], reply: "I haven't noticed any problems when I pee." },
+    { keys: ["period", "menstrual", "pregnant", "pregnancy", "cycle", "bleeding"], reply: "My last period was about two weeks ago. My pregnancy test was negative." },
+    { keys: ["history", "condition", "medical", "disease", "past"], reply: "I don't have any major medical conditions that I know of." },
+    { keys: ["surgery", "operation"], reply: "I've never had surgery before." },
+    { keys: ["medication", "medicine", "pills", "drugs", "take"], reply: "I don't take any regular medication." },
+    { keys: ["allergy", "allergies", 
