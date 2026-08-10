@@ -2,21 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta
-name=“viewport”
-content=“width=device-width, initial-scale=1.0”
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sara - ClueMD</title>
+
 <style>
-/* =========================
-   GENERAL
-========================= */
 * {
     box-sizing: border-box;
 }
-html,
-body {
+
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -25,9 +19,7 @@ body {
     font-family: Arial, sans-serif;
     background: #eef2f4;
 }
-/* =========================
-   HEADER
-========================= */
+
 header {
     height: 58px;
     background: white;
@@ -39,18 +31,18 @@ header {
     position: relative;
     z-index: 100;
 }
+
 .logo {
     font-size: 23px;
     font-weight: bold;
 }
+
 .back {
     color: #18232d;
     text-decoration: none;
     font-weight: bold;
 }
-/* =========================
-   ROOM
-========================= */
+
 .room {
     position: relative;
     width: 100%;
@@ -58,9 +50,7 @@ header {
     overflow: hidden;
     background: #f7f9fa;
 }
-/* =========================
-   PATIENT LABEL
-========================= */
+
 .patient {
     position: absolute;
     top: 15px;
@@ -71,16 +61,18 @@ header {
     box-shadow: 0 4px 15px rgba(0,0,0,.12);
     z-index: 20;
 }
+
 .patient strong {
     display: block;
     font-size: 17px;
 }
+
 .patient small {
     color: #777;
 }
-/* =========================
-   SARA
-========================= */
+
+/* SARA */
+
 .sara {
     position: absolute;
     width: 270px;
@@ -90,6 +82,7 @@ header {
     transform: translateX(-50%);
     z-index: 5;
 }
+
 .hair {
     position: absolute;
     top: 0;
@@ -99,6 +92,7 @@ header {
     background: #493028;
     border-radius: 50%;
 }
+
 .ear {
     position: absolute;
     top: 105px;
@@ -107,12 +101,15 @@ header {
     background: #efbd99;
     border-radius: 50%;
 }
+
 .ear.left {
     left: 49px;
 }
+
 .ear.right {
     right: 49px;
 }
+
 .face {
     position: absolute;
     top: 38px;
@@ -123,6 +120,7 @@ header {
     border-radius: 48%;
     z-index: 2;
 }
+
 .brow {
     position: absolute;
     top: 57px;
@@ -131,14 +129,17 @@ header {
     background: #57382e;
     border-radius: 5px;
 }
+
 .brow.left {
     left: 28px;
     transform: rotate(14deg);
 }
+
 .brow.right {
     right: 28px;
     transform: rotate(-14deg);
 }
+
 .eye {
     position: absolute;
     top: 73px;
@@ -147,12 +148,15 @@ header {
     background: #30241f;
     border-radius: 50%;
 }
+
 .eye.left {
     left: 35px;
 }
+
 .eye.right {
     right: 35px;
 }
+
 .mouth {
     position: absolute;
     top: 132px;
@@ -163,6 +167,7 @@ header {
     border-radius: 50% 50% 0 0;
     transform: translateX(-50%);
 }
+
 .neck {
     position: absolute;
     top: 210px;
@@ -171,6 +176,7 @@ header {
     height: 55px;
     background: #efbd99;
 }
+
 .body {
     position: absolute;
     top: 250px;
@@ -180,9 +186,9 @@ header {
     background: #8da6b5;
     border-radius: 90px 90px 20px 20px;
 }
-/* =========================
-   SPEECH CLOUD
-========================= */
+
+/* SPEECH */
+
 .speech {
     position: absolute;
     top: 85px;
@@ -196,6 +202,7 @@ header {
     box-shadow: 0 6px 22px rgba(0,0,0,.15);
     z-index: 30;
 }
+
 .speech-name {
     display: block;
     font-size: 12px;
@@ -203,13 +210,14 @@ header {
     color: #777;
     margin-bottom: 7px;
 }
+
 #speechText {
     font-size: 16px;
     line-height: 1.45;
 }
-/* =========================
-   DESK
-========================= */
+
+/* DESK */
+
 .desk {
     position: absolute;
     left: 0;
@@ -219,9 +227,19 @@ header {
     background: #8b6a50;
     z-index: 40;
 }
-/* =========================
-   POPUPS
-========================= */
+
+/* HIDDEN CHECKBOXES */
+
+.hidden-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* POPUPS */
+
 .popup {
     position: fixed;
     display: none;
@@ -236,19 +254,31 @@ header {
     box-shadow: 0 8px 30px rgba(0,0,0,.35);
     z-index: 99999;
 }
-.popup.open {
+
+/* KEYBOARD OPENS WITH CHECKBOX */
+
+#keyboardToggle:checked ~ #keyboardPopup {
     display: block;
 }
+
+/* DIAGNOSIS OPENS WITH CHECKBOX */
+
+#diagnosisToggle:checked ~ #diagnosisPopup {
+    display: block;
+}
+
 .popup-title {
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 12px;
 }
+
 .input-row {
     display: flex;
     gap: 8px;
     width: 100%;
 }
+
 .input-row input {
     flex: 1;
     min-width: 0;
@@ -257,10 +287,14 @@ header {
     border-radius: 9px;
     font-size: 16px;
     outline: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
+
 .input-row input:focus {
     border-color: #18232d;
 }
+
 .send-button {
     flex-shrink: 0;
     border: none;
@@ -275,9 +309,11 @@ header {
     appearance: none;
     touch-action: manipulation;
 }
+
 .send-button:active {
     transform: scale(.95);
 }
+
 .close {
     display: inline-block;
     margin-top: 12px;
@@ -286,14 +322,15 @@ header {
     font-size: 14px;
     font-weight: bold;
 }
+
 #diagnosisResult {
     margin-top: 12px;
     font-weight: bold;
     line-height: 1.4;
 }
-/* =========================
-   BOTTOM BUTTONS
-========================= */
+
+/* BOTTOM BUTTONS */
+
 .controls {
     position: fixed;
     left: 50%;
@@ -303,6 +340,7 @@ header {
     gap: 14px;
     z-index: 100000;
 }
+
 .control {
     width: 62px;
     height: 55px;
@@ -320,17 +358,17 @@ header {
     touch-action: manipulation;
     cursor: pointer;
 }
+
 .control:active {
     transform: scale(.92);
 }
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 700px) {
+
+@media(max-width:700px) {
     .sara {
         transform: translateX(-50%) scale(.72);
         transform-origin: bottom center;
     }
+
     .control {
         width: 58px;
         height: 52px;
@@ -338,175 +376,235 @@ header {
 }
 </style>
 </head>
+
 <body>
-<!-- =========================
-     HEADER
-========================= -->
+
 <header>
-<div class="logo">
-    ClueMD
-</div>
-<a
-    href="case001.html"
-    class="back"
->
-    ← Case 001
-</a>
+    <div class="logo">ClueMD</div>
+
+    <a href="case001.html" class="back">
+        ← Case 001
+    </a>
 </header>
-<!-- =========================
-     ROOM
-========================= -->
+
+
 <div class="room">
-<!-- PATIENT LABEL -->
-<div class="patient">
-    <strong>Sara</strong>
-    <small>
-        17 years old · Case 001
-    </small>
-</div>
-<!-- =========================
-     SARA
-========================= -->
-<div class="sara">
-    <div class="hair"></div>
-    <div class="ear left"></div>
-    <div class="ear right"></div>
-    <div class="face">
-        <div class="brow left"></div>
-        <div class="brow right"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="mouth"></div>
+
+    <div class="patient">
+        <strong>Sara</strong>
+        <small>17 years old · Case 001</small>
     </div>
-    <div class="neck"></div>
-    <div class="body"></div>
+
+
+    <!-- SARA -->
+
+    <div class="sara">
+
+        <div class="hair"></div>
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="face">
+
+            <div class="brow left"></div>
+            <div class="brow right"></div>
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="mouth"></div>
+
+        </div>
+
+        <div class="neck"></div>
+        <div class="body"></div>
+
+    </div>
+
+
+    <!-- SPEECH -->
+
+    <div class="speech">
+
+        <span class="speech-name">
+            SARA
+        </span>
+
+        <span id="speechText">
+            I'm really worried... I don't feel well.
+        </span>
+
+    </div>
+
+
+    <div class="desk"></div>
+
 </div>
-<!-- =========================
-     SPEECH
-========================= -->
-<div class="speech">
-    <span class="speech-name">
-        SARA
-    </span>
-    <span id="speechText">
-        I'm really worried... I don't feel well.
-    </span>
-</div>
-<div class="desk"></div>
-</div>
-<!-- =========================
-     QUESTION POPUP
-========================= -->
+
+
+<!--
+    These checkboxes control the popups.
+    JavaScript is NOT needed to open them.
+-->
+
+<input
+    type="checkbox"
+    id="keyboardToggle"
+    class="hidden-toggle"
+>
+
+<input
+    type="checkbox"
+    id="diagnosisToggle"
+    class="hidden-toggle"
+>
+
+
+<!-- QUESTION BOX -->
+
 <div
     id="keyboardPopup"
     class="popup"
 >
-<div class="popup-title">
-    Ask Sara a question
-</div>
-<div class="input-row">
-    <input
-        id="questionInput"
-        type="text"
-        autocomplete="off"
-        autocapitalize="sentences"
-        placeholder="Type your question..."
+
+    <div class="popup-title">
+        Ask Sara a question
+    </div>
+
+    <div class="input-row">
+
+        <input
+            id="questionInput"
+            type="text"
+            autocomplete="off"
+            autocapitalize="sentences"
+            placeholder="Type your question..."
+        >
+
+        <button
+            id="sendQuestionButton"
+            class="send-button"
+            type="button"
+        >
+            Send
+        </button>
+
+    </div>
+
+    <label
+        for="keyboardToggle"
+        class="close"
     >
-    <button
-        id="sendQuestionButton"
-        class="send-button"
-        type="button"
-    >
-        Send
-    </button>
+        Close
+    </label>
+
 </div>
-<a
-    href="#"
-    id="closeKeyboard"
-    class="close"
->
-    Close
-</a>
-</div>
-<!-- =========================
-     DIAGNOSIS POPUP
-========================= -->
+
+
+<!-- DIAGNOSIS BOX -->
+
 <div
     id="diagnosisPopup"
     class="popup"
 >
-<div class="popup-title">
-    What do you think Sara has?
-</div>
-<div class="input-row">
-    <input
-        id="diagnosisInput"
-        type="text"
-        autocomplete="off"
-        autocapitalize="sentences"
-        placeholder="Enter your diagnosis..."
+
+    <div class="popup-title">
+        What do you think Sara has?
+    </div>
+
+    <div class="input-row">
+
+        <input
+            id="diagnosisInput"
+            type="text"
+            autocomplete="off"
+            autocapitalize="sentences"
+            placeholder="Enter your diagnosis..."
+        >
+
+        <button
+            id="diagnosisButton"
+            class="send-button"
+            type="button"
+        >
+            Submit
+        </button>
+
+    </div>
+
+    <div id="diagnosisResult"></div>
+
+    <label
+        for="diagnosisToggle"
+        class="close"
     >
-    <button
-        id="diagnosisButton"
-        class="send-button"
-        type="button"
-    >
-        Submit
-    </button>
+        Close
+    </label>
+
 </div>
-<div id="diagnosisResult"></div>
-<a
-    href="#"
-    id="closeDiagnosis"
-    class="close"
->
-    Close
-</a>
-</div>
-<!-- =========================
-     BOTTOM CONTROLS
-========================= -->
+
+
+<!-- BOTTOM BUTTONS -->
+
 <div class="controls">
-<a
-    href="#"
-    id="keyboardButton"
-    class="control"
-    aria-label="Ask Sara"
->
-    ⌨️
-</a>
-<a
-    href="#"
-    id="diagnosisOpenButton"
-    class="control"
-    aria-label="Diagnosis"
->
-    🔎
-</a>
+
+    <label
+        for="keyboardToggle"
+        class="control"
+        aria-label="Ask Sara"
+    >
+        ⌨️
+    </label>
+
+    <label
+        for="diagnosisToggle"
+        class="control"
+        aria-label="Diagnosis"
+    >
+        🔎
+    </label>
+
 </div>
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+
+
 <script>
-(function () {
+
+document.addEventListener("DOMContentLoaded", function () {
+
     "use strict";
-    /* =================================================
-       SARA'S ANSWERS
-    ================================================= */
+
+
+    /* =====================================================
+       SARA'S CASE ANSWERS
+    ===================================================== */
+
     var saraAnswers = [
+
         ["why are you here",
         "The pain kept getting worse, so I decided I needed to get checked."],
+
         ["why did you come",
         "The pain kept getting worse, so I decided I needed to get checked."],
+
         ["what brought you",
         "The pain kept getting worse, so I decided I needed to get checked."],
+
         ["what brings you",
         "The pain kept getting worse, so I decided I needed to get checked."],
+
+
         ["where does it hurt",
         "It's mostly on the lower right side of my stomach."],
+
         ["where is the pain",
         "It's mostly on the lower right side of my stomach."],
+
         ["where exactly",
         "It's mostly on the lower right side of my stomach."],
+
         ["which side",
-        "It's mostly on the lower right side of my st
+        "It's mostly on the lower right side of my stomach."],
+
+        ["location of the pain",
+        "It's mostly on the lower
