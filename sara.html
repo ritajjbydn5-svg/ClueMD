@@ -1,170 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara - ClueMD</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #eef2f4;
+}
+
+header {
+    height: 58px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.back {
+    color: #18232d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.room {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 58px);
+    overflow: hidden;
+    background: #f7f9fa;
+}
+
+.patient {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.12);
+    z-index: 20;
+}
+
+.patient strong {
+    display: block;
+    font-size: 17px;
+}
+
+.patient small {
+    color: #777;
+}
+
+/* SARA */
+
+.sara {
+    position: absolute;
+    width: 270px;
+    height: 430px;
+    left: 50%;
+    bottom: 105px;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.hair {
+    position: absolute;
+    top: 0;
+    left: 38px;
+    width: 195px;
+    height: 205px;
+    background: #493028;
+    border-radius: 50%;
+}
+
+.ear {
+    position: absolute;
+    top: 105px;
+    width: 22px;
+    height: 40px;
+    background: #efbd99;
+    border-radius: 50%;
+}
+
+.ear.left {
+    left: 49px;
+}
+
+.ear.right {
+    right: 49px;
+}
+
+.face {
+    position: absolute;
+    top: 38px;
+    left: 57px;
+    width: 157px;
+    height: 180px;
+    background: #f2c7a5;
+    border-radius: 48%;
+    z-index: 2;
+}
+
+.brow {
+    position: absolute;
+    top: 57px;
+    width: 30px;
+    height: 4px;
+    background: #57382e;
+    border-radius: 5px;
+}
+
+.brow.left {
+    left: 28px;
+    transform: rotate(14deg);
+}
+
+.brow.right {
+    right: 28px;
+    transform: rotate(-14deg);
+}
+
+.eye {
+    position: absolute;
+    top: 73px;
+    width: 17px;
+    height: 11px;
+    background: #30241f;
+    border-radius: 50%;
+}
+
+.eye.left {
+    left: 35px;
+}
+
+.eye.right {
+    right: 35px;
+}
+
+.mouth {
+    position: absolute;
+    top: 132px;
+    left: 50%;
+    width: 40px;
+    height: 18px;
+    border-top: 4px solid #813f46;
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-50%);
+}
+
+.neck {
+    position: absolute;
+    top: 210px;
+    left: 109px;
+    width: 52px;
+    height: 55px;
+    background: #efbd99;
+}
+
+.body {
+    position: absolute;
+    top: 250px;
+    left: 13px;
+    width: 245px;
+    height: 220px;
+    background: #8da6b5;
+    border-radius: 90px 90px 20px 20px;
+}
+
+/* SPEECH */
+
+.speech {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 430px;
+    background: white;
+    padding: 18px;
+    border-radius: 22px;
+    box-shadow: 0 6px 22px rgba(0,0,0,.15);
+    z-index: 30;
+}
+
+.speech-name {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 7px;
+}
+
+#speechText {
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+/* DESK */
+
+.desk {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 95px;
+    background: #8b6a50;
+    z-index: 40;
+}
+
+/* HIDDEN CHECKBOXES */
+
+.hidden-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* POPUPS */
+
+.popup {
+    position: fixed;
+    display: none;
+    left: 50%;
+    bottom: 85px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    z-index: 99999;
+}
+
+/* KEYBOARD OPENS WITH CHECKBOX */
+
+#keyboardToggle:checked ~ #keyboardPopup {
+    display: block;
+}
+
+/* DIAGNOSIS OPENS WITH CHECKBOX */
+
+#diagnosisToggle:checked ~ #diagnosisPopup {
+    display: block;
+}
+
+.popup-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #bbb;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input-row input:focus {
+    border-color: #18232d;
+}
+
+.send-button {
+    flex-shrink: 0;
+    border: none;
+    background: #18232d;
+    color: white;
+    border-radius: 9px;
+    padding: 0 17px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+}
+
+.send-button:active {
+    transform: scale(.95);
+}
+
+.close {
+    display: inline-block;
+    margin-top: 12px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#diagnosisResult {
+    margin-top: 12px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/* BOTTOM BUTTONS */
+
+.controls {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    z-index: 100000;
+    pointer-events: none; /* Stops control bar container from blocking popups */
+}
+
+.control {
+    width: 62px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #18232d;
+    border-radius: 15px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.3);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+    pointer-events: auto; /* Re-enables clicking on the emoji buttons */
+}
+
+.control:active {
+    transform: scale(.92);
+}
+
+@media(max-width:700px) {
+    .sara {
+        transform: translateX(-50%) scale(.72);
+        transform-origin: bottom center;
+    }
+
+    .control {
+        width: 58px;
+        height: 52px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ClueMD</div>
+
+    <a href="case001.html" class="back">
+        ← Case 001
+    </a>
+</header>
+
+
+<div class="room">
+
+    <div class="patient">
+        <strong>Sara</strong>
+        <small>17 years old · Case 001</small>
+    </div>
+
+
+    <!-- SARA -->
+
+    <div class="sara">
+
+        <div class="hair"></div>
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="face">
+
+            <div class="brow left"></div>
+            <div class="brow right"></div>
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="mouth"></div>
+
+        </div>
+
+        <div class="neck"></div>
+        <div class="body"></div>
+
+    </div>
+
+
+    <!-- SPEECH -->
+
+    <div class="speech">
+
+        <span class="speech-name">
+            SARA
+        </span>
+
+        <span id="speechText">
+            I'm really worried... I don't feel well.
+        </span>
+
+    </div>
+
+
+    <div class="desk"></div>
+
+</div>
+
+
+<!--
+    These checkboxes control the popups.
+    JavaScript is NOT needed to open them.
+-->
+
+<input
+    type="checkbox"
+    id="keyboardToggle"
+    class="hidden-toggle"
+>
+
+<input
+    type="checkbox"
+    id="diagnosisToggle"
+    class="hidden-toggle"
+>
+
+
+<!-- QUESTION BOX -->
+
+<div
+    id="keyboardPopup"
+    class="popup"
+>
+
+    <div class="popup-title">
+        Ask Sara a question
+    </div>
+
+    <div class="input-row">
+
+        <input
+            id="questionInput"
+            type="text"
+            autocomplete="off"
+            autocapitalize="sentences"
+            placeholder="Type your question..."
+        >
+
+        <button
+            id="sendQuestionButton"
+            class="send-button"
+            type="button"
+        >
+            Send
+        </button>
+
+    </div>
+
+    <label
+        for="keyboardToggle"
+        class="close"
+    >
+        Close
+    </label>
+
+</div>
+
+
+<!-- DIAGNOSIS BOX -->
+
+<div
+    id="diagnosisPopup"
+    class="popup"
+>
+
+    <div class="popup-title">
+        What do you think Sara has?
+    </div>
+
+    <div class="input-row">
+
+        <input
+            id="diagnosisInput"
+            type="text"
+            autocomplete="off"
+            autocapitalize="sentences"
+            placeholder="Enter your diagnosis..."
+        >
+
+        <button
+            id="diagnosisButton"
+            class="send-button"
+            type="button"
+        >
+            Submit
+        </button>
+
+    </div>
+
+    <div id="diagnosisResult"></div>
+
+    <label
+        for="diagnosisToggle"
+        class="close"
+    >
+        Close
+    </label>
+
+</div>
+
+
+<!-- BOTTOM BUTTONS -->
+
+<div class="controls">
+
+    <label
+        for="keyboardToggle"
+        class="control"
+        aria-label="Ask Sara"
+    >
+        ⌨️
+    </label>
+
+    <label
+        for="diagnosisToggle"
+        class="control"
+        aria-label="Diagnosis"
+    >
+        🔎
+    </label>
+
+</div>
+
+
 <script>
-(function () {
+
+function setupGame() {
+
     "use strict";
+
 
     /* =====================================================
        SARA'S CASE ANSWERS
     ===================================================== */
+
     var saraAnswers = [
-        ["why are you here", "The pain kept getting worse, so I decided I needed to get checked."],
-        ["why did you come", "The pain kept getting worse, so I decided I needed to get checked."],
-        ["what brought you", "The pain kept getting worse, so I decided I needed to get checked."],
-        ["what brings you", "The pain kept getting worse, so I decided I needed to get checked."],
 
-        ["where does it hurt", "It's mostly on the lower right side of my stomach."],
-        ["where is the pain", "It's mostly on the lower right side of my stomach."],
-        ["where exactly", "It's mostly on the lower right side of my stomach."],
-        ["which side", "It's mostly on the lower right side of my stomach."],
-        ["location of the pain", "It's mostly on the lower right side of my stomach."],
+        ["why are you here",
+        "The pain kept getting worse, so I decided I needed to get checked."],
 
-        ["when did the pain start", "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-        ["when did it start", "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-        ["when did this start", "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
-        ["how long has it been", "It started yesterday. It wasn't this bad at first, but it has been getting worse."],
+        ["why did you come",
+        "The pain kept getting worse, so I decided I needed to get checked."],
 
-        ["getting worse", "It's definitely getting worse. It hurts more than it did yesterday."],
-        ["getting better", "No, it's getting worse."],
-        ["has it changed", "It's definitely getting worse."],
+        ["what brought you",
+        "The pain kept getting worse, so I decided I needed to get checked."],
 
-        ["how bad", "I'd say it's about a 7 out of 10 right now."],
-        ["how severe", "I'd say it's about a 7 out of 10 right now."],
-        ["pain score", "I'd say it's about a 7 out of 10 right now."],
-        ["pain scale", "I'd say it's about a 7 out of 10 right now."],
-        ["out of ten", "I'd say it's about a 7 out of 10 right now."],
+        ["what brings you",
+        "The pain kept getting worse, so I decided I needed to get checked."],
 
-        ["describe the pain", "It's mostly a sharp pain, especially when I move."],
-        ["what does it feel like", "It's mostly a sharp pain, especially when I move."],
-        ["type of pain", "It's mostly a sharp pain, especially when I move."],
-        ["sharp pain", "It's mostly a sharp pain, especially when I move."],
 
-        ["does it spread", "No, it mostly stays on the lower right side."],
-        ["does it radiate", "No, it mostly stays on the lower right side."],
-        ["radiation", "No, it mostly stays on the lower right side."],
+        ["where does it hurt",
+        "It's mostly on the lower right side of my stomach."],
 
-        ["what makes it worse", "Walking around or moving makes it hurt more."],
-        ["worse with movement", "Walking around or moving makes it hurt more."],
-        ["does movement make it worse", "Yes. Walking around or moving makes it hurt more."],
+        ["where is the pain",
+        "It's mostly on the lower right side of my stomach."],
 
-        ["what makes it better", "Lying still seems to help a little."],
-        ["anything make it better", "Lying still seems to help a little."],
+        ["where exactly",
+        "It's mostly on the lower right side of my stomach."],
 
-        ["nausea", "Yes... I've been feeling pretty nauseous."],
-        ["nauseous", "Yes... I've been feeling pretty nauseous."],
-        ["feel sick", "Yes... I've been feeling pretty nauseous."],
-
-        ["vomiting", "No, I haven't vomited."],
-        ["vomit", "No, I haven't vomited."],
-        ["throw up", "No, I haven't vomited."],
-
-        ["fever", "I felt hot last night, but I didn't actually measure my temperature."],
-        ["temperature", "I felt hot last night, but I didn't actually measure my temperature."],
-        ["chills", "I don't think I've had chills."],
-
-        ["appetite", "I don't really feel like eating."],
-        ["hungry", "I don't really feel like eating."],
-
-        ["bowel movement", "I haven't noticed anything unusual with my bowel movements."],
-        ["bowel movements", "I haven't noticed anything unusual with my bowel movements."],
-        ["stool", "I haven't noticed anything unusual with my bowel movements."],
-        ["diarrhea", "No, I haven't had diarrhea."],
-        ["constipation", "No, I haven't been constipated."],
-        ["blood in stool", "No, I haven't noticed any blood."],
-        ["bloody stool", "No, I haven't noticed any blood."],
-
-        ["urine", "I haven't noticed any problems when I pee."],
-        ["urinating", "I haven't noticed any problems when I pee."],
-        ["pee", "I haven't noticed any problems when I pee."],
-        ["pain when urinating", "No, it doesn't hurt when I pee."],
-        ["burning when urinating", "No, it doesn't hurt when I pee."],
-        ["blood in urine", "No, I haven't seen any blood in my urine."],
-
-        ["last period", "My last period was about two weeks ago."],
-        ["period", "My last period was about two weeks ago."],
-        ["menstrual", "My last period was about two weeks ago."],
-        ["regular periods", "Yes, my periods are usually regular."],
-        ["pregnant", "No, I don't think I'm pregnant."],
-        ["pregnancy", "No, I don't think I'm pregnant."],
-        ["pregnancy test", "The pregnancy test is negative."],
-        ["hcg", "The pregnancy test is negative."],
-        ["vaginal bleeding", "No, I haven't had any unusual bleeding."],
-        ["vaginal discharge", "No, I haven't noticed anything unusual."],
-
-        ["medical history", "I don't have any major medical conditions that I know of."],
-        ["medical conditions", "I don't have any major medical conditions that I know of."],
-        ["previous surgery", "I've never had surgery before."],
-        ["surgery", "I've never had surgery before."],
-        ["medications", "I don't take any regular medication."],
-        ["medication", "I don't take any regular medication."],
-        ["medicine", "I don't take any regular medication."],
-        ["allergies", "I'm not allergic to anything that I know of."],
-        ["allergic", "I'm not allergic to anything that I know of."],
-
-        ["family history", "There's no major family medical problem that I know of."],
-        ["family medical history", "There's no major family medical problem that I know of."],
-
-        ["smoking", "No, I don't smoke or vape."],
-        ["smoke", "No, I don't smoke or vape."],
-        ["vape", "No, I don't smoke or vape."],
-        ["alcohol", "No, I don't drink alcohol."],
-        ["drugs", "No."],
-
-        ["sleep", "I didn't sleep very well last night because of the pain."],
-        ["travel", "No, I haven't traveled recently."],
-        ["injury", "No, I haven't injured my stomach."],
-
-        /* BLOOD RESULTS */
-        ["blood results", "The blood tests show an elevated white blood cell count and inflammatory markers."],
-        ["blood test", "The blood tests show an elevated white blood cell count and inflammatory markers."],
-        ["blood tests", "The blood tests show an elevated white blood cell count and inflammatory markers."],
-        ["blood work", "The blood tests show an elevated white blood cell count and inflammatory markers."],
-        ["lab results", "The blood tests show an elevated white blood cell count and inflammatory markers."],
-
-        ["cbc", "The white blood cell count is elevated at 14,800 per microliter."],
-        ["wbc", "The white blood cell count is elevated at 14,800 per microliter."],
-        ["white blood cells", "The white blood cell count is elevated at 14,800 per microliter."],
-
-        ["neutrophils", "Neutrophils are elevated at about 86%."],
-        ["neutrophil", "Neutrophils are elevated at about 86%."],
-
-        ["hemoglobin", "Hemoglobin is 13.2 grams per deciliter."],
-        ["hb", "Hemoglobin is 13.2 grams per deciliter."],
-
-        ["platelets", "The platelet count is 310,000 per microliter."],
-        ["platelet", "The platelet count is 310,000 per microliter."],
-
-        ["crp", "The CRP is elevated at 58 milligrams per liter."],
-        ["c reactive protein", "The CRP is elevated at 58 milligrams per liter."],
-
-        ["esr", "The ESR is mildly elevated at 32 millimeters per hour."],
-
-        ["sodium", "Sodium is 138 mmol/L."],
-        ["potassium", "Potassium is 4.1 mmol/L."],
-        ["electrolytes", "Sodium is 138 mmol/L and potassium is 4.1 mmol/L."],
-
-        ["creatinine", "Creatinine is 0.7 mg/dL and kidney function is otherwise normal."],
-        ["kidney function", "Creatinine is 0.7 mg/dL and kidney function is otherwise normal."],
-
-        ["liver function", "The liver function tests are within normal limits."],
-        ["liver tests", "The liver function tests are within normal limits."],
-        ["bilirubin", "The liver function tests are within normal limits."],
-
-        ["glucose", "Blood glucose is 92 mg/dL."],
-        ["blood sugar", "Blood glucose is 92 mg/dL."],
-
-        ["urinalysis", "The urine test is largely normal, with no significant blood or infection."],
-        ["urine test", "The urine test is largely normal, with no significant blood or infection."],
-
-        /* IMAGING */
-        ["ultrasound", "The ultrasound shows a non-compressible enlarged appendix with surrounding inflammatory changes."],
-        ["ultrasound result", "The ultrasound shows a non-compressible enlarged appendix with surrounding inflammatory changes."],
-        ["ct", "The abdominal CT shows an inflamed appendix with surrounding inflammatory changes."],
-        ["ct scan", "The abdominal CT shows an inflamed appendix with surrounding inflammatory changes."],
-        ["scan result", "The abdominal CT shows an inflamed appendix with surrounding inflammatory changes."],
-
-        /* VITALS */
-        ["blood pressure", "I don't know my blood pressure. You would need to check it."],
-        ["bp", "I don't know my blood pressure. You would need to check it."],
-        ["pulse", "I don't know my pulse. You would need to measure it."],
-        ["heart rate", "I don't know my heart rate. You would need to measure it."],
-        ["oxygen saturation", "I don't know my oxygen level."],
-        ["spo2", "I don't know my oxygen level."],
+        ["which
