@@ -252,7 +252,7 @@ header {
     padding: 18px;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0,0,0,.35);
-    z-index: 99999;
+    z-index: 100001; /* Raised above controls */
 }
 
 /* KEYBOARD OPENS WITH CHECKBOX */
@@ -321,6 +321,7 @@ header {
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #diagnosisResult {
@@ -339,6 +340,7 @@ header {
     display: flex;
     gap: 14px;
     z-index: 100000;
+    pointer-events: none; /* Disables click blocking on container */
 }
 
 .control {
@@ -357,6 +359,7 @@ header {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     cursor: pointer;
+    pointer-events: auto; /* Re-enables click events for the button */
 }
 
 .control:active {
@@ -601,10 +604,4 @@ document.addEventListener("DOMContentLoaded", function () {
         "It's mostly on the lower right side of my stomach."],
 
         ["where exactly",
-        "It's mostly on the lower right side of my stomach."],
-
-        ["which side",
-        "It's mostly on the lower right side of my stomach."],
-
-        ["location of the pain",
-        "It's mostly on the lower
+        "It's mostly on the
