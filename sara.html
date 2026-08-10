@@ -252,7 +252,8 @@ header {
     padding: 18px;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0,0,0,.35);
-    z-index: 99999;
+    z-index: 999999;
+    pointer-events: auto;
 }
 
 /* KEYBOARD OPENS WITH CHECKBOX */
@@ -340,7 +341,6 @@ header {
     display: flex;
     gap: 14px;
     z-index: 100000;
-    pointer-events: none; /* Stops control bar container from blocking popups */
 }
 
 .control {
@@ -359,7 +359,6 @@ header {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     cursor: pointer;
-    pointer-events: auto; /* Re-enables clicking on the emoji buttons */
 }
 
 .control:active {
@@ -446,11 +445,6 @@ header {
 </div>
 
 
-<!--
-    These checkboxes control the popups.
-    JavaScript is NOT needed to open them.
--->
-
 <input
     type="checkbox"
     id="keyboardToggle"
@@ -475,25 +469,27 @@ header {
         Ask Sara a question
     </div>
 
-    <div class="input-row">
+    <form onsubmit="sendQuestion(); return false;">
+        <div class="input-row">
 
-        <input
-            id="questionInput"
-            type="text"
-            autocomplete="off"
-            autocapitalize="sentences"
-            placeholder="Type your question..."
-        >
+            <input
+                id="questionInput"
+                type="text"
+                autocomplete="off"
+                autocapitalize="sentences"
+                placeholder="Type your question..."
+            >
 
-        <button
-            id="sendQuestionButton"
-            class="send-button"
-            type="button"
-        >
-            Send
-        </button>
+            <button
+                id="sendQuestionButton"
+                class="send-button"
+                type="submit"
+            >
+                Send
+            </button>
 
-    </div>
+        </div>
+    </form>
 
     <label
         for="keyboardToggle"
@@ -516,25 +512,27 @@ header {
         What do you think Sara has?
     </div>
 
-    <div class="input-row">
+    <form onsubmit="submitDiagnosis(); return false;">
+        <div class="input-row">
 
-        <input
-            id="diagnosisInput"
-            type="text"
-            autocomplete="off"
-            autocapitalize="sentences"
-            placeholder="Enter your diagnosis..."
-        >
+            <input
+                id="diagnosisInput"
+                type="text"
+                autocomplete="off"
+                autocapitalize="sentences"
+                placeholder="Enter your diagnosis..."
+            >
 
-        <button
-            id="diagnosisButton"
-            class="send-button"
-            type="button"
-        >
-            Submit
-        </button>
+            <button
+                id="diagnosisButton"
+                class="send-button"
+                type="submit"
+            >
+                Submit
+            </button>
 
-    </div>
+        </div>
+    </form>
 
     <div id="diagnosisResult"></div>
 
@@ -573,37 +571,17 @@ header {
 
 <script>
 
-function setupGame() {
+var saraAnswers = [
 
-    "use strict";
+    ["why are you here", "The pain kept getting worse, so I decided I needed to get checked."],
+    ["why did you come", "The pain kept getting worse, so I decided I needed to get checked."],
+    ["what brought you", "The pain kept getting worse, so I decided I needed to get checked."],
+    ["what brings you", "The pain kept getting worse, so I decided I needed to get checked."],
 
+    ["where does it hurt", "It's mostly on the lower right side of my stomach."],
+    ["where is the pain", "It's mostly on the lower right side of my stomach."],
+    ["where exactly", "It's mostly on the lower right side of my stomach."],
+    ["which side", "It's mostly on the lower right side of my stomach."],
+    ["location of the pain", "It's mostly on the lower right side of my stomach."],
 
-    /* =====================================================
-       SARA'S CASE ANSWERS
-    ===================================================== */
-
-    var saraAnswers = [
-
-        ["why are you here",
-        "The pain kept getting worse, so I decided I needed to get checked."],
-
-        ["why did you come",
-        "The pain kept getting worse, so I decided I needed to get checked."],
-
-        ["what brought you",
-        "The pain kept getting worse, so I decided I needed to get checked."],
-
-        ["what brings you",
-        "The pain kept getting worse, so I decided I needed to get checked."],
-
-
-        ["where does it hurt",
-        "It's mostly on the lower right side of my stomach."],
-
-        ["where is the pain",
-        "It's mostly on the lower right side of my stomach."],
-
-        ["where exactly",
-        "It's mostly on the lower right side of my stomach."],
-
-        ["which
+    ["when did the pain start", "It started yesterday. It wasn't this bad at first, but it has been getting
